@@ -1,0 +1,26 @@
+@use '../utilities/variables' as *;
+
+@layer base {
+  .navBarMenu {
+    @apply h-0 w-[200px] top-[10vh] right-[-20em] fixed bg-green z-[9999] grid place-items-center;
+    animation: none;
+
+    * {
+      @apply text-white;
+    }
+  }
+
+  .closeNavBarMenu {
+    animation: closingNavBarMenu 1s forwards;
+  }
+
+  .navScrolled {
+    @apply text-skyBlue border-b-4 border-skyBlue;
+  }
+
+  @media screen and (max-width: 799px) {
+    .navBarMenu {
+      @apply top-[100px];
+    }
+  }
+}

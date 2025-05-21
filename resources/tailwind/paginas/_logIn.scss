@@ -1,0 +1,135 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .login {
+    @apply box-border;
+
+    a {
+      @apply text-teal-500 no-underline transition-all duration-500 ease-in-out;
+
+      &:hover {
+        @apply text-teal-700;
+      }
+    }
+
+    .contenedor-formularios {
+      @apply bg-opacity-90 bg-[#13232f] p-10 max-w-[600px] mx-auto rounded shadow-lg mt-[20vh];
+    }
+
+    .contenedor-tabs {
+        @apply flex justify-center w-full;
+      
+        & > li {
+          @apply w-2/5 first:mr-2 last:ml-2;
+      
+          a {
+            @apply block text-center px-4 py-3 bg-[rgba(160,179,176,0.25)] text-[#a0b3b0] text-xl transition-all duration-300 ease-in-out rounded;
+      
+            &:hover {
+              @apply bg-teal-700 text-white;
+            }
+          }
+      
+          &.active a {
+            @apply bg-teal-500 text-white;
+          }
+        }
+      }
+      
+
+    h1 {
+      @apply text-center text-white font-light text-2xl mb-10;
+    }
+
+    label {
+      @apply absolute text-white/50 transition-all duration-300 ease-in-out text-[22px] pointer-events-none left-[13px] translate-y-[6px];
+
+      .req {
+        @apply text-teal-500 mx-1;
+      }
+
+      &.active {
+        @apply translate-y-[50px] left-[2px] text-sm;
+
+        .req {
+          @apply opacity-0;
+        }
+      }
+
+      &.highlight {
+        @apply text-white;
+      }
+    }
+
+    input {
+      @apply text-[22px] w-full h-10 p-2.5 bg-transparent border border-[#a0b3b0] text-white rounded transition-all duration-500 ease-in-out;
+
+      &:focus {
+        @apply outline-none border-teal-500;
+      }
+    }
+
+    .contenedor-input {
+      @apply relative mb-10;
+    }
+
+    .fila-arriba {
+      &::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      div {
+        @apply float-left w-[48%] mr-[4%];
+
+        &:last-child {
+          @apply mr-0;
+        }
+      }
+    }
+
+    .button {
+      @apply h-[65px] border-0 outline-none rounded cursor-pointer py-4 text-2xl bg-teal-500 text-white transition-all duration-500 ease-in-out appearance-none;
+
+      &:hover,
+      &:focus {
+        @apply bg-teal-700;
+      }
+    }
+
+    .button-block {
+      @apply block w-full;
+    }
+
+    .forgot {
+      @apply -mt-5 text-right mb-5;
+    }
+
+    &__icon-container {
+      @apply flex justify-center gap-4 mt-5 -mb-5;
+
+      &__icon-link {
+        @apply w-10 h-10 flex items-center justify-center transition-all duration-500 ease-in-out hover:w-12 h-12;
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .login .fila-arriba div {
+      @apply w-full;
+
+      &:last-child {
+        @apply mb-10;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .login .contenedor-tabs li a {
+      @apply w-full;
+    }
+  }
+}

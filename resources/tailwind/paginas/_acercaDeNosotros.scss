@@ -1,0 +1,14 @@
+@use '../utilities/variables' as *;
+
+@layer components {
+    .acercaDeNosotros {
+
+        &__misionTitulo, &__visionTitulo, &__valoresTitulo {
+            color: $verde;
+        }
+
+        &__textoPrincipal, &__misionTexto, &__visionTexto, &__valoresTexto {
+            margin: 0 30%;
+        }
+    }
+}

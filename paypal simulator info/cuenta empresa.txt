@@ -1,0 +1,3 @@
+sandbox URL: https://sandbox.paypal.com
+email: sb-4qq43d31119162@business.example.com
+clave: b8Af+5q$

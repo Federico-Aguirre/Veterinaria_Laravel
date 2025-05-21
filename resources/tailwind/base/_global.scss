@@ -1,0 +1,26 @@
+@layer base {
+
+    .seccion {
+        @apply mt-[10vh];
+    
+        @media (min-width: 640px) { // sm
+          @apply mt-[12vh];
+        }
+    
+        @media (min-width: 1024px) { // lg
+          @apply mt-[14vh];
+        }
+      }
+
+    .linea {
+        @apply grid my-8 bg-green py-[1px] px-[10%];
+
+        @media (min-width: 640px) { // sm
+          @apply px-[20%];
+        }
+      
+        @media (min-width: 1024px) { // lg
+          @apply px-[30%];
+        }
+    }
+}

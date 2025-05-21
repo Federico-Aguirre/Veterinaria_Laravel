@@ -1,0 +1,63 @@
+@use '../utilities/variables' as *;
+
+@layer components {
+    .stock {
+        @apply flex flex-col items-center;
+
+        &__filtro {
+            @apply my-5 text-center;
+
+            &__texto {
+                @apply mb-2;
+            }
+
+            &__listaDeFiltros {
+                button {
+                    @apply bg-green hover:bg-green text-white font-semibold py-2 px-4 rounded m-1 transition duration-300;
+                }
+            }
+        }
+
+        &__tarjeta__contenedor {
+            @apply flex flex-row w-[600px] my-[7.5px] bg-white p-2 gap-[15px];
+
+            &__imagen {
+                @apply h-[200px] w-[130px] object-contain self-center;
+            }
+
+            &__contenido {
+                @apply flex flex-col justify-between flex-1;
+
+                &__descripcion {
+                    @apply font-bold mb-2.5;
+                }
+
+                &__precio, &__subtotal, &__cantidad {
+                    @apply mb-2.5;
+                }
+
+                &__stock {
+                    @apply italic mb-2.5;
+                }
+
+                &__fecha {
+                    @apply mb-2.5;
+                }
+
+                &__caracteristicas {
+                    ul {
+                        @apply list-disc pl-5;
+                    }
+                }
+
+                input {
+                    @apply mt-2 w-full border border-gray rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green;
+                }
+            }
+        }
+
+        button {
+            @apply mb-6;
+        }
+    }
+}

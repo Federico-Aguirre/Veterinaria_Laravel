@@ -1,47 +1,41 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;  // Agregar esta línea
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable  // Cambiar de Model a Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    // Definir la tabla que estás utilizando
+    protected $table = 'users';
+
+    // Los campos que son asignables en masa
     protected $fillable = [
         'name',
-        'email',
-        'password',
+        'Apellido',
+        'Dirección',
+        'Piso',
+        'Departamento',
+        'Localidad',
+        'Teléfono',
+        'Celular',
+        'email'
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // Laravel gestiona automáticamente los timestamps (created_at, updated_at)
+    public $timestamps = true;
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    // Para asegurarnos de que las contraseñas se cifren correctamente
+    protected static function boot()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        parent::boot();
+
+        static::creating(function ($user) {
+            // Cifrar la contraseña antes de crear el usuario
+            $user->password = bcrypt($user->password);
+        });
     }
 }

@@ -1,0 +1,17 @@
+$blanco: hsl(0, 0%, 100%);
+$negro: hsl(0, 0%, 0%);
+$verde: hsl(171, 83%, 40%);
+$celeste: hsl(194, 85%, 62%);
+$rojo: hsl(333, 93%, 40%);
+$gris: hsl(0, 0%, 95%);
+$formulario: hsla(206, 42%, 13%, 0.9);
+
+$fuenteNormal: 1em;
+$fuenteGrande: 1.3em;
+$fuenteMasGrande: 3em;
+
+$sombra: 6px 6px 20px 3px $verde;
+$sombraLuminosa: 0 0 2em 0.5em $verde;
+
+$escaladoGrande: scale(1.2);
+$transitionDelay: all 0.25s ease-in;

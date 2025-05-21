@@ -1,0 +1,43 @@
+@use '../utilities/variables' as *;
+
+@layer components {
+  .carro {
+    &__filtro {
+      @apply my-5 text-center;
+
+      &__texto {
+        @apply mb-2.5;
+      }
+    }
+
+    &__tarjetaCarro__contenedor {
+      @apply h-auto w-[600px] my-[7.5px] bg-white grid;
+      grid-template-rows: 40px 25px 25px auto 35px 25px;
+      grid-template-columns: 200px 400px;
+
+      &__imagen {
+        @apply col-span-1 row-span-full place-self-center h-[200px] w-[130px];
+      }
+
+      &__descripcion {
+        @apply col-start-2 row-start-1 overflow-hidden;
+      }
+
+      &__precio {
+        @apply col-start-2 row-start-2 font-bold;
+      }
+
+      ul {
+        @apply list-disc overflow-hidden;
+
+        .stock__tarjetaCarro__contenedor__caracteristicas__contenido {
+          @apply col-start-2 row-start-3 row-end-[-2] ml-[17px];
+        }
+      }
+
+      &__cantidad {
+        @apply py-[5px];
+      }
+    }
+  }
+}

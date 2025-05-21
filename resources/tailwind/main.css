@@ -1,0 +1,684 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  .seccion {
+    @apply mt-[10vh];
+  }
+  @media (min-width: 640px) {
+    .seccion {
+      @apply mt-[12vh];
+    }
+  }
+  @media (min-width: 1024px) {
+    .seccion {
+      @apply mt-[14vh];
+    }
+  }
+  .linea {
+    @apply grid my-8 bg-green py-[1px] px-[10%];
+  }
+  @media (min-width: 640px) {
+    .linea {
+      @apply px-[20%];
+    }
+  }
+  @media (min-width: 1024px) {
+    .linea {
+      @apply px-[30%];
+    }
+  }
+}
+@layer base {
+  html,
+  body,
+  div,
+  span,
+  applet,
+  object,
+  iframe,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  blockquote,
+  pre,
+  a,
+  abbr,
+  acronym,
+  address,
+  big,
+  cite,
+  code,
+  del,
+  dfn,
+  em,
+  font,
+  img,
+  ins,
+  kbd,
+  q,
+  s,
+  samp,
+  small,
+  strike,
+  strong,
+  sub,
+  sup,
+  tt,
+  var,
+  b,
+  u,
+  i,
+  center,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  fieldset,
+  form,
+  label,
+  legend,
+  table,
+  caption,
+  tbody,
+  tfoot,
+  thead,
+  tr,
+  th,
+  td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+  }
+  ol,
+  ul {
+    list-style: none;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote:before,
+  blockquote:after,
+  q:before,
+  q:after {
+    content: "";
+    content: none;
+  }
+  .textarea_1 {
+    border: 1px solid hsl(0, 0%, 50%);
+    border-radius: 2px;
+  }
+  :focus {
+    outline: 0;
+  }
+  ins {
+    text-decoration: none;
+  }
+  del {
+    text-decoration: line-through;
+  }
+  a {
+    all: unset;
+    cursor: pointer;
+  }
+}
+@layer base {
+  .navBarMenu {
+    @apply h-0 w-[200px] top-[10vh] right-[-20em] fixed bg-green z-[9999] grid place-items-center;
+    animation: none;
+  }
+  .navBarMenu * {
+    @apply text-white;
+  }
+  .closeNavBarMenu {
+    animation: closingNavBarMenu 1s forwards;
+  }
+  .navScrolled {
+    @apply text-skyBlue border-b-4 border-skyBlue;
+  }
+  @media screen and (max-width: 799px) {
+    .navBarMenu {
+      @apply top-[100px];
+    }
+  }
+}
+@layer components {
+  .header * {
+    @apply transition-all;
+    transition-duration: all 0.25s ease-in;
+  }
+  .header__logOut__button {
+    all: unset;
+    @apply cursor-pointer;
+  }
+  .header__carroDeCompra img, .header__perfil img {
+    @apply h-[25px] w-[25px];
+  }
+  .header nav ul {
+    @apply flex flex-row flex-wrap items-center justify-center gap-[30px];
+  }
+  .header nav ul li:not(:first-of-type):hover,
+  .header nav ul button:hover {
+    transform: scale(1.2);
+  }
+  @media (max-width: 799px) {
+    .header nav ul {
+      @apply justify-center gap-y-2;
+    }
+  }
+  .header__logoContenedor__logo {
+    @apply h-[50px] w-[100px] hidden lg:block;
+  }
+  .header__navBar {
+    @apply grid place-content-center cursor-pointer px-[15px] py-[5px] border-none;
+  }
+  .header__navBar__line {
+    @apply bg-green rounded-full;
+    @apply py-[2px] px-[15px];
+    margin-top: -5px;
+  }
+  .header__navBar__line:nth-of-type(2) {
+    @apply bg-green rounded-full;
+    @apply py-[2px] px-[15px];
+    margin-left: 10px;
+    margin-top: 5px;
+  }
+}
+@layer components {
+  .float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+  }
+  .float:hover {
+    text-decoration: none;
+    color: #25d366;
+    background-color: #fff;
+  }
+  .my-float {
+    margin-top: 16px;
+  }
+}
+@layer components {
+  .main__heroe__solicitarTurno, .main__heroe__verProductos {
+    padding: 10px;
+    border: 2px solid hsl(171, 83%, 40%);
+    border-radius: 30px;
+  }
+  .main__heroe__solicitarTurno:hover, .main__heroe__verProductos:hover {
+    background-color: hsl(171, 83%, 40%);
+    color: hsl(0, 0%, 100%);
+  }
+  .main__servicios__contenedor__imagenIzquierda, .main__servicios__contenedor__imagenDerecha {
+    height: 200px;
+    width: 150px;
+  }
+  .main__servicios__contenedor__listaDeServicios div {
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main__servicios__contenedor__listaDeServicios div img {
+    height: 50px;
+    width: 50px;
+  }
+  .main__direccion__ubicacion, .main__direccion__horario, .main__direccion__telefono, .main__direccion__whatsapp {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  .main__direccion__ubicacion img, .main__direccion__horario img, .main__direccion__telefono img, .main__direccion__whatsapp img {
+    height: 25px;
+    width: 25px;
+  }
+  .main__mediosDePago__tarjetasContenedor div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+  }
+}
+@layer components {
+  .acercaDeNosotros__misionTitulo, .acercaDeNosotros__visionTitulo, .acercaDeNosotros__valoresTitulo {
+    color: hsl(171, 83%, 40%);
+  }
+  .acercaDeNosotros__textoPrincipal, .acercaDeNosotros__misionTexto, .acercaDeNosotros__visionTexto, .acercaDeNosotros__valoresTexto {
+    margin: 0 30%;
+  }
+}
+@layer components {
+  .contacto__formulario {
+    max-width: 500px;
+    width: 100%;
+  }
+  .contacto__formulario label {
+    font-size: 18px;
+    color: hsl(0, 0%, 95%);
+    margin-bottom: 10px;
+  }
+  .contacto__formulario input,
+  .contacto__formulario textarea {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  .contacto__formulario textarea {
+    height: 100px;
+    margin-bottom: 30px;
+    resize: vertical;
+  }
+  .contacto__formulario__boton {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 18px;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer components {
+  .login {
+    @apply box-border;
+  }
+  .login a {
+    @apply text-teal-500 no-underline transition-all duration-500 ease-in-out;
+  }
+  .login a:hover {
+    @apply text-teal-700;
+  }
+  .login .contenedor-formularios {
+    @apply bg-opacity-90 bg-[#13232f] p-10 max-w-[600px] mx-auto rounded shadow-lg mt-[20vh];
+  }
+  .login .contenedor-tabs {
+    @apply flex justify-center w-full;
+  }
+  .login .contenedor-tabs > li {
+    @apply w-2/5 first:mr-2 last:ml-2;
+  }
+  .login .contenedor-tabs > li a {
+    @apply block text-center px-4 py-3 bg-[rgba(160,179,176,0.25)] text-[#a0b3b0] text-xl transition-all duration-300 ease-in-out rounded;
+  }
+  .login .contenedor-tabs > li a:hover {
+    @apply bg-teal-700 text-white;
+  }
+  .login .contenedor-tabs > li.active a {
+    @apply bg-teal-500 text-white;
+  }
+  .login h1 {
+    @apply text-center text-white font-light text-2xl mb-10;
+  }
+  .login label {
+    @apply absolute text-white/50 transition-all duration-300 ease-in-out text-[22px] pointer-events-none left-[13px] translate-y-[6px];
+  }
+  .login label .req {
+    @apply text-teal-500 mx-1;
+  }
+  .login label.active {
+    @apply translate-y-[50px] left-[2px] text-sm;
+  }
+  .login label.active .req {
+    @apply opacity-0;
+  }
+  .login label.highlight {
+    @apply text-white;
+  }
+  .login input {
+    @apply text-[22px] w-full h-10 p-2.5 bg-transparent border border-[#a0b3b0] text-white rounded transition-all duration-500 ease-in-out;
+  }
+  .login input:focus {
+    @apply outline-none border-teal-500;
+  }
+  .login .contenedor-input {
+    @apply relative mb-10;
+  }
+  .login .fila-arriba::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .login .fila-arriba div {
+    @apply float-left w-[48%] mr-[4%];
+  }
+  .login .fila-arriba div:last-child {
+    @apply mr-0;
+  }
+  .login .button {
+    @apply h-[65px] border-0 outline-none rounded cursor-pointer py-4 text-2xl bg-teal-500 text-white transition-all duration-500 ease-in-out appearance-none;
+  }
+  .login .button:hover, .login .button:focus {
+    @apply bg-teal-700;
+  }
+  .login .button-block {
+    @apply block w-full;
+  }
+  .login .forgot {
+    @apply -mt-5 text-right mb-5;
+  }
+  .login__icon-container {
+    @apply flex justify-center gap-4 mt-5 -mb-5;
+  }
+  .login__icon-container__icon-link {
+    @apply w-10 h-10 flex items-center justify-center transition-all duration-500 ease-in-out hover:w-12 h-12;
+  }
+  @media (max-width: 500px) {
+    .login .fila-arriba div {
+      @apply w-full;
+    }
+    .login .fila-arriba div:last-child {
+      @apply mb-10;
+    }
+  }
+  @media (max-width: 400px) {
+    .login .contenedor-tabs li a {
+      @apply w-full;
+    }
+  }
+}
+@layer components {
+  .formulario *, .formulario *:before, .formulario *:after {
+    box-sizing: border-box;
+  }
+  .formulario a {
+    text-decoration: none;
+    color: #1ab188;
+    transition: 0.5s ease;
+  }
+  .formulario a:hover {
+    color: #179b77;
+  }
+  .formulario .contenedor-formularios {
+    background: rgba(19, 35, 47, 0.9);
+    padding: 40px;
+    max-width: 600px;
+    margin: 40px auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+    margin-top: 20vh;
+  }
+  .formulario .contenedor-tabs {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+  }
+  .formulario .contenedor-tabs:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .formulario .contenedor-tabs li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #a0b3b0;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+  .formulario .contenedor-tabs li a:hover {
+    background: #179b77;
+    color: #fff;
+  }
+  .formulario .contenedor-tabs .active a {
+    background: #1ab188;
+    color: #fff;
+  }
+  .formulario h1 {
+    text-align: center;
+    color: #fff;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 0 0 40px;
+  }
+  .formulario label {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 22px;
+  }
+  .formulario label .req {
+    margin: 2px;
+    color: #1ab188;
+  }
+  .formulario label.active {
+    transform: translateY(50px);
+    left: 2px;
+    font-size: 14px;
+  }
+  .formulario label.active .req {
+    opacity: 0;
+  }
+  .formulario label.highlight {
+    color: #fff;
+  }
+  .formulario input {
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    background: none;
+    background-image: none;
+    border: 1px solid #a0b3b0;
+    color: #fff;
+    border-radius: 0;
+    transition: all 0.5s ease;
+    border-radius: 5px;
+  }
+  .formulario input:focus {
+    outline: none;
+    border-color: #1ab188;
+  }
+  .formulario .contenedor-input {
+    position: relative;
+    margin-bottom: 40px;
+  }
+  .formulario .fila-arriba:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .formulario .fila-arriba div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+  }
+  .formulario .fila-arriba div:last-child {
+    margin: 0;
+  }
+  .formulario .button {
+    height: 65px;
+    border: 0;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 15px 0;
+    font-size: 2rem;
+    background: #1ab188;
+    color: #fff;
+    transition: all 0.5s ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .formulario .button:hover, .formulario .button:focus {
+    background: #179b77;
+  }
+  .formulario .button-block {
+    display: block;
+    width: 100%;
+  }
+  .formulario .forgot {
+    margin-top: -20px;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 500px) {
+    .fila-arriba div {
+      width: 100%;
+    }
+    .fila-arriba div:last-child {
+      margin-bottom: 40px;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .contenedor-tabs li a {
+      width: 100%;
+    }
+  }
+}
+@layer components {
+  .stock {
+    @apply flex flex-col items-center;
+  }
+  .stock__filtro {
+    @apply my-5 text-center;
+  }
+  .stock__filtro__texto {
+    @apply mb-2;
+  }
+  .stock__filtro__listaDeFiltros button {
+    @apply bg-green hover:bg-green text-white font-semibold py-2 px-4 rounded m-1 transition duration-300;
+  }
+  .stock__tarjeta__contenedor {
+    @apply flex flex-row w-[600px] my-[7.5px] bg-white p-2 gap-[15px];
+  }
+  .stock__tarjeta__contenedor__imagen {
+    @apply h-[200px] w-[130px] object-contain self-center;
+  }
+  .stock__tarjeta__contenedor__contenido {
+    @apply flex flex-col justify-between flex-1;
+  }
+  .stock__tarjeta__contenedor__contenido__descripcion {
+    @apply font-bold mb-2.5;
+  }
+  .stock__tarjeta__contenedor__contenido__precio, .stock__tarjeta__contenedor__contenido__subtotal, .stock__tarjeta__contenedor__contenido__cantidad {
+    @apply mb-2.5;
+  }
+  .stock__tarjeta__contenedor__contenido__stock {
+    @apply italic mb-2.5;
+  }
+  .stock__tarjeta__contenedor__contenido__fecha {
+    @apply mb-2.5;
+  }
+  .stock__tarjeta__contenedor__contenido__caracteristicas ul {
+    @apply list-disc pl-5;
+  }
+  .stock__tarjeta__contenedor__contenido input {
+    @apply mt-2 w-full border border-gray rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green;
+  }
+  .stock button {
+    @apply mb-6;
+  }
+}
+@layer components {
+  .turnos {
+    height: 100vh;
+    display: grid;
+    place-content: center;
+  }
+  .turnos__formulario {
+    padding: 50px;
+    background-color: rgb(36, 49, 60);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .turnos__formulario__titulo {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    color: hsl(0, 0%, 100%);
+    font-size: 24px;
+  }
+  .turnos__formulario label {
+    color: hsl(0, 0%, 66%);
+    width: 100%;
+  }
+  .turnos__formulario input, .turnos__formulario select {
+    width: 100%;
+    height: 30px;
+  }
+  .turnos__formulario textarea {
+    height: 150px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .turnos__formulario input[type=submit] {
+    background: none;
+    border: 0;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    height: 40px;
+    font-size: large;
+    border-radius: 3px;
+    appearance: inherit;
+    background-color: rgba(26, 177, 136, 0.8);
+    color: hsl(0, 0%, 100%);
+  }
+}
+@layer components {
+  .carro__filtro {
+    @apply my-5 text-center;
+  }
+  .carro__filtro__texto {
+    @apply mb-2.5;
+  }
+  .carro__tarjetaCarro__contenedor {
+    @apply h-auto w-[600px] my-[7.5px] bg-white grid;
+    grid-template-rows: 40px 25px 25px auto 35px 25px;
+    grid-template-columns: 200px 400px;
+  }
+  .carro__tarjetaCarro__contenedor__imagen {
+    @apply col-span-1 row-span-full place-self-center h-[200px] w-[130px];
+  }
+  .carro__tarjetaCarro__contenedor__descripcion {
+    @apply col-start-2 row-start-1 overflow-hidden;
+  }
+  .carro__tarjetaCarro__contenedor__precio {
+    @apply col-start-2 row-start-2 font-bold;
+  }
+  .carro__tarjetaCarro__contenedor ul {
+    @apply list-disc overflow-hidden;
+  }
+  .carro__tarjetaCarro__contenedor ul .stock__tarjetaCarro__contenedor__caracteristicas__contenido {
+    @apply col-start-2 row-start-3 row-end-[-2] ml-[17px];
+  }
+  .carro__tarjetaCarro__contenedor__cantidad {
+    @apply py-[5px];
+  }
+}/*# sourceMappingURL=main.css.map */

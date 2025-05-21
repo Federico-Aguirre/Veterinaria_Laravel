@@ -1,0 +1,71 @@
+@use '../utilities/variables' as *;
+
+@layer components {
+    .main {
+        &__heroe {
+
+            &__solicitarTurno, &__verProductos {
+                padding: 10px;
+                border: 2px solid $verde;
+                border-radius: 30px;
+            }
+
+            &__solicitarTurno:hover, &__verProductos:hover {
+                background-color: $verde;
+                color: $blanco;
+            }
+        }
+
+        &__servicios {
+
+            &__contenedor {
+
+                &__imagenIzquierda, &__imagenDerecha {
+                    height: 200px;
+                    width: 150px;
+                }
+
+                &__listaDeServicios {
+
+                    div {
+                        width: 190px;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        img {
+                            height: 50px;
+                            width: 50px;
+                        }
+                    }
+                }
+            }
+        }
+
+        &__direccion {
+
+            &__ubicacion, &__horario, &__telefono, &__whatsapp {
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 20px;
+
+                img {
+                    height: 25px;
+                    width: 25px;
+                }
+            }
+        }
+
+        &__mediosDePago {
+
+            &__tarjetasContenedor div {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 150px;
+            }
+        }
+    }
+}
