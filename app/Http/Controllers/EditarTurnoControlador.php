@@ -16,9 +16,10 @@ class EditarTurnoControlador extends Controller
 
         // Verificar si se ha seleccionado un turno para editar
         $turnoSeleccionado = null;
-        if ($request->has('id')) {
-            $turnoSeleccionado = TurnoModel::where('Id_user', Auth::id())->find($request->id);
-        }
+        $turnoSeleccionado = TurnoModel::where('Id_user', Auth::id())
+        ->where('id', $request->id)
+        ->first();
+
 
         return view('editar_turno', compact('turnos', 'turnoSeleccionado'));
     }

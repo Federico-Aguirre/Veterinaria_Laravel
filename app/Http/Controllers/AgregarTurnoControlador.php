@@ -37,7 +37,8 @@ class AgregarTurnoControlador extends Controller
             'Mensaje' => 'required|string|max:255',
             'Id_mascota' => 'required|exists:mascotas,id', // Asegúrate de que la mascota exista
         ]);
-    
+
+        $mascota = MascotaModel::findOrFail($validated['Id_mascota']);
         // Crear el turno y asociarlo al usuario autenticado
         $turno = new TurnoModel();
         $turno->Id_user = Auth::id(); // Asignar el usuario autenticado
@@ -45,6 +46,7 @@ class AgregarTurnoControlador extends Controller
         $turno->Id_mascota = $validated['Id_mascota']; // Asignar la mascota seleccionada
         $turno->Asunto = $validated['Asunto']; // Asunto
         $turno->Mensaje = $validated['Mensaje']; // Mensaje
+        $turno->Mascota_nombre = $mascota->Nombre;
     
         // Guardar el turno
         $turno->save();

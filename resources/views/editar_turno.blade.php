@@ -22,27 +22,20 @@
                     @if(Auth::check())
                         @if(!isset($turnoSeleccionado))
                             <!-- Formulario para seleccionar el turno -->
-                            <form action="{{ route('editar_turno') }}" method="get" class="turnos__formulario">
-                                <div class="contenedor-input turnos__formulario__titulo">
-                                    Editar Turno
-                                </div>
+<form action="{{ route('editar_turno') }}" method="get" class="turnos__formulario">
+    <div class="contenedor-input">
+        <label for="turnoAEditar">Seleccionar Turno</label>
+        <select id="turnoAEditar" name="id" required>
+            <option value="" disabled selected>Elegí un turno</option>
+            @foreach($turnos as $turno)
+                <option value="{{ $turno->id }}">{{ $turno->Fecha }} - {{ $turno->Asunto }}</option>
+            @endforeach
+        </select>
+    </div>
+    <input type="submit" value="Seleccionar Turno">
+</form>
 
-                                <!-- Select de turnos -->
-                                <div class="contenedor-input">
-                                    <label for="turnoAEditar">Seleccionar Turno</label>
-                                    <select id="turnoAEditar" name="id" class="turnos__formulario__turnoAEditar" required>
-                                        @if($turnos->isEmpty())
-                                            <option value="">No tienes turnos disponibles para editar</option>
-                                        @else
-                                            @foreach($turnos as $turno)
-                                                <option value="{{ $turno->id }}">{{ $turno->Fecha }} - {{ $turno->Asunto }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                </div>
-                                
-                                <input type="submit" value="Seleccionar Turno">
-                            </form>
+
                         @else
                             <!-- Formulario para editar el turno seleccionado -->
                             <form action="{{ route('editar_turno_update', ['id' => $turnoSeleccionado->id]) }}" method="post" class="turnos__formulario">
