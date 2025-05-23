@@ -10,20 +10,27 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-COPY . .
+COPY .env .env
+
 
 RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-RUN ls -la storage/logs && cat storage/logs/laravel.log || echo "No hay logs"
+RUN tail -f storage/logs/laravel.log
+
 
 # Exponemos el puerto 10000 que usaremos para artisan serve
 EXPOSE 10000
 
+RUN php artisan migrate --force
+
 # Arrancamos el servidor de desarrollo Laravel en el puerto 10000, accesible desde afuera
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+
+
+
 
 
 
