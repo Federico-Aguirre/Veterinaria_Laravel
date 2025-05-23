@@ -11,13 +11,13 @@ Route::get('/registrarse', function () {
 // Ruta para procesar el formulario de registro (POST)
 Route::post('/registrarse', [CrearUsuarioControlador::class, 'store'])->name('procesarRegistro');
 
-use App\Http\Controllers\loginControlador;
+use App\Http\Controllers\LoginControlador;
 // Ruta para mostrar el formulario de inicio de sesión (GET)
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 // Ruta para mostrar el formulario de inicio de sesión (POST)
-Route::post('/login', [loginControlador::class, 'login'])->name('procesarLogin');
+Route::post('/login', [LoginControlador::class, 'login'])->name('procesarLogin');
 
 use App\Http\Controllers\LeerJsonsControlador;
 Route::get('/productos/json', [LeerJsonsControlador::class, 'leerJsons']);
