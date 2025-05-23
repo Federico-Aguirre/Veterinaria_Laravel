@@ -1,36 +1,37 @@
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
-# Instalamos extensiones necesarias para Laravel
+# Instala dependencias del sistema y extensiones necesarias
 RUN apt-get update && apt-get install -y \
-    libzip-dev unzip git curl libpq-dev \
+    git \
+    unzip \
+    curl \
+    libpq-dev \
+    libzip-dev \
+    zip \
     && docker-php-ext-install pdo pdo_pgsql zip
 
-RUN apt-get update \
-    && apt-get install -y libpq-dev unzip git curl \
-    && docker-php-ext-install pdo pdo_pgsql
-
-
-# Instalamos Composer
+# Instala Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
+# Establece el directorio de trabajo
 WORKDIR /var/www
 
+# Copia los archivos del proyecto
 COPY . .
 
-
+# Instala las dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader
 
+# Crea carpetas necesarias con permisos adecuados
 RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-
-# Exponemos el puerto 10000 que usaremos para artisan serve
+# Expone el puerto
 EXPOSE 10000
 
-RUN php artisan migrate --force
-
-# Arrancamos el servidor de desarrollo Laravel en el puerto 10000, accesible desde afuera
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
+# Comando por defecto: usar el servidor embebido de Laravel
+CMD php artisan serve --host=0.0.0.0 --port=10000
 
 
 
