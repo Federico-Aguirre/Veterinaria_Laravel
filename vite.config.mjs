@@ -3,6 +3,7 @@ import laravel from 'laravel-vite-plugin';
 import path from 'path';
 
 export default defineConfig({
+  base: 'https://veterinaria-laravel.onrender.com/build/',
   plugins: [
     laravel({
       input: [
