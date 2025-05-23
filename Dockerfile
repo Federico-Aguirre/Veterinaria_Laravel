@@ -18,8 +18,6 @@ RUN composer install --no-dev --optimize-autoloader
 RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache
 
-RUN tail -f storage/logs/laravel.log
-
 
 # Exponemos el puerto 10000 que usaremos para artisan serve
 EXPOSE 10000
