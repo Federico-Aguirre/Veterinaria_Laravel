@@ -1,0 +1,18 @@
+{
+  "resources/js/app.css": {
+    "file": "assets/main-630be8a2.css",
+    "src": "resources/js/app.css"
+  },
+  "resources/js/app.js": {
+    "css": [
+      "assets/main-630be8a2.css"
+    ],
+    "file": "assets/app-c7a7359f.js",
+    "isEntry": true,
+    "src": "resources/js/app.js"
+  },
+  "resources/tailwind/main.scss": {
+    "file": "assets/main-630be8a2.css",
+    "src": "resources/js/app.css"
+  }
+}
