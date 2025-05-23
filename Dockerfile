@@ -21,5 +21,6 @@ RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
 EXPOSE 10000
 
 # Arrancamos el servidor de desarrollo Laravel en el puerto 10000, accesible desde afuera
-CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=${PORT:-8080}"]
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "public"]
+
 
