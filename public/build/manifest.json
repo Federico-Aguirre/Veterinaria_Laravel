@@ -1,18 +1,16 @@
 {
-  "resources/js/app.css": {
-    "file": "assets/main-630be8a2.css",
-    "src": "resources/js/app.css"
-  },
   "resources/js/app.js": {
-    "css": [
-      "assets/main-630be8a2.css"
-    ],
-    "file": "assets/app-c7a7359f.js",
+    "file": "assets/app-DJsVCXhr.js",
+    "name": "app",
+    "src": "resources/js/app.js",
     "isEntry": true,
-    "src": "resources/js/app.js"
+    "css": [
+      "assets/app-B6cxhc0C.css"
+    ]
   },
   "resources/tailwind/main.scss": {
-    "file": "assets/main-630be8a2.css",
-    "src": "resources/js/app.css"
+    "file": "assets/app-B6cxhc0C.css",
+    "src": "resources/js/app.js",
+    "isEntry": true
   }
 }
