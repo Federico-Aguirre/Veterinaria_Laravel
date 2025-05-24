@@ -12,9 +12,9 @@ class AgregarTurnoControlador extends Controller
     public function create()
     {
         // Obtener las mascotas del usuario autenticado
-        $mascotas = MascotaModel::where("Id_user", Auth::id())->get();
+        $mascotas = MascotaModel::where('Id_user', Auth::id())->get();
 
-        return view('agregar_turno', compact("mascotas"));
+        return view('agregar_turno', compact('mascotas'));
     }
 
     // En el controlador AgregarTurnoControlador
@@ -41,12 +41,12 @@ class AgregarTurnoControlador extends Controller
         $mascota = MascotaModel::findOrFail($validated['Id_mascota']);
         // Crear el turno y asociarlo al usuario autenticado
         $turno = new TurnoModel();
-        $turno->Id_user = Auth::id(); // Asignar el usuario autenticado
-        $turno->Fecha = $validated['Fecha']; // Asignar la fecha
-        $turno->Id_mascota = $validated['Id_mascota']; // Asignar la mascota seleccionada
-        $turno->Asunto = $validated['Asunto']; // Asunto
-        $turno->Mensaje = $validated['Mensaje']; // Mensaje
-        $turno->Mascota_nombre = $mascota->Nombre;
+        $turno->setAttribute('Id_user', Auth::id()); // Asignar el usuario autenticado
+        $turno->setAttribute('Fecha', $validated['Fecha']); // Asignar la fecha
+        $turno->setAttribute('Id_mascota', $validated['Id_mascota']); // Asignar la mascota seleccionada
+        $turno->setAttribute('Asunto', $validated['Asunto']); // Asunto
+        $turno->setAttribute('Mensaje', $validated['Mensaje']); // Mensaje
+        $turno->setAttribute('Mascota_nombre', $mascota->Nombre);
     
         // Guardar el turno
         $turno->save();
