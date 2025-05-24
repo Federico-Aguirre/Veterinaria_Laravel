@@ -12,9 +12,9 @@ class AgregarTurnoControlador extends Controller
     public function create()
     {
         // Obtener las mascotas del usuario autenticado
-        $mascotas = MascotaModel::where('Id_user', Auth::id())->get();
+        $mascotas = MascotaModel::where("Id_user", Auth::id())->get();
 
-        return view('agregar_turno', compact('mascotas'));
+        return view('agregar_turno', compact("mascotas"));
     }
 
     // En el controlador AgregarTurnoControlador
