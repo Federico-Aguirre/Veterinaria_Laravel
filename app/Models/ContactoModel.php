@@ -15,10 +15,10 @@ class ContactoModel extends Model
     public $timestamps = true; // Asegura que los timestamps estén habilitados
 
     protected $fillable = [
-        'Id_cliente',
-        'Nombre',
-        'Correo_electronico',
-        'Asunto',
-        'Comentarios',
+        'id_cliente',
+        'nombre',
+        'correo_electronico',
+        'asunto',
+        'comentarios',
     ];
 }

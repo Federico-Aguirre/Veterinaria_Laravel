@@ -10,17 +10,17 @@ class CrearUsuarioModel extends Model
 
     protected $fillable = [
         'name',
-        'Apellido',
-        'DNI',
-        'CUIL_CUIT',
-        'Dirección',
-        'Piso',
-        'Departamento',
-        'Localidad',
-        'Teléfono',
-        'Celular',
+        'apellido',
+        'dni',
+        'cuil_cuit',
+        'direccion',
+        'piso',
+        'departamento',
+        'localidad',
+        'telefono',
+        'celular',
         'email',
-        'Usuario',
+        'usuario',
         'password',
     ];
 

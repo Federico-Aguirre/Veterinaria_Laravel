@@ -13,7 +13,7 @@ class TurnoModel extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['id_user', 'Fecha', 'Id_mascota', 'Mascota_nombre', 'Asunto', 'Mensaje'];
+    protected $fillable = ['id_user', 'fecha', 'id_mascota', 'mascota_nombre', 'asunto', 'mensaje'];
 
     // Relación con el modelo User
     public function user()

@@ -28,17 +28,17 @@ class CrearUsuarioControlador extends Controller
         // Crear un nuevo usuario en la base de datos
         $usuario = CrearUsuarioModel::create([
             'name' => $request->name,
-            'Apellido' => $request->surname,
-            'DNI' => $request->dni,
-            'CUIL_CUIT' => $request->cuil_cuit,
-            'Dirección' => $request->address,
-            'Piso' => $request->floor,
-            'Departamento' => $request->department,
-            'Localidad' => $request->locality,
-            'Teléfono' => $request->phone,
-            'Celular' => $request->cellphone,
+            'apellido' => $request->surname,
+            'dni' => $request->dni,
+            'cuil_cuit' => $request->cuil_cuit,
+            'direccion' => $request->address,
+            'piso' => $request->floor,
+            'departamento' => $request->department,
+            'localidad' => $request->locality,
+            'telefono' => $request->phone,
+            'celular' => $request->cellphone,
             'email' => $request->email,
-            'Usuario' => $request->username,
+            'usuario' => $request->username,
             'password' => bcrypt($request->password), // Encriptar la contraseña
         ]);
 

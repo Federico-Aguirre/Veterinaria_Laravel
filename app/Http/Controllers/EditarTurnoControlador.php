@@ -29,9 +29,9 @@ class EditarTurnoControlador extends Controller
     {
         // Validar los datos del formulario
         $validated = $request->validate([
-            'Fecha' => 'required|date_format:Y-m-d\TH:i',
-            'Asunto_a_atender' => 'required|string|max:255',
-            'Mensaje' => 'nullable|string|max:255',
+            'fecha' => 'required|date_format:Y-m-d\TH:i',
+            'asunto_a_atender' => 'required|string|max:255',
+            'mensaje' => 'nullable|string|max:255',
         ]);
 
         // Buscar el turno a editar
@@ -43,9 +43,9 @@ class EditarTurnoControlador extends Controller
         }
 
         // Actualizar los datos del turno
-        $turno->Fecha = $validated['Fecha'];
-        $turno->Asunto = $validated['Asunto_a_atender'];
-        $turno->Mensaje = $validated['Mensaje'];
+        $turno->Fecha = $validated['fecha'];
+        $turno->Asunto = $validated['asunto_a_atender'];
+        $turno->Mensaje = $validated['mensaje'];
 
         // Guardar los cambios
         $turno->save();

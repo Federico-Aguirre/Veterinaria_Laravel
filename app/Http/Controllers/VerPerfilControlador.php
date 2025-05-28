@@ -15,13 +15,13 @@ class VerPerfilControlador extends Controller
         // Retornar los datos como JSON
         return response()->json([
             'name' => $user->name,
-            'Apellido' => $user->Apellido,
-            'Dirección' => $user->Dirección,
-            'Piso' => $user->Piso,
-            'Departamento' => $user->Departamento,
-            'Localidad' => $user->Localidad,
-            'Teléfono' => $user->Teléfono,
-            'Celular' => $user->Celular,
+            'apellido' => $user->Apellido,
+            'direccion' => $user->Dirección,
+            'piso' => $user->Piso,
+            'departamento' => $user->Departamento,
+            'localidad' => $user->Localidad,
+            'telefono' => $user->Teléfono,
+            'celular' => $user->Celular,
             'email' => $user->email,
         ]);
     }

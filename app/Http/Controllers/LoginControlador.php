@@ -15,7 +15,7 @@ class LogInControlador extends Controller
         $credentials = $request->only('usuario', 'password');
 
         // Verificación de las credenciales
-        if (Auth::attempt(['Usuario' => $request->usuario, 'password' => $request->password])) {
+        if (Auth::attempt(['usuario' => $request->usuario, 'password' => $request->password])) {
             // Al loguearse correctamente, obtener la cantidad total de productos en el carrito
             $cantidadDeProductosEnCarro = CarroDeComprasModel::where('id_cliente', Auth::id())->sum('producto_cantidad');
 

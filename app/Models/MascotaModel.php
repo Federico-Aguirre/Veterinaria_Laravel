@@ -14,8 +14,8 @@ class MascotaModel extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'Nombre', 'Raza', 'Sexo', 'Edad', 'Nro_de_microchip', 'Vacuna_antirrábica', 
-        'Tratamiento_antiparasitario', 'Otras_vacunas', 'Información_adicional', 'id_user'
+        'nombre', 'raza', 'sexo', 'edad', 'nro_de_microchip', 'vacuna_antirrábica', 
+        'tratamiento_antiparasitario', 'otras_vacunas', 'información_adicional', 'id_user'
     ];
 
     // Relación con el modelo User

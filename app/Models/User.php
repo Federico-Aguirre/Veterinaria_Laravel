@@ -15,13 +15,13 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
     // Los campos que son asignables en masa
     protected $fillable = [
         'name',
-        'Apellido',
-        'Dirección',
-        'Piso',
-        'Departamento',
-        'Localidad',
-        'Teléfono',
-        'Celular',
+        'apellido',
+        'dirección',
+        'piso',
+        'departamento',
+        'localidad',
+        'teléfono',
+        'celular',
         'email'
     ];
 
