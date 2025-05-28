@@ -43,9 +43,9 @@ class EditarTurnoControlador extends Controller
         }
 
         // Actualizar los datos del turno
-        $turno->Fecha = $validated['fecha'];
-        $turno->Asunto = $validated['asunto_a_atender'];
-        $turno->Mensaje = $validated['mensaje'];
+        $turno->fecha = $validated['fecha'];
+        $turno->asunto = $validated['asunto_a_atender'];
+        $turno->mensaje = $validated['mensaje'];
 
         // Guardar los cambios
         $turno->save();
