@@ -40,55 +40,55 @@
 
                         <div class="contenedor-input">
                             <label>Nombre de la mascota<span class="req">*</span></label>
-                            <input type="text" name="Nombre" value="{{ old('Nombre', $mascota->Nombre) }}" required>
+                            <input type="text" name="Nombre" value="{{ old('Nombre', $mascota->nombre) }}" required>
                             @error('Nombre') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Raza<span class="req">*</span></label>
-                            <input type="text" name="Raza" value="{{ old('Raza', $mascota->Raza) }}" required>
+                            <input type="text" name="Raza" value="{{ old('Raza', $mascota->raza) }}" required>
                             @error('Raza') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Sexo<span class="req">*</span></label>
-                            <input type="text" name="Sexo" value="{{ old('Sexo', $mascota->Sexo) }}" required>
+                            <input type="text" name="Sexo" value="{{ old('Sexo', $mascota->sexo) }}" required>
                             @error('Sexo') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Edad<span class="req">*</span></label>
-                            <input type="number" name="Edad" value="{{ old('Edad', $mascota->Edad) }}" required>
+                            <input type="number" name="Edad" value="{{ old('Edad', $mascota->edad) }}" required>
                             @error('Edad') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Nro. de microchip</label>
-                            <input type="text" name="Nro_de_microchip" value="{{ old('Nro_de_microchip', $mascota->Nro_de_microchip) }}">
+                            <input type="text" name="Nro_de_microchip" value="{{ old('Nro_de_microchip', $mascota->nro_de_microchip) }}">
                             @error('Nro_de_microchip') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Vacuna antirrábica</label>
-                            <input type="checkbox" name="Vacuna_antirrábica" value="1" {{ $mascota->Vacuna_antirrábica ? 'checked' : '' }}>
+                            <input type="checkbox" name="Vacuna_antirrábica" value="1" {{ $mascota->vacuna_antirrábica ? 'checked' : '' }}>
                             @error('Vacuna_antirrábica') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Tratamiento antiparasitario</label>
-                            <input type="checkbox" name="Tratamiento_antiparasitario" value="1" {{ $mascota->Tratamiento_antiparasitario ? 'checked' : '' }}>
+                            <input type="checkbox" name="Tratamiento_antiparasitario" value="1" {{ $mascota->tratamiento_antiparasitario ? 'checked' : '' }}>
                             @error('Tratamiento_antiparasitario') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Otras vacunas</label>
-                            <input type="text" name="Otras_vacunas" value="{{ old('Otras_vacunas', $mascota->Otras_vacunas) }}">
+                            <input type="text" name="Otras_vacunas" value="{{ old('Otras_vacunas', $mascota->otras_vacunas) }}">
                             @error('Otras_vacunas') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <div class="contenedor-input">
                             <label>Información adicional</label>
-                            <input type="text" name="Información_adicional" value="{{ old('Información_adicional', $mascota->Información_adicional) }}">
+                            <input type="text" name="Información_adicional" value="{{ old('Información_adicional', $mascota->informacion_adicional) }}">
                             @error('Información_adicional') <div class="error">{{ $message }}</div> @enderror
                         </div>
 

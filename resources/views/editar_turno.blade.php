@@ -47,19 +47,19 @@
                                 <!-- Campo de fecha -->
                                 <div class="contenedor-input">
                                     <label for="Fecha">Fecha</label>
-                                    <input id="Fecha" name="Fecha" type="datetime-local" value="{{ old('Fecha', $turnoSeleccionado->Fecha ?? '') }}" required>
+                                    <input id="Fecha" name="Fecha" type="datetime-local" value="{{ old('Fecha', $turnoSeleccionado->fecha ?? '') }}" required>
                                 </div>
 
                                 <!-- Campo de asunto -->
                                 <div class="contenedor-input">
                                     <label for="asuntoAAtender">Asunto</label>
-                                    <input id="asuntoAAtender" name="Asunto_a_atender" type="text" value="{{ old('Asunto_a_atender', $turnoSeleccionado->Asunto ?? '') }}" required>
+                                    <input id="asuntoAAtender" name="Asunto_a_atender" type="text" value="{{ old('Asunto_a_atender', $turnoSeleccionado->asunto ?? '') }}" required>
                                 </div>
 
                                 <!-- Campo de mensaje -->
                                 <div class="contenedor-input">
                                     <label for="textarea">Mensaje</label>
-                                    <textarea id="textarea" name="Mensaje">{{ old('Mensaje', $turnoSeleccionado->Mensaje ?? '') }}</textarea>
+                                    <textarea id="textarea" name="Mensaje">{{ old('Mensaje', $turnoSeleccionado->mensaje ?? '') }}</textarea>
                                 </div>
                                 
                                 <input type="submit" value="Actualizar Turno">

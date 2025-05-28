@@ -31,38 +31,38 @@
                         <div class="fila-arriba">
                             <div class="contenedor-input">
                                 <label>Apellido</label>
-                                <input type="text" name="Apellido" value="{{ Auth::user()->Apellido }}" required>
+                                <input type="text" name="Apellido" value="{{ Auth::user()->apellido }}" required>
                             </div>
                             <div class="contenedor-input">
                                 <label>Dirección</label>
-                                <input type="text" name="Dirección" value="{{ Auth::user()->Dirección }}" required>
+                                <input type="text" name="Dirección" value="{{ Auth::user()->direccion }}" required>
                             </div>
                         </div>
                         <br>
                         <div class="fila-arriba">
                             <div class="contenedor-input">
                                 <label>Piso</label>
-                                <input type="number" name="Piso" value="{{ Auth::user()->Piso }}" required>
+                                <input type="number" name="Piso" value="{{ Auth::user()->piso }}" required>
                             </div>
                             <div class="contenedor-input">
                                 <label>Departamento</label>
-                                <input type="text" name="Departamento" value="{{ Auth::user()->Departamento }}" required>
+                                <input type="text" name="Departamento" value="{{ Auth::user()->departamento }}" required>
                             </div>
                         </div>
                         <br>
                         <div class="contenedor-input">
                             <label>Localidad</label>
-                            <input type="text" name="Localidad" value="{{ Auth::user()->Localidad }}" required>
+                            <input type="text" name="Localidad" value="{{ Auth::user()->localidad }}" required>
                         </div>
                         <br>
                         <div class="contenedor-input">
                             <label>Teléfono</label>
-                            <input type="text" name="Teléfono" value="{{ Auth::user()->Teléfono }}" required>
+                            <input type="text" name="Teléfono" value="{{ Auth::user()->telefono }}" required>
                         </div>
                         <br>
                         <div class="contenedor-input">
                             <label>Celular</label>
-                            <input type="text" name="Celular" value="{{ Auth::user()->Celular }}" required>
+                            <input type="text" name="Celular" value="{{ Auth::user()->celular }}" required>
                         </div>
                         <br>
                         <div class="contenedor-input">
