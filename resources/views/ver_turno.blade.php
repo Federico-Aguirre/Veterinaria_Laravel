@@ -26,7 +26,7 @@
                                                 data-fecha="{{ $turno->fecha }}" 
                                                 data-asunto="{{ $turno->asunto }}" 
                                                 data-mensaje="{{ $turno->mensaje }}">
-                                                {{ $turno->Fecha }} - {{ $turno->asunto }}
+                                                {{ $turno->fecha }} - {{ $turno->asunto }}
                                             </option>
                                         @endforeach
                                     @endif

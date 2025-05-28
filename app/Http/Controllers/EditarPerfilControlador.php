@@ -35,14 +35,14 @@ class EditarPerfilControlador extends Controller
         // Actualizar el usuario
         $user->update([
             'name' => $request->input('name'),
-            'apellido' => $request->input('Apellido'),
-            'direccion' => $request->input('Dirección'),
-            'piso' => $request->input('Piso'),
-            'departamento' => $request->input('Departamento'),
-            'localidad' => $request->input('Localidad'),
-            'telefono' => $request->input('Teléfono'),
-            'celular' => $request->input('Celular'),
-            'email' => $request->input('Email'),
+            'apellido' => $request->input('apellido'),
+            'direccion' => $request->input('direccion'),
+            'piso' => $request->input('piso'),
+            'departamento' => $request->input('departamento'),
+            'localidad' => $request->input('localidad'),
+            'telefono' => $request->input('telefono'),
+            'celular' => $request->input('celular'),
+            'email' => $request->input('email'),
         ]);
 
         return redirect()->route('editar_perfil')->with('edición_de_usuario_exitoso', 'Perfil actualizado correctamente');

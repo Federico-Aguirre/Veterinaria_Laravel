@@ -20,16 +20,16 @@
                                 <option value="">Selecciona una mascota</option>
                                 @foreach ($mascotas as $mascota)
                                     <option value="{{ $mascota->id }}" 
-                                            data-nombre="{{ $mascota->Nombre }}"
-                                            data-raza="{{ $mascota->Raza }}"
-                                            data-sexo="{{ $mascota->Sexo }}"
-                                            data-edad="{{ $mascota->Edad }}"
-                                            data-microchip="{{ $mascota->Nro_de_microchip }}"
-                                            data-vacuna="{{ $mascota->Vacuna_antirrábica ? 'Sí' : 'No' }}"
-                                            data-antiparasitario="{{ $mascota->Tratamiento_antiparasitario ? 'Sí' : 'No' }}"
-                                            data-otras-vacunas="{{ $mascota->Otras_vacunas }}"
-                                            data-info="{{ $mascota->Información_adicional }}">
-                                        {{ $mascota->Nombre }} (ID: {{ $mascota->id }})
+                                            data-nombre="{{ $mascota->nombre }}"
+                                            data-raza="{{ $mascota->raza }}"
+                                            data-sexo="{{ $mascota->sexo }}"
+                                            data-edad="{{ $mascota->edad }}"
+                                            data-microchip="{{ $mascota->nro_de_microchip }}"
+                                            data-vacuna="{{ $mascota->vacuna_antirrábica ? 'Sí' : 'No' }}"
+                                            data-antiparasitario="{{ $mascota->tratamiento_antiparasitario ? 'Sí' : 'No' }}"
+                                            data-otras-vacunas="{{ $mascota->otras_vacunas }}"
+                                            data-info="{{ $mascota->informacion_adicional }}">
+                                        {{ $mascota->nombre }}
                                     </option>
                                 @endforeach
                             </select>
