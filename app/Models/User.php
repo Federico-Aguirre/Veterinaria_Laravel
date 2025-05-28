@@ -14,7 +14,7 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
 
     // funcion para usar usuario en vez de email en el logueo de usuario
     public function getAuthIdentifierName() {
-        return 'usuario'
+        return 'usuario';
     }
 
     // Los campos que son asignables en masa
