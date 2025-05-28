@@ -46,7 +46,7 @@ class AgregarTurnoControlador extends Controller
         $turno->id_mascota = $validated['Id_mascota']; // Asignar la mascota seleccionada
         $turno->asunto = $validated['Asunto']; // Asunto
         $turno->mensaje = $validated['Mensaje']; // Mensaje
-        $turno->mascota_nombre = $mascota->Nombre;
+        $turno->mascota_nombre = $mascota->nombre;
     
         // Guardar el turno
         $turno->save();
