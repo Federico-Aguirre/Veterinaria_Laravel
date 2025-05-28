@@ -21,7 +21,7 @@ class CrearUsuarioControlador extends Controller
             'phone' => 'nullable|string|max:255',
             'cellphone' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email|max:255',
-            'username' => 'required|string|unique:users,Usuario|max:255',
+            'username' => 'required|string|unique:users,usuario|max:255',
             'password' => 'required|string|min:1',  // Asegúrate de que la contraseña tenga al menos 8 caracteres
         ]);
 
