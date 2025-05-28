@@ -12,8 +12,8 @@ class CrearUsuarioControlador extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
-            'dni' => 'required|numeric|unique:users,DNI',
-            'cuil_cuit' => 'nullable|numeric|unique:users,CUIL_CUIT',
+            'dni' => 'required|numeric|unique:users,dni',
+            'cuil_cuit' => 'nullable|numeric|unique:users,cuil_cuit',
             'address' => 'required|string|max:255',
             'floor' => 'nullable|string|max:255',
             'department' => 'nullable|string|max:255',
