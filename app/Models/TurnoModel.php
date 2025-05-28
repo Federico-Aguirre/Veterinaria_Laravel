@@ -13,11 +13,11 @@ class TurnoModel extends Model
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['Id_user', 'Fecha', 'Id_mascota', 'Mascota_nombre', 'Asunto', 'Mensaje'];
+    protected $fillable = ['id_user', 'Fecha', 'Id_mascota', 'Mascota_nombre', 'Asunto', 'Mensaje'];
 
     // Relación con el modelo User
     public function user()
     {
-        return $this->belongsTo(User::class, 'Id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

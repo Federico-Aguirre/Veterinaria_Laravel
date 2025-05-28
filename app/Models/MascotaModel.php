@@ -15,12 +15,12 @@ class MascotaModel extends Model
 
     protected $fillable = [
         'Nombre', 'Raza', 'Sexo', 'Edad', 'Nro_de_microchip', 'Vacuna_antirrábica', 
-        'Tratamiento_antiparasitario', 'Otras_vacunas', 'Información_adicional', 'Id_user'
+        'Tratamiento_antiparasitario', 'Otras_vacunas', 'Información_adicional', 'id_user'
     ];
 
     // Relación con el modelo User
     public function user()
     {
-        return $this->belongsTo(User::class, 'Id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 }

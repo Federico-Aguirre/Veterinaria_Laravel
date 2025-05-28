@@ -11,7 +11,7 @@ class VerTurnoControlador extends Controller
     // Muestra la vista con los turnos disponibles
     public function index()
     {
-        $turnos = TurnoModel::where('Id_user', Auth::id())->get();
+        $turnos = TurnoModel::where('id_user', Auth::id())->get();
         return view('ver_turno', compact('turnos'));
     }
 }

@@ -35,7 +35,7 @@ class AgregarMascotaControlador extends Controller
             'Tratamiento_antiparasitario' => empty($validated['Tratamiento_antiparasitario']) ? null : $validated['Tratamiento_antiparasitario'],
             'Otras_vacunas' => empty($validated['Otras_vacunas']) ? null : $validated['Otras_vacunas'],
             'Información_adicional' => empty($validated['Información_adicional']) ? null : $validated['Información_adicional'],
-            'Id_user' => Auth::id(),
+            'id_user' => Auth::id(),
         ]);
 
         // Asociar la mascota al usuario autenticado usando la relación

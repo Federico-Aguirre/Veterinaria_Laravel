@@ -12,11 +12,11 @@ class EditarTurnoControlador extends Controller
     public function create(Request $request)
     {
         // Obtener todos los turnos del usuario autenticado
-        $turnos = TurnoModel::where('Id_user', Auth::id())->get();
+        $turnos = TurnoModel::where('id_user', Auth::id())->get();
 
         // Verificar si se ha seleccionado un turno para editar
         $turnoSeleccionado = null;
-        $turnoSeleccionado = TurnoModel::where('Id_user', Auth::id())
+        $turnoSeleccionado = TurnoModel::where('id_user', Auth::id())
         ->where('id', $request->id)
         ->first();
 
@@ -35,7 +35,7 @@ class EditarTurnoControlador extends Controller
         ]);
 
         // Buscar el turno a editar
-        $turno = TurnoModel::where('Id_user', Auth::id())->find($id);
+        $turno = TurnoModel::where('id_user', Auth::id())->find($id);
 
         // Verificar si el turno existe y pertenece al usuario autenticado
         if (!$turno) {
