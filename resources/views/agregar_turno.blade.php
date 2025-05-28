@@ -38,7 +38,7 @@
                                 <select id="mascotaAAtender" name="Id_mascota" class="turnos__formulario__mascotaAAtender" required>
                                 @if($mascotas && $mascotas->isNotEmpty())
                                     @foreach($mascotas as $mascota)
-                                        <option value="{{ $mascota->id }}">{{ $mascota->Nombre }}</option>
+                                        <option value="{{ $mascota->id }}">{{ $mascota->nombre }}</option>
                                     @endforeach
                                 @else
                                     <option value="">No tienes mascotas asociadas</option>

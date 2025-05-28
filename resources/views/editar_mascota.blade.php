@@ -26,7 +26,7 @@
                             <select name="id" id="mascotaSelect" required>
                                 <option value="">Selecciona una mascota</option>
                                 @foreach ($mascotas as $mascotaSelect)
-                                    <option value="{{ $mascotaSelect->id }}">{{ $mascotaSelect->Nombre }}</option>
+                                    <option value="{{ $mascotaSelect->id }}">{{ $mascotaSelect->nombre }}</option>
                                 @endforeach
                             </select>
                         </div>

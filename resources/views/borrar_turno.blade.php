@@ -34,7 +34,7 @@
                                     <option value="">No tienes turnos disponibles para borrar</option>
                                 @else
                                     @foreach($turnos as $turno)
-                                        <option value="{{ $turno->id }}">{{ $turno->Fecha }} - {{ $turno->Asunto }}</option>
+                                        <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
                                     @endforeach
                                 @endif
                             </select>

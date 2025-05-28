@@ -28,7 +28,7 @@
         <select id="turnoAEditar" name="id" required>
             <option value="" disabled selected>Elegí un turno</option>
             @foreach($turnos as $turno)
-                <option value="{{ $turno->id }}">{{ $turno->Fecha }} - {{ $turno->Asunto }}</option>
+                <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
             @endforeach
         </select>
     </div>

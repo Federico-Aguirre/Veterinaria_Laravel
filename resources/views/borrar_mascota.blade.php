@@ -22,7 +22,7 @@
                                 <option value="">Selecciona una mascota</option>
                                 @foreach ($mascotas as $mascota)
                                     <option value="{{ $mascota->id }}">
-                                        {{ $mascota->Nombre }} (ID: {{ $mascota->id }})
+                                        {{ $mascota->nombre }} (ID: {{ $mascota->id }})
                                     </option>
                                 @endforeach
                             </select>

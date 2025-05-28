@@ -23,10 +23,10 @@
                                     @else
                                         @foreach($turnos as $turno)
                                             <option value="{{ $turno->id }}" 
-                                                data-fecha="{{ $turno->Fecha }}" 
-                                                data-asunto="{{ $turno->Asunto }}" 
-                                                data-mensaje="{{ $turno->Mensaje }}">
-                                                {{ $turno->Fecha }} - {{ $turno->Asunto }}
+                                                data-fecha="{{ $turno->fecha }}" 
+                                                data-asunto="{{ $turno->asunto }}" 
+                                                data-mensaje="{{ $turno->mensaje }}">
+                                                {{ $turno->Fecha }} - {{ $turno->asunto }}
                                             </option>
                                         @endforeach
                                     @endif
