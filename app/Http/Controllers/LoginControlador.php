@@ -13,7 +13,6 @@ class LogInControlador extends Controller
         $credentials = $request->only('usuario', 'password');
 
         if (Auth::attempt($credentials)) {
-            // ✅ Login exitoso, ahora sí se puede usar Auth::id()
             $userId = Auth::id();
 
             $cantidadDeProductosEnCarro = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
@@ -22,7 +21,6 @@ class LogInControlador extends Controller
 
             return redirect()->route('home')->with('login_exitoso', 'Usuario registrado exitosamente.');
         } else {
-            // ❌ Login fallido, NO usar Auth::id() acá
             return back()->with('login_error', 'Credenciales incorrectas. Intente nuevamente.');
         }
     }
