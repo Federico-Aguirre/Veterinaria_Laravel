@@ -16,11 +16,11 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
     protected $fillable = [
         'name',
         'apellido',
-        'dirección',
+        'direccion',
         'piso',
         'departamento',
         'localidad',
-        'teléfono',
+        'telefono',
         'celular',
         'email'
     ];
