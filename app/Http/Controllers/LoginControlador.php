@@ -10,18 +10,27 @@ use Illuminate\Http\Request;
 class LogInControlador extends Controller
 {
     public function login(Request $request) {
-        $credentials = $request->only('usuario', 'password');
+        $credentials = $request->validate([
+            'usuario' => ['required', 'string'],
+            'password' => ['required', 'string'],
+        ]);
 
         if (Auth::attempt($credentials)) {
-            $userId = Auth::id();
+            $user = Auth::user();
 
-            $cantidadDeProductosEnCarro = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
+            // 👇 VERIFICACIÓN para evitar error de tipo si id es null o string
+            $userId = $user->id;
 
-            session(['cantidadDeProductosEnCarro' => $cantidadDeProductosEnCarro]);
+            if (!is_numeric($userId)) {
+                return back()->with('login_error', 'Error interno: ID de usuario inválido');
+            }
 
-            return redirect()->route('home')->with('login_exitoso', 'Usuario registrado exitosamente.');
-        } else {
-            return back()->with('login_error', 'Credenciales incorrectas. Intente nuevamente.');
+            // Consulta segura
+            $cantidad = \App\Models\CarroDeComprasModel::where('id_cliente', (int)$userId)->sum('producto_cantidad');
+
+            session(['cantidadDeProductosEnCarro' => $cantidad]);
+
+            return redirect()->route('home')->with('login_exitoso', 'Login exitoso');
         }
     }
 }
