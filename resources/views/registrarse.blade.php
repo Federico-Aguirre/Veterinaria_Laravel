@@ -1,10 +1,17 @@
 @extends('layouts.app')
 
+@if ($errors->any())
+    <script>
+        alert("{{ implode('\n', $errors->all()) }}");
+    </script>
+@endif
+
 @if(session('registro_de_usuario_error'))
     <script>
         alert("{{ session('registro_de_usuario_error') }}");
     </script>
 @endif
+
 
 @section('content')
     <section class="registrarse formulario">
