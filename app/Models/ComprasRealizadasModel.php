@@ -9,6 +9,8 @@ class ComprasRealizadasModel extends Model
 {
     protected $table = 'compras_realizadas';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id_cliente',
         'producto_id',

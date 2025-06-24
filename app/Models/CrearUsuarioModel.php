@@ -26,6 +26,8 @@ class CrearUsuarioModel extends Model
 
     protected $table = 'users';
 
+    protected $primaryKey = 'id';
+
     // Laravel gestiona automáticamente los timestamps (created_at, updated_at)
     public $timestamps = true;  // Esto es para asegurarnos que Laravel maneje estos campos automáticamente
 }

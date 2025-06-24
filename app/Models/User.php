@@ -12,6 +12,8 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
     // Definir la tabla que estás utilizando
     protected $table = 'users';
 
+    protected $primaryKey = 'id';
+
     // funcion para usar usuario en vez de email en el logueo de usuario
     public function getAuthIdentifierName() {
         return 'usuario';
