@@ -14,7 +14,7 @@ $_SESSION["cantidadDeProductosEnCarro"] = $sumaResultado;
 @if($query){
     echo '<script type="text/javascript">
     alert("Producto borrado con exito");
-    window.location = "http://localhost:3000/php/stock.php";
+    window.location = "https://localhost:3000/php/stock.php";
     </script>';
 } @else {
  echo '';
