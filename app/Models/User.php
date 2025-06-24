@@ -19,6 +19,7 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
 
     // Los campos que son asignables en masa
     protected $fillable = [
+        'usuario',
         'name',
         'apellido',
         'direccion',
@@ -38,9 +39,10 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
     {
         parent::boot();
 
-        static::creating(function ($user) {
-            // Cifrar la contraseña antes de crear el usuario
-            $user->password = bcrypt($user->password);
+        static::saving(function ($user) {
+            if ($user->isDirty('password')) {
+                $user->password = bcrypt($user->password);
+            }
         });
     }
 }
