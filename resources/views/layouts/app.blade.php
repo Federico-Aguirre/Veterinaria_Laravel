@@ -128,14 +128,16 @@
                 const contadorCarrito = document.getElementById('contador-carrito');
                 const carroContainer = document.querySelector('.carro-container');
                 
-                if (cantidad === 0) {
-                    contadorCarrito.style.display = 'none';  // Oculta el icono del carrito
-                    carroContainer.style.display = 'none';   // Oculta el contenedor del carrito
-                } else {
-                    // Si hay productos, aseguramos que el carrito esté visible
-                    contadorCarrito.textContent = cantidad;
-                    contadorCarrito.style.display = 'inline-block';  // Muestra el icono del carrito
-                    carroContainer.style.display = 'flex';  // Muestra el contenedor
+                if (contadorCarrito && carroContainer) {
+                    if (cantidad === 0) {
+                        contadorCarrito.style.display = 'none';  // Oculta el icono del carrito
+                        carroContainer.style.display = 'none';   // Oculta el contenedor del carrito
+                    } else {
+                        // Si hay productos, aseguramos que el carrito esté visible
+                        contadorCarrito.textContent = cantidad;
+                        contadorCarrito.style.display = 'inline-block';  // Muestra el icono del carrito
+                        carroContainer.style.display = 'flex';  // Muestra el contenedor
+                    }
                 }
             })
             .catch(error => {
