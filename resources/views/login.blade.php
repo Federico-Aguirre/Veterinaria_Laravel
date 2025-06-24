@@ -6,6 +6,12 @@
     </script>
 @endif
 
+@if ($errors->any())
+    <script>
+        alert("{{ implode('\n', $errors->all()) }}");
+    </script>
+@endif
+
 @if(session('login_error'))
     <script>
         alert("{{ session('login_error') }}");
