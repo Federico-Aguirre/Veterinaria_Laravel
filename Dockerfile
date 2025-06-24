@@ -1,35 +1,40 @@
-# Usar la imagen oficial PHP con FPM (FastCGI Process Manager)
 FROM php:8.2-cli
 
-# Instalar dependencias necesarias para Laravel
+# Instala dependencias del sistema y extensiones necesarias
 RUN apt-get update && apt-get install -y \
     git \
+    unzip \
     curl \
+    libpq-dev \
     libzip-dev \
     zip \
-    unzip \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo pdo_pgsql zip
 
-# Instalar Composer globalmente
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Instala Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Crear directorio de trabajo
-WORKDIR /var/www/html
+# Establece el directorio de trabajo
+WORKDIR /var/www
 
-# Copiar archivos de la app
+# Copia los archivos del proyecto
 COPY . .
 
-# Instalar dependencias PHP con Composer
+# Instala las dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Dar permisos correctos
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+# Crea carpetas necesarias con permisos adecuados
+RUN mkdir -p storage/framework/{sessions,views,cache} bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
 
-# Exponer el puerto 9000 para PHP-FPM
+# Expone el puerto
 EXPOSE 10000
 
-# CMD para ejecutar PHP-FPM
-CMD ["php-fpm"]
+# Comando por defecto: usar el servidor embebido de Laravel
+CMD php artisan serve --host=0.0.0.0 --port=10000
+
+
+
+
+
+
