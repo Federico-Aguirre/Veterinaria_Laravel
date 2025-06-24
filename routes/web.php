@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers\CrearUsuarioControlador;
+use App\Https\Controllers\CrearUsuarioControlador;
 Route::get('/registrarse', function () {
     return view('registrarse');
 })->name('registrarse');
 // Ruta para procesar el formulario de registro (POST)
 Route::post('/registrarse', [CrearUsuarioControlador::class, 'store'])->name('procesarRegistro');
 
-use App\Http\Controllers\LoginControlador;
+use App\Https\Controllers\LoginControlador;
 // Ruta para mostrar el formulario de inicio de sesión (GET)
 Route::get('/login', function () {
     return view('login');
@@ -19,7 +19,7 @@ Route::get('/login', function () {
 // Ruta para mostrar el formulario de inicio de sesión (POST)
 Route::post('/login', [LoginControlador::class, 'login'])->name('procesarLogin');
 
-use App\Http\Controllers\LeerJsonsControlador;
+use App\Https\Controllers\LeerJsonsControlador;
 Route::get('/productos/json', [LeerJsonsControlador::class, 'leerJsons']);
 
 Route::get('/', function () {
@@ -43,7 +43,7 @@ Route::get('/agregar_turno.php', function () {
     return view('agregar_turno');
 })->name('agregar_turno');
 
-use App\Http\Controllers\ContactoControlador;
+use App\Https\Controllers\ContactoControlador;
 
 // Ruta para mostrar el formulario de contacto
 Route::get('/contacto', function () {
@@ -57,22 +57,22 @@ Route::post('/contacto/enviar', [ContactoControlador::class, 'enviar'])->name('c
 
 
 
-use App\Http\Controllers\VerPerfilControlador;
+use App\Https\Controllers\VerPerfilControlador;
 Route::middleware(['auth'])->get('/ver_perfil', [VerPerfilControlador::class, 'mostrar'])->name('ver_perfil');
 
-use App\Http\Controllers\EditarPerfilControlador;
+use App\Https\Controllers\EditarPerfilControlador;
 Route::middleware(['auth'])->group(function () {
     Route::get('/editar_perfil', [EditarPerfilControlador::class, 'editar'])->name('editar_perfil');
     Route::put('/editar_perfil', [EditarPerfilControlador::class, 'actualizar'])->name('actualizar_perfil');
 });
 
-use App\Http\Controllers\BorrarPerfilControlador;
+use App\Https\Controllers\BorrarPerfilControlador;
 Route::middleware(['auth'])->group(function () {
     Route::delete('/borrar_perfil', [BorrarPerfilControlador::class, 'borrar'])->name('borrar_perfil');
 });
 
 // En web.php
-use App\Http\Controllers\AgregarMascotaControlador;
+use App\Https\Controllers\AgregarMascotaControlador;
 // Ruta para mostrar el formulario de agregar mascota
 Route::get('/agregar_mascota', function () {
     return view('agregar_mascota');
@@ -80,7 +80,7 @@ Route::get('/agregar_mascota', function () {
 // Ruta para procesar el formulario de agregar mascota
 Route::post('/agregar_mascota', [AgregarMascotaControlador::class, 'store'])->name('agregar_mascota');
 
-use App\Http\Controllers\EditarMascotaControlador;
+use App\Https\Controllers\EditarMascotaControlador;
 Route::get('/editar_mascota', function () {
     return view('editar_mascota');
 })->name('editar_mascota_formulario');
@@ -91,31 +91,31 @@ Route::get('/editar_mascota/{id?}', [EditarMascotaControlador::class, 'edit'])->
 // Ruta para actualizar la mascota
 Route::put('/editar_mascota/{id}', [EditarMascotaControlador::class, 'update'])->name('editar_mascota_update');
 
-use App\Http\Controllers\VerMascotaControlador;
+use App\Https\Controllers\VerMascotaControlador;
 Route::get('/ver_mascota', [VerMascotaControlador::class, 'index'])->name('ver_mascota');
 
-use App\Http\Controllers\BorrarMascotaControlador;
+use App\Https\Controllers\BorrarMascotaControlador;
 Route::get('/borrar_mascota', [BorrarMascotaControlador::class, 'index'])->name('borrar_mascota_formulario');
 Route::delete('/borrar_mascota/{id}', [BorrarMascotaControlador::class, 'destroy'])->name('borrar_mascota');
 
 
-use App\Http\Controllers\AgregarTurnoControlador;
+use App\Https\Controllers\AgregarTurnoControlador;
 // Ruta para mostrar el formulario de agregar turno
 Route::get('/agregar_turno', [AgregarTurnoControlador::class, 'create'])->name('agregar_turno_formulario');
 // Ruta para procesar el formulario de agregar turno
 Route::post('/agregar_turno', [AgregarTurnoControlador::class, 'store'])->name('agregar_turno');
 Route::post('/verificar-turno', [AgregarTurnoControlador::class, 'verificarTurno'])->name('verificar_turno');
 
-use App\Http\Controllers\EditarTurnoControlador;
+use App\Https\Controllers\EditarTurnoControlador;
 // Ruta para mostrar el formulario de seleccionar turno y editarlo
 Route::get('/editar_turno', [EditarTurnoControlador::class, 'create'])->name('editar_turno');
 // Ruta para procesar la actualización del turno
 Route::post('/editar_turno/{id}', [EditarTurnoControlador::class, 'update'])->name('editar_turno_update');
 
-use App\Http\Controllers\VerTurnoControlador;
+use App\Https\Controllers\VerTurnoControlador;
 Route::get('/ver_turno', [VerTurnoControlador::class, 'index'])->name('ver_turno');
 
-use App\Http\Controllers\BorrarTurnoControlador;
+use App\Https\Controllers\BorrarTurnoControlador;
 Route::get('/borrar_turno', [BorrarTurnoControlador::class, 'index'])->name('borrar_turno');
 Route::post('/borrar_turno/{id}', [BorrarTurnoControlador::class, 'destroy'])->name('borrar_turno_destroy');
 
@@ -124,19 +124,19 @@ Route::post('/logout', function () {
     return redirect()->route('home'); // Redirige a la página de inicio
 })->name('logOut');
 
-use App\Http\Controllers\RecuperarClaveControlador;
+use App\Https\Controllers\RecuperarClaveControlador;
 Route::get('/recuperar_clave', [RecuperarClaveControlador::class, 'mostrarFormulario'])->name('recuperar_clave');
 Route::post('/recuperar_clave', [RecuperarClaveControlador::class, 'enviar'])->name('recuperar_clave.enviar');
 
 // Rutas para el restablecimiento de contraseña
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Https\Controllers\Auth\ForgotPasswordController;
+use App\Https\Controllers\Auth\ResetPasswordController;
 Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-use App\Http\Controllers\SocialAuthController;
+use App\Https\Controllers\SocialAuthController;
 // Google
 Route::get('/auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
 Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
@@ -144,13 +144,13 @@ Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleC
 Route::get('/auth/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('/auth/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
 
-use App\Http\Controllers\VerProductoControlador;
+use App\Https\Controllers\VerProductoControlador;
 Route::get('/ver_productos', [VerProductoControlador::class, 'mostrarProductos'])->name('ver_productos');
 // API que usa JavaScript
 Route::get('/api/productos/{categoria?}', [VerProductoControlador::class, 'apiProductos']);
 
 
-use App\Http\Controllers\CarroDeComprasControlador;
+use App\Https\Controllers\CarroDeComprasControlador;
 
 Route::get('/carro', [CarroDeComprasControlador::class, 'mostrarCarro'])->name('carro_de_compras');
 
@@ -167,7 +167,7 @@ Route::post('/carro/confirmar-compra', [CarroDeComprasControlador::class, 'confi
 
 
 
-use App\Http\Controllers\ComprasRealizadasControlador;
+use App\Https\Controllers\ComprasRealizadasControlador;
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/compras_realizadas', [ComprasRealizadasControlador::class, 'mostrarCompras'])->name('compras.realizadas');
