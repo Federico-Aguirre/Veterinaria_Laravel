@@ -1,3 +1,4 @@
+/* 
 include("conexion.php");
 $con = mysqli_connect($host, $user, $pass, $bd);
 
@@ -20,3 +21,4 @@ $_SESSION["cantidadDeProductosEnCarro"] = $sumaResultado;
  echo '';
 }
 @endif
+*/
