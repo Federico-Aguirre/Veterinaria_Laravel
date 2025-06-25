@@ -26,16 +26,16 @@ class AppServiceProvider extends ServiceProvider
         if (app()->environment('production')) {
             URL::forceScheme('https');
         }
-        View::composer('*', function ($view) {
-            $cantidad = 0;
-    
+        view()->composer('*', function ($view) {
+            $cantidad = 0; // Valor por defecto si no hay usuario autenticado
+
             if (Auth::check()) {
                 $idCliente = Auth::id();
                 $cantidad = DB::table('carro_de_compras')
                     ->where('id_cliente', $idCliente)
                     ->sum('producto_cantidad');
             }
-    
+
             $view->with('cantidadDeProductosEnCarro', $cantidad);
         });
     }
