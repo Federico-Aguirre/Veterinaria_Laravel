@@ -19,9 +19,9 @@ class LogInControlador extends Controller
             
             $userId = Auth::id();
 
-            $cantidad = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
+            /*$cantidad = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
 
-            session(['cantidadDeProductosEnCarro' => $cantidad]);
+            session(['cantidadDeProductosEnCarro' => $cantidad]);*/
 
             return redirect()->route('home')->with('login_exitoso', 'Login exitoso');
         }

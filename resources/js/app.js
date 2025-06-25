@@ -1,6 +1,6 @@
 import '../tailwind/main.scss';
 import './variablesGlobales';
-/*import './paypal';*/
+import './paypal';
 import './calendario';
 import './header';
 import './ver_datos_de_perfil';
