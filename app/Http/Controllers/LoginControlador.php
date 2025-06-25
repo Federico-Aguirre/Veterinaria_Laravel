@@ -19,10 +19,6 @@ class LogInControlador extends Controller
             
             $userId = Auth::id();
 
-            if (!is_numeric($userId)) {
-                return back()->with('login_error', 'Error interno: ID de usuario inválido');
-            }
-
             $cantidad = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
 
             session(['cantidadDeProductosEnCarro' => $cantidad]);
