@@ -30,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $cantidad = 0;
 
             if (Auth::check()) {
-                $idCliente = Auth::id();
+                $idCliente = Auth::user()->id;
                 try {
                     $cantidad = DB::table('carro_de_compras')
                         ->where('id_cliente', $idCliente)
