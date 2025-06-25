@@ -23,7 +23,7 @@ class EditarPerfilControlador extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'Apellido' => 'required|string|max:255',
-            'Dirección' => 'required|string|max:255',
+            'Direccion' => 'required|string|max:255',
             'Piso' => 'required|integer',
             'Departamento' => 'required|string|max:255',
             'Localidad' => 'required|string|max:255',
@@ -36,7 +36,7 @@ class EditarPerfilControlador extends Controller
         $user->update([
             'name' => $request->input('name'),
             'apellido' => $request->input('Apellido'),
-            'direccion' => $request->input('DirecciOn'),
+            'direccion' => $request->input('Direccion'),
             'piso' => $request->input('Piso'),
             'departamento' => $request->input('Departamento'),
             'localidad' => $request->input('Localidad'),

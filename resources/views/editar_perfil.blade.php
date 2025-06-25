@@ -35,7 +35,7 @@
                             </div>
                             <div class="contenedor-input">
                                 <label>Dirección</label>
-                                <input type="text" name="Dirección" value="{{ Auth::user()->direccion }}" required>
+                                <input type="text" name="Direccion" value="{{ Auth::user()->direccion }}" required>
                             </div>
                         </div>
                         <br>
