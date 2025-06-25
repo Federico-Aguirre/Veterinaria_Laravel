@@ -16,9 +16,8 @@ class LogInControlador extends Controller
 
         // 👇 Indicamos explícitamente el campo usuario
         if (Auth::attempt(['usuario' => $credentials['usuario'], 'password' => $credentials['password']])) {
-            $user = Auth::user();
-
-            $userId = $user->id;
+            
+            $userId = Auth::id();
 
             if (!is_numeric($userId)) {
                 return back()->with('login_error', 'Error interno: ID de usuario inválido');
