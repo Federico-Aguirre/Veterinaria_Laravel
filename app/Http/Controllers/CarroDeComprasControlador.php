@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class CarroDeComprasControlador extends Controller
 {
+    /*
     public function agregar(Request $request)
     {
         try {
@@ -203,4 +204,5 @@ public function finalizarCompra(Request $request)
     // Si el pago no fue exitoso
     return response()->json(['success' => false, 'message' => 'Error al procesar el pago.']);
 }
+*/
 }
