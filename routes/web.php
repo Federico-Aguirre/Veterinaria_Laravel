@@ -58,7 +58,11 @@ Route::post('/contacto/enviar', [ContactoControlador::class, 'enviar'])->name('c
 
 
 use App\Http\Controllers\VerPerfilControlador;
+/*
 Route::middleware(['auth'])->get('/ver_perfil', [VerPerfilControlador::class, 'mostrar'])->name('ver_perfil');
+*/
+Route::get('/ver-perfil', [VerPerfilControlador::class, 'mostrar'])->middleware('auth');
+
 
 use App\Http\Controllers\EditarPerfilControlador;
 Route::middleware(['auth'])->group(function () {
