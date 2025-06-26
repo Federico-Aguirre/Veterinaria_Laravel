@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class VerPerfilControlador extends Controller
 {
+    /* 
     public function mostrar()
     {
         // Recuperar los datos del usuario autenticado
@@ -25,4 +26,5 @@ class VerPerfilControlador extends Controller
             'email' => $user->email,
         ]);
     }
+        */
 }
