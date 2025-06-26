@@ -42,7 +42,7 @@ class EditarPerfilControlador extends Controller
             'localidad' => $request->input('Localidad'),
             'telefono' => $request->input('Teléfono'),
             'celular' => $request->input('Celular'),
-            'email' => $request->input('Email'),
+            'email' => $request->input('email'),
         ]);
 
         return redirect()->route('editar_perfil')->with('edición_de_usuario_exitoso', 'Perfil actualizado correctamente');
