@@ -11,7 +11,7 @@
         <div class="contenedor-formularios">
             <ul class="contenedor-tabs" style="margin:0">
                 <li class="tab tab-primera active"><a href="#editar-perfil">Editar Perfil</a></li>
-                <li class="tab tab-segunda"><a href="javascript:void(0);" id="ver-perfil-btn">Ver Perfil</a></li>
+                <li class="tab tab-segunda"><a href="javascript:void(0);" id="ver_perfil_btn">Ver Perfil</a></li>
                 <li class="tab tab-tercera"><a id="borrarPerfilButton" class="borrar_perfil_btn">Borrar Perfil</a></li>
             </ul>
 
@@ -78,7 +78,7 @@
     @section('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const btn = document.getElementById('ver-perfil-btn');
+            const btn = document.getElementById('ver_perfil_btn');
             if (!btn) return;
             if (!btn.dataset.listenerAdded) {
                 btn.addEventListener('click', function () {
