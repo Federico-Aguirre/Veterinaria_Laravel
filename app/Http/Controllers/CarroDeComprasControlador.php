@@ -123,21 +123,22 @@ class CarroDeComprasControlador extends Controller
             return response()->json(['success' => false, 'message' => 'Hubo un problema al eliminar el producto'], 500);
         }
     }
-    
 
-    public function obtenerCantidadProductosEnCarro()
+    public function obtenerCantidadProductosEnCarro(Request $request)
     {
         $idCliente = Auth::id();
-    
-        if ($idCliente) {
-            $cantidad = DB::table('carro_de_compras')
+
+        $cantidad = $idCliente
+            ? DB::table('carro_de_compras')
                 ->where('id_cliente', $idCliente)
-                ->sum('producto_cantidad');
-        } else {
-            $cantidad = 0;
+                ->sum('producto_cantidad')
+            : 0;
+
+        if ($request->ajax()) {
+            return response()->json(['cantidad' => $cantidad]);
         }
-    
-        return response()->json(['cantidad' => $cantidad]);
+
+        return response('', 204); // No Content
     }
     
 
