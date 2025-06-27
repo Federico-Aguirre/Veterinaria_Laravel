@@ -31,7 +31,7 @@ class AgregarMascotaControlador extends Controller
             'sexo' => $validated['Sexo'],
             'edad' => $validated['Edad'],
             'cro_de_microchip' => empty($validated['Nro_de_microchip']) ? null : $validated['Nro_de_microchip'], // si es nulo lo transformo en null, de no ser el caso le paso el valor escrito en el formulario
-            'vacuna_antirrábica' => empty($validated['Vacuna_antirrábica']) ? null : $validated['Vacuna_antirrábica'],
+            'vacuna_antirrabica' => empty($validated['Vacuna_antirrábica']) ? null : $validated['Vacuna_antirrábica'],
             'tratamiento_antiparasitario' => empty($validated['Tratamiento_antiparasitario']) ? null : $validated['Tratamiento_antiparasitario'],
             'otras_vacunas' => empty($validated['Otras_vacunas']) ? null : $validated['Otras_vacunas'],
             'informacion_adicional' => empty($validated['Información_adicional']) ? null : $validated['Información_adicional'],

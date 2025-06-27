@@ -62,6 +62,6 @@ class EditarMascotaControlador extends Controller
 
         // Redirigir con un mensaje de éxito
         return redirect()->route('editar_mascota_formulario', ['id' => $mascota->id])
-        ->with('mensaje', 'Mascota actualizada exitosamente');
+        ->with('mascota_actualizada_exitosamente', 'Mascota actualizada exitosamente');
     }
 }
