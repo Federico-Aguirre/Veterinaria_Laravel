@@ -47,15 +47,15 @@ class EditarMascotaControlador extends Controller
         $mascota = MascotaModel::findOrFail($id);
 
         // Actualizar los campos de la mascota
-        $mascota->Nombre = $validated['Nombre'];
-        $mascota->Raza = $validated['Raza'];
-        $mascota->Sexo = $validated['Sexo'];
-        $mascota->Edad = $validated['Edad'];
-        $mascota->Nro_de_microchip = $validated['Nro_de_microchip'];
-        $mascota->Vacuna_antirrábica = $validated['Vacuna_antirrábica'] ?? null;
-        $mascota->Tratamiento_antiparasitario = $validated['Tratamiento_antiparasitario'] ?? null;
-        $mascota->Otras_vacunas = $validated['Otras_vacunas'];
-        $mascota->Información_adicional = $validated['Información_adicional'];
+        $mascota->nombre = $validated['Nombre'];
+        $mascota->raza = $validated['Raza'];
+        $mascota->sexo = $validated['Sexo'];
+        $mascota->edad = $validated['Edad'];
+        $mascota->nro_de_microchip = $validated['Nro_de_microchip'];
+        $mascota->vacuna_antirrabica = $validated['Vacuna_antirrábica'] ?? null;
+        $mascota->tratamiento_antiparasitario = $validated['Tratamiento_antiparasitario'] ?? null;
+        $mascota->otras_vacunas = $validated['Otras_vacunas'];
+        $mascota->informacion_adicional = $validated['Información_adicional'];
 
         // Guardar los cambios
         $mascota->save();
