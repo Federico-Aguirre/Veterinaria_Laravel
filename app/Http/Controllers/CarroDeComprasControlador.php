@@ -124,22 +124,24 @@ class CarroDeComprasControlador extends Controller
         }
     }
 
-    public function obtenerCantidadProductosEnCarro(Request $request)
-    {
-        $idCliente = Auth::id();
-
-        $cantidad = $idCliente
-            ? DB::table('carro_de_compras')
-                ->where('id_cliente', $idCliente)
-                ->sum('producto_cantidad')
-            : 0;
-
-        if ($request->ajax()) {
-            return response()->json(['cantidad' => $cantidad]);
-        }
-
-        return response('', 204); // No Content
+public function obtenerCantidadProductosEnCarro(Request $request)
+{
+    // Solo responder si la ruta fue llamada con fetch y no forma parte del flujo de navegador estándar
+    if (!$request->expectsJson()) {
+        abort(404); // o simplemente: return response('', 204);
     }
+
+    $idCliente = Auth::id();
+
+    $cantidad = $idCliente
+        ? DB::table('carro_de_compras')
+            ->where('id_cliente', $idCliente)
+            ->sum('producto_cantidad')
+        : 0;
+
+    return response()->json(['cantidad' => $cantidad]);
+}
+
     
 
     public function mostrarCarro()
