@@ -37,7 +37,7 @@ class EditarMascotaControlador extends Controller
             'Sexo' => 'required|string|max:255',
             'Edad' => 'required|integer|min:0',
             'Nro_de_microchip' => 'nullable|string|max:255',
-            'Vacuna_antirrábica' => 'nullable|boolean',
+            'Vacuna_antirrabica' => 'nullable|boolean',
             'Tratamiento_antiparasitario' => 'nullable|boolean',
             'Otras_vacunas' => 'nullable|string|max:255',
             'Información_adicional' => 'nullable|string|max:255',
@@ -52,7 +52,7 @@ class EditarMascotaControlador extends Controller
         $mascota->sexo = $validated['Sexo'];
         $mascota->edad = $validated['Edad'];
         $mascota->nro_de_microchip = $validated['Nro_de_microchip'];
-        $mascota->vacuna_antirrabica = $validated['Vacuna_antirrábica'] ?? null;
+        $mascota->vacuna_antirrabica = $validated['Vacuna_antirrabica'] ?? null;
         $mascota->tratamiento_antiparasitario = $validated['Tratamiento_antiparasitario'] ?? null;
         $mascota->otras_vacunas = $validated['Otras_vacunas'];
         $mascota->informacion_adicional = $validated['Información_adicional'];

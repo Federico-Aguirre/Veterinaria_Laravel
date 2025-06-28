@@ -70,7 +70,7 @@
 
                         <div class="contenedor-input">
                             <label>Vacuna antirrábica</label>
-                            <input type="checkbox" name="Vacuna_antirrábica" value="1" {{ $mascota->vacuna_antirrábica ? 'checked' : '' }}>
+                            <input type="checkbox" name="Vacuna_antirrabica" value="1" {{ $mascota->vacuna_antirrabica ? 'checked' : '' }}>
                             @error('Vacuna_antirrábica') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
