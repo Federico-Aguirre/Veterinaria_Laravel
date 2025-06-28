@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,13 +22,14 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot()
+    public function boot(): void
     {
         if (app()->environment('production')) {
-            \Illuminate\Support\Facades\Request::setTrustedProxies(
+            \Illuminate\Http\Request::setTrustedProxies(
                 [request()->getClientIp()],
-                \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL
+                SymfonyRequest::HEADER_X_FORWARDED_ALL
             );
+
             URL::forceScheme('https');
         }
         View::composer('*', function ($view) {
