@@ -24,6 +24,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         if (app()->environment('production')) {
+            \Illuminate\Support\Facades\Request::setTrustedProxies(
+                [request()->getClientIp()],
+                \Illuminate\Http\Request::HEADER_X_FORWARDED_ALL
+            );
             URL::forceScheme('https');
         }
         View::composer('*', function ($view) {
