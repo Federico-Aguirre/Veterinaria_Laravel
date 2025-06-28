@@ -48,8 +48,8 @@
                     </div>
                     <div class="contenedor-input">
                         <label>Vacuna antirrábica</label>
-                        <input type="checkbox" name="Vacuna_antirrábica" value="1">
-                        @error('Vacuna_antirrábica') <div class="error">{{ $message }}</div> @enderror
+                        <input type="checkbox" name="Vacuna_antirrabica" value="1">
+                        @error('Vacuna_antirrabica') <div class="error">{{ $message }}</div> @enderror
                     </div>
                     <div class="contenedor-input">
                         <label>Tratamiento antiparasitario</label>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="contenedor-input">
                         <label>Información adicional</label>    
-                        <input type="text" name="Información_adicional" value="{{ old('Información_adicional') }}">
+                        <input type="text" name="Informacion_adicional" value="{{ old('Informacion_adicional') }}">
                         @error('Información_adicional') <div class="error">{{ $message }}</div> @enderror
                     </div>
                     <input type="submit" class="button button-block" value="Agregar mascota">
