@@ -40,7 +40,7 @@ class EditarMascotaControlador extends Controller
             'Vacuna_antirrabica' => 'nullable|boolean',
             'Tratamiento_antiparasitario' => 'nullable|boolean',
             'Otras_vacunas' => 'nullable|string|max:255',
-            'Información_adicional' => 'nullable|string|max:255',
+            'Informacion_adicional' => 'nullable|string|max:255',
         ]);
 
         // Buscar la mascota por ID
@@ -55,7 +55,7 @@ class EditarMascotaControlador extends Controller
         $mascota->vacuna_antirrabica = $validated['Vacuna_antirrabica'] ?? null;
         $mascota->tratamiento_antiparasitario = $validated['Tratamiento_antiparasitario'] ?? null;
         $mascota->otras_vacunas = $validated['Otras_vacunas'];
-        $mascota->informacion_adicional = $validated['Información_adicional'];
+        $mascota->informacion_adicional = $validated['Informacion_adicional'];
 
         // Guardar los cambios
         $mascota->save();

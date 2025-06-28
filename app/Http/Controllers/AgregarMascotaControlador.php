@@ -21,7 +21,7 @@ class AgregarMascotaControlador extends Controller
             'Vacuna_antirrabica' => 'nullable|boolean',
             'Tratamiento_antiparasitario' => 'nullable|boolean',
             'Otras_vacunas' => 'nullable|string|max:255',
-            'Información_adicional' => 'nullable|string|max:255',
+            'Informacion_adicional' => 'nullable|string|max:255',
         ]);
 
         // Crear la mascota y asociarla al usuario autenticado
@@ -34,7 +34,7 @@ class AgregarMascotaControlador extends Controller
             'vacuna_antirrabica' => empty($validated['Vacuna_antirrabica']) ? null : $validated['Vacuna_antirrabica'],
             'tratamiento_antiparasitario' => empty($validated['Tratamiento_antiparasitario']) ? null : $validated['Tratamiento_antiparasitario'],
             'otras_vacunas' => empty($validated['Otras_vacunas']) ? null : $validated['Otras_vacunas'],
-            'informacion_adicional' => empty($validated['Información_adicional']) ? null : $validated['Información_adicional'],
+            'informacion_adicional' => empty($validated['Informacion_adicional']) ? null : $validated['Informacion_adicional'],
             'id_user' => Auth::id(),
         ]);
 

@@ -88,8 +88,8 @@
 
                         <div class="contenedor-input">
                             <label>Información adicional</label>
-                            <input type="text" name="Información_adicional" value="{{ old('Información_adicional', $mascota->informacion_adicional) }}">
-                            @error('Información_adicional') <div class="error">{{ $message }}</div> @enderror
+                            <input type="text" name="Informacion_adicional" value="{{ old('Informacion_adicional', $mascota->informacion_adicional) }}">
+                            @error('Informacion_adicional') <div class="error">{{ $message }}</div> @enderror
                         </div>
 
                         <input type="submit" class="button button-block" value="Editar mascota">
