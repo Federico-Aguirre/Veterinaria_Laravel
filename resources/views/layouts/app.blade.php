@@ -118,31 +118,30 @@
     </footer>
     @yield('scripts')
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Verificar si el carrito está vacío en la carga de la página
-        fetch('/obtenerCantidadProductosEnCarro')
-            .then(res => res.json())
-            .then(data => {
-                const cantidad = data.cantidad || 0;
-                // Si la cantidad es 0, ocultamos el icono y el contenedor del carrito
-                const contadorCarrito = document.getElementById('contador-carrito');
-                const carroContainer = document.querySelector('.carro-container');
-                
-                if (contadorCarrito && carroContainer) {
-                    if (cantidad === 0) {
-                        contadorCarrito.style.display = 'none';  // Oculta el icono del carrito
-                        carroContainer.style.display = 'none';   // Oculta el contenedor del carrito
-                    } else {
-                        // Si hay productos, aseguramos que el carrito esté visible
-                        contadorCarrito.textContent = cantidad;
-                        contadorCarrito.style.display = 'inline-block';  // Muestra el icono del carrito
-                        carroContainer.style.display = 'flex';  // Muestra el contenedor
+        document.addEventListener('DOMContentLoaded', function () {
+            const rutaCantidad = "{{ url('/obtenerCantidadProductosEnCarro') }}";
+
+            fetch(rutaCantidad)
+                .then(res => res.json())
+                .then(data => {
+                    const cantidad = data.cantidad || 0;
+                    const contadorCarrito = document.getElementById('contador-carrito');
+                    const carroContainer = document.querySelector('.carro-container');
+
+                    if (contadorCarrito && carroContainer) {
+                        if (cantidad === 0) {
+                            contadorCarrito.style.display = 'none';
+                            carroContainer.style.display = 'none';
+                        } else {
+                            contadorCarrito.textContent = cantidad;
+                            contadorCarrito.style.display = 'inline-block';
+                            carroContainer.style.display = 'flex';
+                        }
                     }
-                }
-            })
-            .catch(error => {
-                console.error('Error al obtener la cantidad del carrito:', error);
-            });
+                })
+                .catch(error => {
+                    console.error('Error al obtener la cantidad del carrito:', error);
+                });
         });
     </script>
 </body>

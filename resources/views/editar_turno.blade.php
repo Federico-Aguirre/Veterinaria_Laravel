@@ -22,20 +22,18 @@
                     @if(Auth::check())
                         @if(!isset($turnoSeleccionado))
                             <!-- Formulario para seleccionar el turno -->
-<form action="{{ route('editar_turno') }}" method="get" class="turnos__formulario">
-    <div class="contenedor-input">
-        <label for="turnoAEditar">Seleccionar Turno</label>
-        <select id="turnoAEditar" name="id" required>
-            <option value="" disabled selected>Elegí un turno</option>
-            @foreach($turnos as $turno)
-                <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
-            @endforeach
-        </select>
-    </div>
-    <input type="submit" value="Seleccionar Turno">
-</form>
-
-
+                            <form action="{{ route('editar_turno') }}" method="get" class="turnos__formulario">
+                                <div class="contenedor-input">
+                                    <label for="turnoAEditar">Seleccionar Turno</label>
+                                    <select id="turnoAEditar" name="id" required>
+                                        <option value="" disabled selected>Elegí un turno</option>
+                                        @foreach($turnos as $turno)
+                                            <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <input type="submit" value="Seleccionar Turno">
+                            </form>
                         @else
                             <!-- Formulario para editar el turno seleccionado -->
                             <form action="{{ route('editar_turno_update', ['id' => $turnoSeleccionado->id]) }}" method="post" class="turnos__formulario">
@@ -65,7 +63,6 @@
                                 <input type="submit" value="Actualizar Turno">
                             </form>
                         @endif
-
                     @else
                         <script type="text/javascript">
                             alert("Debes iniciar sesión para editar turnos");
