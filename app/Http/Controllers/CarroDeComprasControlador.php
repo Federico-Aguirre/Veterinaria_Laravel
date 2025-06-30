@@ -30,7 +30,7 @@ class CarroDeComprasControlador extends Controller
             }
     
             // Cargamos el archivo JSON de productos
-            $productosJson = json_decode(file_get_contents(storage_path('app/resources/json/productos.json')), true);
+            $productosJson = json_decode(file_get_contents(storage_path('json/productos.json')), true);
     
             // Iteramos sobre los productos para guardarlos en la base de datos
             foreach ($productos as $producto) {

@@ -7,7 +7,7 @@ class LeerJsonsControlador extends Controller
     public function leerJsons()
     {
         // Ruta a la carpeta de JSONs
-        $path = storage_path('app/resources/json');
+        $path = storage_path('json');
         
         // Obtener todos los archivos JSON de la carpeta
         $files = File::files($path);
