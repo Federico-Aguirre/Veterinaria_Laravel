@@ -37,7 +37,6 @@ class AppServiceProvider extends ServiceProvider
         }
         View::composer('*', function ($view) {
             $cantidad = 0;
-
             if (Auth::check()) {
                 $idCliente = Auth::user()->id;
                 try {
@@ -48,7 +47,6 @@ class AppServiceProvider extends ServiceProvider
                     dd('Error en el sum():', $e->getMessage());
                 }
             }
-
             $view->with('cantidadDeProductosEnCarro', $cantidad);
         });
     }
