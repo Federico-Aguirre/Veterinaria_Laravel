@@ -19,8 +19,14 @@ Route::get('/login', function () {
 // Ruta para mostrar el formulario de inicio de sesión (POST)
 Route::post('/login', [LoginControlador::class, 'login'])->name('procesarLogin');
 
-use App\Http\Controllers\LeerJsonsControlador;
-Route::get('/productos/json', [LeerJsonsControlador::class, 'leerJsons']);
+Route::get('/api/productos', function () {
+    $path = resource_path('json/productos.json');
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+});
+
 
 Route::get('/', function () {
     return view('home');
