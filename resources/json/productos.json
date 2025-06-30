@@ -1,0 +1,480 @@
+[
+    {
+        "id": 1,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/producto 1.jpg",
+        "descripcion": "Alimento Agility Premium Agility Urinary para gatos para gato adulto sabor mix en bolsa de 10 kg",
+        "precio": "46059.23",
+        "stock": 1544,
+        "caracteristicas": [
+            "Soporta hasta un maximo de 58kg.",
+            "El material de la correa es poliester y el del mango es plastico.",
+            "Es extensible. Con boton de frenado."
+        ]
+    },
+    {
+        "id": 2,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/producto 2.jpg",
+        "descripcion": "Alimento Catpro Premium Castrados/Indoor para gato adulto sabor mix en bolsa de 7.5kg",
+        "precio": "32975",
+        "stock": 1869,
+        "caracteristicas": [
+            "Tipo de envase: Bolsa",
+            "Recomendado para gato adulto.",
+            "Comida seca.",
+            "Sabor: mix",
+            "Sabor y nutricion completa para tu mascota."
+        ]
+    },
+    {
+        "id": 3,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/producto 3.jpg",
+        "descripcion": "Purina Excellent Adult para gato adulto sabor pollo y arroz de 7.5kg",
+        "precio": "41961",
+        "stock": 1884,
+        "caracteristicas": [
+            "Tipo de envase: Bolsa",
+            "Sabor: Pollo/Arroz",
+            "Recomendado para gato adulto.",
+            "Comida seca.",
+            "Sabor: pollo, arroz",
+            "Sabor y nutricion completa para tu mascota."
+        ]
+    },
+    {
+        "id": 4,
+        "categoria": "otros",
+        "imagen": "../imagenes/stock de productos/otros/producto 4.jpg",
+        "descripcion": "Arena sanitaria para gatos Monkcat bentonita aglomerante 4kg por 5 bolsas",
+        "precio": "13000",
+        "stock": "1900",
+        "caracteristicas": [
+            "Unidades por pack: 5",
+            "Formato de venta: Pack",
+            "Biodegradable y aglomerante, facilita la limpieza y cuida el ambiente."
+        ]
+    },
+    {
+        "id": 5,
+        "categoria": "otros",
+        "imagen": "../imagenes/stock de productos/otros/producto 5.jpg",
+        "descripcion": "Piedra Rubicat Classic Arena Aglomerante Pack Ahorro 20kilos x 20kg de peso neto y 20kg de peso por unidad",
+        "precio": "9990",
+        "stock": "1399",
+        "caracteristicas": [
+            "Marca: Rubicat Classic",
+            "Formato de venta: Unidad",
+            "Peso neto: 20 kg",
+            "Peso de la unidad: 20 kg",
+            "Fragancia: Neutra"
+        ]
+    },
+    {
+        "id": 6,
+        "categoria": "otros",
+        "imagen": "../imagenes/stock de productos/otros/producto 6.jpg",
+        "descripcion": "Arena Aglomerante Para Gato Sanicat Strong Clumps 7 Kg",
+        "precio": "9735.60",
+        "stock": "1399",
+        "caracteristicas": [
+            "Control de olores eficaz.",
+            "Peso neto: 7 kg",
+            "100% biodegradable."
+        ]
+    },
+    {
+        "id": 7,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/producto 7.jpg",
+        "descripcion": "Alimento Dogpro Dog Pro Perro para perro adulto todos los tamaños sabor mix en bolsa de 20kg",
+        "precio": "42595",
+        "stock": "1943",
+        "caracteristicas": [
+            "Tipo de envase: Bolsa",
+            "Recomendado para perro adulto.",
+            "Formulado para todos los tamaños.",
+            "Comida seca.",
+            "Sabor: mix."
+        ]
+    },
+    {
+        "id": 8,
+        "categoria": "otros",
+        "imagen": "../imagenes/stock de productos/otros/producto 8.jpg",
+        "descripcion": "Correa Extensible Perro 5 Metros 58 Kg Retractil Reforzada",
+        "precio": "14291",
+        "stock": "1909",
+        "caracteristicas": [
+            "Soporta hasta un maximo de 58kg.",
+            "El material de la correa es poliester y el del mango es plastico.",
+            "Es extensible.",
+            "Con boton de frenado."
+        ]
+    },
+    {
+        "id": 9,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/producto 9.jpg",
+        "descripcion": "Transportadora Skudo 7 Iata Gigante 105x73x76",
+        "precio": "380547.30",
+        "stock": "1678",
+        "caracteristicas": [
+            "Tamaño del producto: Grande",
+            "Hecho de plastico.",
+            "Dimensiones: 73cm de ancho x 105cm de largo.",
+            "Soporta hasta 40kg.",
+            "Con ventilacion."
+        ]
+    },
+    {
+        "id": 10,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/producto 10.jpg",
+        "descripcion": "Alimento Para Peces Agua Fria Tetra Goldfish 200gr Escamas",
+        "precio": "27118",
+        "stock": "5143",
+        "caracteristicas": [
+            "Marca: Tetra",
+            "Modelo: Goldfish Flakes",
+            "Formato de venta: Unidad",
+            "Peso de la unidad: 200 g"
+        ]
+    },
+    {
+        "id": 11,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/cucha gato.jpg",
+        "descripcion": "Cucha para gato redondo chico",
+        "precio": "8300",
+        "stock": 3331,
+        "caracteristicas": [
+            "Relleno de copos de goma espuma de gran densidad",
+            "Largo x Ancho x Altura: 44 cm x 44 cm x 17 cm",
+            "Material: Gabardina y vellon"
+        ]
+    },
+    {
+        "id": 12,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/camagato.jpg",
+        "descripcion": "Cama para gato cueva grande",
+        "precio": "18500",
+        "stock": "5553",
+        "caracteristicas": [
+            "Facil de limpiar",
+            "Ancho x Altura: 55 cm x 40 cm",
+            "Material: Plush calido"
+        ]
+    },
+    {
+        "id": 13,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/nido gato.jpg",
+        "descripcion": "Cama para gato moises nido",
+        "precio": "28800",
+        "stock": "3476",
+        "caracteristicas": [
+            "Facil limpieza: es apto para lavarropas",
+            "Largo x Ancho x Altura: 55 cm x 55 cm x 15 cm",
+            "Material: Poliester y vellon siliconado"
+        ]
+    },
+    {
+        "id": 14,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/cama perro.jpg",
+        "descripcion": "Cama para perro colchoneta",
+        "precio": "15900",
+        "stock": "5521",
+        "caracteristicas": [
+            "Doble costura, reforzada en toda su confeccion",
+            "Tamaño: 90x70",
+            "Material: Poliester y vellon siliconado"
+        ]
+    },
+    {
+        "id": 15,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/moises perro.jpg",
+        "descripcion": "Cama moises para perro plush suave",
+        "precio": "14500",
+        "stock": "3214",
+        "caracteristicas": [
+            "Facil limpieza: es apto para lavarropas",
+            "Largo x Ancho x Altura: 55 cm x 55 cm x 15 cm",
+            "Material: Poliester y vellon siliconado"
+        ]
+    },
+    {
+        "id": 16,
+        "categoria": "camas",
+        "imagen": "../imagenes/stock de productos/camas/alaska.jpg",
+        "descripcion": "Moises para perro Alaska",
+        "precio": "28100",
+        "stock": "1414",
+        "caracteristicas": [
+            "Facil limpieza: es apto para lavarropas",
+            "Largo x Ancho x Altura: 55 cm x 55 cm x 15 cm",
+            "Material: Poliester y vellon siliconado"
+        ]
+    },
+    {
+        "id": 17,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/bolso.jpg",
+        "descripcion": "Bolso transportador para mascotas",
+        "precio": "14000",
+        "stock": "1345",
+        "caracteristicas": [
+            "Bolso transportador mascotas con estructura",
+            "Medidas: 46 largo x 23 ancho x 28 alto",
+            "La base es rígida desmontable forrada con tela impermeable"
+        ]
+    },
+    {
+        "id": 18,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/gipsy.jpg",
+        "descripcion": "Transportadora Gipsy 46x31 puerta metalica",
+        "precio": "33000",
+        "stock": "2334",
+        "caracteristicas": [
+            "Hecho de plastico - Con ventilacion",
+            "Dimensiones: 31cm de ancho x 46cm de largo.",
+            "Soporta hasta 8kg - Es a prueba de agua"
+        ]
+    },
+    {
+        "id": 19,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/voyageur.jpg",
+        "descripcion": "Transportadora Perro Gato Voyageur Grande",
+        "precio": "74100",
+        "stock": "4315",
+        "caracteristicas": [
+            "Dimensiones: 47cm de ancho x 68cm de largo.",
+            "Soporta hasta 10kg",
+            "Con ventilacion - Es a prueba de agua"
+        ]
+    },
+    {
+        "id": 20,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/mochila.jpg",
+        "descripcion": "Mochila transportadora mascotas",
+        "precio": "39900",
+        "stock": "5164",
+        "caracteristicas": [
+            "Dimensiones: 47cm de ancho x 68cm de largo.",
+            "Soporta hasta 10kg",
+            "Con ventilacion - Es a prueba de agua"
+        ]
+    },
+    {
+        "id": 21,
+        "categoria": "transportadoras",
+        "imagen": "../imagenes/stock de productos/transportadoras/skudo.jpg",
+        "descripcion": "Transportadora Skudo para perro grande",
+        "precio": "233000",
+        "stock": "3214",
+        "caracteristicas": [
+            "Dimensiones: 63cm de ancho x 92cm de largo",
+            "Soporta hasta 40kg - Pesa 9kg.",
+            "Con ventilacion - Es apto para cabinas de avion"
+        ]
+    },
+    {
+        "id": 22,
+        "categoria": "juguetes",
+        "imagen": "../imagenes/stock de productos/juguetes/cañita.jpg",
+        "descripcion": "Juguete Para Gatos Cañita",
+        "precio": "3500",
+        "stock": "4123",
+        "caracteristicas": [
+            "Varilla de plastico (15 cm) + Alambre de acero recubierto (80 cm) + juguete (15 cm)",
+            "Cañita larga de 1,10mts",
+            "Tiene tiras y cascabel"
+        ]
+    },
+    {
+        "id": 23,
+        "categoria": "juguetes",
+        "imagen": "../imagenes/stock de productos/juguetes/raton.jpg",
+        "descripcion": "Juguete Para Gatos Raton Plush De Cuerda",
+        "precio": "3500",
+        "stock": "4341",
+        "caracteristicas": [
+            "Tamaño: Largo 8cm / Alto 4cm",
+            "Material: Felpa",
+            "No requiere baterias - Vibra al tirar de la cuerda"
+        ]
+    },
+    {
+        "id": 24,
+        "categoria": "juguetes",
+        "imagen": "../imagenes/stock de productos/juguetes/soga.jpg",
+        "descripcion": "Soga juguete para perros",
+        "precio": "2800",
+        "stock": "2353",
+        "caracteristicas": [
+            "Puro algodon 20 cm.",
+            "Favorece la limpieza e higiene de la dentadura de su mascota",
+            "Disponibilidad de colores"
+        ]
+    },
+    {
+        "id": 25,
+        "categoria": "juguetes",
+        "imagen": "../imagenes/stock de productos/juguetes/pelota rugby.jpg",
+        "descripcion": "Juguete Pelota Rugby Resistente Mordillo Perros",
+        "precio": "2200",
+        "stock": "5423",
+        "caracteristicas": [
+            "Material: TPR",
+            "Medidas: Largo 9cm - Ancho 6cm",
+            "Colores: Azul, Rosa y Amarillo"
+        ]
+    },
+    {
+        "id": 26,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/kitten.jpg",
+        "descripcion": "Excelent Kitten alimento para gato de temprana edad sabor pollo y arroz de 1 kg.",
+        "precio": "7870",
+        "stock": "5156",
+        "caracteristicas": [
+            "Especialmente diseñado para gatitos en etapa temprana",
+            "Bolsa de 1 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu gato",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 27,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/kitten.jpg",
+        "descripcion": "Excelent Kitten alimento para gato de temprana edad sabor pollo y arroz de 7.5 kg.",
+        "precio": "43810",
+        "stock": "5323",
+        "caracteristicas": [
+            "Especialmente diseñado para gatitos en etapa temprana",
+            "Bolsa de 7.5 kg para mayor duracion",
+            "Delicioso sabor a pollo y arroz que encantara a tu gato",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 28,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/gato.jpg",
+        "descripcion": "Excelent Adult alimento para gato adulto sabor pollo y arroz de 1 kg.",
+        "precio": "7800",
+        "stock": "3344",
+        "caracteristicas": [
+            "Recomendado para gato adulto",
+            "Bolsa de 1 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu gato",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 29,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/gato.jpg",
+        "descripcion": "Excelent Adult alimento para gato adulto sabor pollo y arroz de 7.5 kg.",
+        "precio": "40400",
+        "stock": "1151",
+        "caracteristicas": [
+            "Recomendado para gato adulto",
+            "Bolsa de 7.5 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu gato",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 30,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/esterilizado.jpg",
+        "descripcion": "Excelent Sterilized alimento para gato adulto sabor pollo y arroz de 7.5 kg.",
+        "precio": "7800",
+        "stock": "2226",
+        "caracteristicas": [
+            "Recomendado para gato adulto esterilizado",
+            "Bolsa de 7.5 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu gato",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 31,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/puppy.jpg",
+        "descripcion": "Excelent Puppy alimento para perro cachorro sabor pollo y arroz de 3 kg.",
+        "precio": "13600",
+        "stock": "3213",
+        "caracteristicas": [
+            "Recomendado para perro cachorro",
+            "Bolsa de 3 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu perro",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 32,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/puppy.jpg",
+        "descripcion": "Excelent Puppy alimento para perro cachorro sabor pollo y arroz de 15 kg.",
+        "precio": "54300",
+        "stock": "3127",
+        "caracteristicas": [
+            "Recomendado para perro cachorro",
+            "Bolsa de 15 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu perro",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 33,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/perro.jpg",
+        "descripcion": "Excelent Skin Care alimento para perro adulto sabor pollo y arroz de 3 kg.",
+        "precio": "13000",
+        "stock": "2000",
+        "caracteristicas": [
+            "Recomendado para perro adulto",
+            "Bolsa de 3 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu perro",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 34,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/perro.jpg",
+        "descripcion": "Excelent Skin Care alimento para perro adulto sabor pollo y arroz de 15 kg.",
+        "precio": "44300",
+        "stock": "3468",
+        "caracteristicas": [
+            "Recomendado para perro adulto",
+            "Bolsa de 15 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu perro",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    },
+    {
+        "id": 35,
+        "categoria": "alimentos",
+        "imagen": "../imagenes/stock de productos/alimentos/calorie.jpg",
+        "descripcion": "Excelent Reduced Calorie alimento para perro adulto sabor pollo y arroz de 15 kg.",
+        "precio": "53000",
+        "stock": "6997",
+        "caracteristicas": [
+            "Recomendado para perro adulto - Formula de calorías reducidas",
+            "Bolsa de 15 kg de alimento seco facil de almacenar",
+            "Delicioso sabor a pollo y arroz que encantara a tu perro",
+            "Fabricado por Purina, marca de confianza"
+        ]
+    }
+]
