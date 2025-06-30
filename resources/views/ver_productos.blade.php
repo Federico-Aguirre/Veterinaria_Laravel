@@ -136,7 +136,3 @@
 </script>
 
 @endsection
-
-@section('scripts')
-    @vite(['resources/js/filtros.js', 'resources/js/agregarAlCarro.js'])
-@endsection
