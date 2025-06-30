@@ -2,7 +2,10 @@
 /node_modules
 /public/hot
 /public/storage
-/storage/*.key
+/storage/*
+!/storage/app/
+!/storage/app/json/
+!/storage/app/json/productos.json
 /vendor
 .env
 .env.backup

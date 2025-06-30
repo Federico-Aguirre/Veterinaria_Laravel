@@ -33,7 +33,7 @@
                         <div class="header__navBar__line"></div>
                     </button>
                     <a href="{{ route('editar_perfil') }}">
-                        <li class="header__perfil"><img src="{{ asset('imagenes/iconos/usuario.svg') }}" class="header__iconoUsuario"/><div>{{ session('sessionUsuario') }}</div></li>
+                        <li class="header__perfil"><img src="{{ asset('imagenes/iconos/usuario.svg') }}" class="header__iconoUsuario"/><div>{{ Auth::user()->name }}</div></li>
                     </a>
                 </ul>
             </nav>
@@ -55,7 +55,7 @@
                         <div class="header__navBar__line"></div>
                         <div class="header__navBar__line"></div>
                     </button>
-                    <li class="header__perfil"><img src="{{ asset('imagenes/iconos/usuario.svg') }}" class="header__iconoUsuario"/><div>{{ session('sessionUsuario') }}</div></li>
+                    <li class="header__perfil"><img src="{{ asset('imagenes/iconos/usuario.svg') }}" class="header__iconoUsuario"/><div>{{ Auth::user()->name }}</div></li>
                     <li class="header__carroDeCompra">
                         @if (!$ocultarCarro)
                             <a href="{{ route('carro_de_compras') }}" class="carro-container flex items-center gap-2">
@@ -106,9 +106,9 @@
 </div>
     <a href="https://api.whatsapp.com/send?phone=+5491155912380&text=Hola! Quisiera más información!" target="_blank">
         <img src="{{ asset('imagenes/iconos/whatsapp2.png') }}" 
-        class="globalWhatsapp transition-all duration-[250ms] ease-in h-[80px] w-[80px] fixed right-[50px] bottom-[50px] hover:scale-[1.2]
-          sm:right-[60px] sm:bottom-[60px] lg:right-[70px] lg:bottom-[70px]"/>
-" />
+            class="globalWhatsapp transition-all duration-[250ms] ease-in h-[80px] w-[80px] fixed right-[50px] bottom-[50px] hover:scale-[1.2]
+            sm:right-[60px] sm:bottom-[60px] lg:right-[70px] lg:bottom-[70px]"
+        />
     </a>
     @yield('content') <!-- Aquí se carga el contenido de cada vista -->
     <footer class="flex flex-row place-content-center gap-y-0 gap-x-5 pb-[30px]">

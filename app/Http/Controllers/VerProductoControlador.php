@@ -8,7 +8,7 @@ class VerProductoControlador extends Controller
 {
     public function apiProductos($categoria = null)
     {
-        $ruta = storage_path('app/json/productos.json');
+        $ruta = storage_path('app/resources/json/productos.json');
         $productos = json_decode(file_get_contents($ruta), true);
     
         // Filtrar por categoría si es necesario
@@ -21,7 +21,7 @@ class VerProductoControlador extends Controller
 
     public function mostrarProductos($categoria = null)
     {
-        $ruta = storage_path('app/json/productos.json');
+        $ruta = storage_path('app/resources/json/productos.json');
         $contenido = file_get_contents($ruta);
         $productos = json_decode($contenido, true);
 
