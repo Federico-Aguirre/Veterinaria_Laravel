@@ -21,7 +21,7 @@ class VerProductoControlador extends Controller
 
     public function mostrarProductos($categoria = null)
     {
-        $ruta = storage_path('json/productos.json');
+        $ruta = resource_path('json/productos.json');
         $contenido = file_get_contents($ruta);
         $productos = json_decode($contenido, true);
 
