@@ -19,14 +19,6 @@ Route::get('/login', function () {
 // Ruta para mostrar el formulario de inicio de sesión (POST)
 Route::post('/login', [LoginControlador::class, 'login'])->name('procesarLogin');
 
-Route::get('/api/productos', function () {
-    $path = resource_path('json/productos.json');
-    if (!file_exists($path)) {
-        abort(404);
-    }
-    return response()->file($path);
-});
-
 
 Route::get('/', function () {
     return view('home');
@@ -155,6 +147,20 @@ Route::get('/auth/facebook', [SocialAuthController::class, 'redirectToFacebook']
 Route::get('/auth/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
 
 
+Route::get('/api/productos', function () {
+    $path = resource_path('json/productos.json');
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+});
+
+use App\Http\Controllers\VerProductoControlador;
+Route::get('/ver_productos', [VerProductoControlador::class, 'mostrarProductos'])->name('ver_productos');
+// API que usa JavaScript
+Route::get('/api/productos/{categoria?}', [VerProductoControlador::class, 'apiProductos']);
+
+
 use App\Http\Controllers\CarroDeComprasControlador;
 
 Route::get('/carro', [CarroDeComprasControlador::class, 'mostrarCarro'])->name('carro_de_compras');
@@ -166,13 +172,6 @@ Route::post('/carro/agregar', [CarroDeComprasControlador::class, 'agregar'])
 Route::delete('/carro/remover/{id}', [CarroDeComprasControlador::class, 'removerDelCarro'])->name('carro.remover');
 
 Route::post('/carro/confirmar-compra', [CarroDeComprasControlador::class, 'confirmarCompra']);
-
-
-use App\Http\Controllers\VerProductoControlador;
-Route::get('/ver_productos', [VerProductoControlador::class, 'mostrarProductos'])->name('ver_productos');
-// API que usa JavaScript
-Route::get('/api/productos/{categoria?}', [VerProductoControlador::class, 'apiProductos']);
-
 
 
 use App\Http\Controllers\ComprasRealizadasControlador;

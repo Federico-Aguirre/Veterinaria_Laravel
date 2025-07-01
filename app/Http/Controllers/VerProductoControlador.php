@@ -8,21 +8,33 @@ use App\Models\ProductoModel;
 
 class VerProductoControlador extends Controller
 {
-    public function apiProductos($categoria = null, Request $request) {
-        $busqueda = $request->query('q');
+    public function apiProductos($categoria = null)
+    {
+        $path = resource_path('json/productos.json');
 
-        $productos = ProductoModel::query();
+        if (!file_exists($path)) {
+            return response()->json([], 404);
+        }
+
+        $contenido = file_get_contents($path);
+        $productos = json_decode($contenido, true);
+
+        if (!is_array($productos)) {
+            return response()->json([], 500);
+        }
 
         if ($categoria) {
-            $productos->where('categoria', $categoria);
+            // Normalizamos la categoría para que coincida
+            $categoria = strtolower($categoria);
+            $productos = array_filter($productos, function ($producto) use ($categoria) {
+                return strtolower($producto['categoria']) === $categoria;
+            });
+            $productos = array_values($productos); // Reindexar
         }
 
-        if ($busqueda) {
-            $productos->where('descripcion', 'like', '%' . $busqueda . '%');
-        }
-
-        return response()->json($productos->get());
+        return response()->json($productos);
     }
+
 
 
     public function mostrarProductos($categoria = null)
