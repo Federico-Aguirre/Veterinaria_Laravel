@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const finalUrl = params.toString() ? `${url}?${params.toString()}` : url;
             const respuesta = await fetch(finalUrl);
             const data = await respuesta.json();
+            console.log("URL pedida:", finalUrl);
 
             // Limpiar el contenedor
             contenedorProductos.innerHTML = "";
