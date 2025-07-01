@@ -1,4 +1,4 @@
-console.log("JS cargado correctamente");
+
 
 // Importar los selectores globales
 import { $q, $qa } from './variablesGlobales';

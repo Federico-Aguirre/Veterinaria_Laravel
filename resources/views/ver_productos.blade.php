@@ -130,5 +130,104 @@
             });
         });
     });
+
+
+    // Importar los selectores globales
+import { $q, $qa } from './variablesGlobales';
+
+document.addEventListener("DOMContentLoaded", () => {
+    const contenedorProductos = $q(".productos__listado");
+    const filtrosRef = $q(".stock__filtro__texto");
+
+    // Variables para la categoría (qa) y la búsqueda (q)
+    let qa = new URLSearchParams(window.location.search).get('categoria'); // Obtiene la categoría de la URL (si existe)
+    let q = new URLSearchParams(window.location.search).get('q'); // Obtiene la búsqueda de la URL (si existe)
+
+    const cargarProductos = async (categoria = null, busqueda = null) => {
+        try {
+            let url = "/api/productos";
+            const params = new URLSearchParams();
+
+            if (categoria) {
+                url += `/${categoria}`;
+            }
+
+            if (busqueda) {
+                params.set("q", busqueda);
+            }
+
+            const finalUrl = params.toString() ? `${url}?${params.toString()}` : url;
+            const respuesta = await fetch(finalUrl);
+            const data = await respuesta.json();
+            console.log("URL pedida:", finalUrl);
+
+            // Limpiar el contenedor
+            contenedorProductos.innerHTML = "";
+
+            if (data.length === 0) {
+                contenedorProductos.innerHTML = "<p>No hay productos disponibles.</p>";
+                return;
+            }
+
+            // Actualizar los productos en la vista
+            data.forEach(producto => {
+                const caracteristicasHTML = producto.caracteristicas.map(c => `<li>${c}</li>`).join("");
+                const productoHTML = `
+                    <div class="producto stock__tarjeta__contenedor">
+                        <img src="${producto.imagen}" class="stock__tarjeta__contenedor__imagen" alt="${producto.descripcion}"/>
+                        <div class="stock__tarjeta__contenedor__contenido">
+                            <div class="stock__tarjeta__contenedor__contenido__descripcion">${producto.descripcion}</div>
+                            <div class="stock__tarjeta__contenedor__contenido__precio">Precio: $${parseFloat(producto.precio).toFixed(2)}</div>
+                            <div class="stock__tarjeta__contenedor__contenido__stock">Stock: ${producto.stock}</div>
+                            <div class="stock__tarjeta__contenedor__contenido__caracteristicas">
+                                <ul>${caracteristicasHTML}</ul>
+                            </div>
+                            <input type="number" name="producto_cantidad" value="" min="1" max="${producto.stock}" 
+                                placeholder="Cantidad" class="input-cantidad" data-id="${producto.id}" 
+                                data-imagen="${producto.imagen}" 
+                                data-descripcion="${producto.descripcion}" 
+                                data-precio="${producto.precio}" 
+                                data-stock="${producto.stock}" 
+                                data-caracteristicas='${JSON.stringify(producto.caracteristicas)}'>
+                        </div>
+                    </div>
+                    <div class="linea"></div>
+                `;
+                contenedorProductos.innerHTML += productoHTML;
+            });
+
+        } catch (error) {
+            console.error("Error al cargar productos:", error);
+            contenedorProductos.innerHTML = "<p>Error al cargar los productos.</p>";
+        }
+    };
+
+    // Configurar los botones de filtro
+    const contenedorFiltros = $q(".stock__filtro__listaDeFiltros");
+
+    contenedorFiltros.addEventListener("click", (e) => {
+        const boton = e.target.closest(".filtro-btn");
+        if (!boton) return;
+
+        e.preventDefault();
+        const categoria = boton.getAttribute("data-categoria") || null;
+        qa = categoria;
+        filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
+        cargarProductos(qa, q);
+    });
+
+
+    // Agregar evento para el filtro de búsqueda
+    const buscarInput = $q("#busqueda");
+    if (buscarInput) {
+        buscarInput.addEventListener("input", (e) => {
+            q = e.target.value; // Capturar el texto de búsqueda
+            cargarProductos(qa, q); // Cargar productos filtrados por búsqueda
+        });
+    }
+
+    cargarProductos(qa, q); // Cargar productos al inicio con la categoría y búsqueda actual
+});
+
 </script>
 @endsection

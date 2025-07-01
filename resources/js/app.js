@@ -1,6 +1,5 @@
 import '../tailwind/main.scss';
 import './variablesGlobales';
-import './filtros';
 import './agregar_al_carro';
 import './paypal';
 import './calendario';
