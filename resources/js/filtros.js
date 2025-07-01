@@ -1,3 +1,5 @@
+console.log("JS cargado correctamente");
+
 // Importar los selectores globales
 import { $q, $qa } from './variablesGlobales';
 
@@ -69,19 +71,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // Configurar los botones de filtro
-    const botonesFiltro = $qa(".filtro-btn"); // obtener todos los botones
-    botonesFiltro.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            e.preventDefault(); // Evitar recargar la página
-            const categoria = boton.getAttribute("data-categoria");
-            
-            console.log("Botón clickeado:", categoria);
+    const contenedorFiltros = $q(".stock__filtro__listaDeFiltros");
 
-            qa = categoria; // Actualizar la categoría seleccionada
-            filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
-            cargarProductos(qa, q); // Cargar productos filtrados por categoría
-        });
+    contenedorFiltros.addEventListener("click", (e) => {
+        const boton = e.target.closest(".filtro-btn");
+        if (!boton) return;
+
+        e.preventDefault();
+        const categoria = boton.getAttribute("data-categoria") || null;
+        qa = categoria;
+        filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
+        cargarProductos(qa, q);
     });
+
 
     // Agregar evento para el filtro de búsqueda
     const buscarInput = $q("#busqueda");
