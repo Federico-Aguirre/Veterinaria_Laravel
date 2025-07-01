@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
         boton.addEventListener("click", (e) => {
             e.preventDefault(); // Evitar recargar la página
             const categoria = boton.getAttribute("data-categoria");
+            
+            console.log("Botón clickeado:", categoria);
+
             qa = categoria; // Actualizar la categoría seleccionada
             filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
             cargarProductos(qa, q); // Cargar productos filtrados por categoría
