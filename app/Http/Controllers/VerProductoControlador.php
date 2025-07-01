@@ -3,21 +3,27 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProductoModel;
+
 
 class VerProductoControlador extends Controller
 {
-    public function apiProductos($categoria = null)
-    {
-        $ruta = storage_path('json/productos.json');
-        $productos = json_decode(file_get_contents($ruta), true);
-    
-        // Filtrar por categoría si es necesario
+    public function apiProductos($categoria = null, Request $request) {
+        $busqueda = $request->query('q');
+
+        $productos = ProductoModel::query();
+
         if ($categoria) {
-            $productos = array_filter($productos, fn($p) => $p['categoria'] === $categoria);
+            $productos->where('categoria', $categoria);
         }
-    
-        return response()->json(array_values($productos));
-    }    
+
+        if ($busqueda) {
+            $productos->where('descripcion', 'like', '%' . $busqueda . '%');
+        }
+
+        return response()->json($productos->get());
+    }
+
 
     public function mostrarProductos($categoria = null)
     {

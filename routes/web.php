@@ -154,11 +154,6 @@ Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleC
 Route::get('/auth/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('auth.facebook');
 Route::get('/auth/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
 
-use App\Http\Controllers\VerProductoControlador;
-Route::get('/ver_productos', [VerProductoControlador::class, 'mostrarProductos'])->name('ver_productos');
-// API que usa JavaScript
-Route::get('/api/productos/{categoria?}', [VerProductoControlador::class, 'apiProductos']);
-
 
 use App\Http\Controllers\CarroDeComprasControlador;
 
@@ -170,10 +165,13 @@ Route::post('/carro/agregar', [CarroDeComprasControlador::class, 'agregar'])
 
 Route::delete('/carro/remover/{id}', [CarroDeComprasControlador::class, 'removerDelCarro'])->name('carro.remover');
 
-
-
-
 Route::post('/carro/confirmar-compra', [CarroDeComprasControlador::class, 'confirmarCompra']);
+
+
+use App\Http\Controllers\VerProductoControlador;
+Route::get('/ver_productos', [VerProductoControlador::class, 'mostrarProductos'])->name('ver_productos');
+// API que usa JavaScript
+Route::get('/api/productos/{categoria?}', [VerProductoControlador::class, 'apiProductos']);
 
 
 
@@ -187,5 +185,5 @@ Route::post('/finalizar-compra', [ComprasRealizadasControlador::class, 'procesar
     ->middleware('auth')
     ->name('finalizar_compra');
 
-
-    Route::get('/obtenerCantidadProductosEnCarro', [CarroDeComprasControlador::class, 'obtenerCantidadProductosEnCarro']);
+    
+Route::get('/obtenerCantidadProductosEnCarro', [CarroDeComprasControlador::class, 'obtenerCantidadProductosEnCarro']);

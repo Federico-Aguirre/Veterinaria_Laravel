@@ -11,16 +11,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cargarProductos = async (categoria = null, busqueda = null) => {
         try {
-            let url = "/api/productos"; // URL sin categoría inicial
-            // Si hay categoría o búsqueda, se agregan a la URL
+            let url = "/api/productos";
+            const params = new URLSearchParams();
+
             if (categoria) {
                 url += `/${categoria}`;
             }
+
             if (busqueda) {
-                url += `?q=${busqueda}`;
+                params.set("q", busqueda);
             }
 
-            const respuesta = await fetch(url);
+            const finalUrl = params.toString() ? `${url}?${params.toString()}` : url;
+            const respuesta = await fetch(finalUrl);
             const data = await respuesta.json();
 
             // Limpiar el contenedor

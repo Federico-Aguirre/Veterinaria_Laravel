@@ -8,13 +8,13 @@ class ProductoModel extends Model
 {
     public static function getProductos()
     {
-        $path = storage_path('app/json/productos.json');
+        $path = resource_path('json/productos.json');
         return self::getProductosFromFile($path);
     }
 
     public static function getProductosByCategory($categoria)
     {
-        $path = storage_path('app/json/productos.json');
+        $path = resource_path('json/productos.json');
         $productos = self::getProductosFromFile($path);
         return isset($productos[$categoria]) ? $productos[$categoria] : [];
     }
