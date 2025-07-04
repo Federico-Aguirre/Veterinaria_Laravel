@@ -45,5 +45,5 @@
 
 @section('scripts')
     <script src="https://www.paypal.com/sdk/js?client-id=AZL3i6QxDcfN07Xvy9HtUZ9humz03Sn0S24Q_lM097VbNfZ0FNP7dH3PeMG-TIRufI1JPPSCN5WfeiCY&currency=USD"></script>
-    <script src="{{ asset('js/paypal.js') }}"></script>
+    @vite('resources/js/paypal.js')
 @endsection
