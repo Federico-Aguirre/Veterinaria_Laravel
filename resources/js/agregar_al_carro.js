@@ -58,4 +58,5 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Ocurrió un error al intentar agregar los productos.");
         }
     });
+});
 
