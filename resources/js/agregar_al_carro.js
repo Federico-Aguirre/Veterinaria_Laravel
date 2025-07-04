@@ -1,3 +1,5 @@
+import { $q, $qa } from './variablesGlobales';
+
 document.addEventListener("DOMContentLoaded", () => {
     const btnAgregar = $q("#btn-agregar-global");
 
