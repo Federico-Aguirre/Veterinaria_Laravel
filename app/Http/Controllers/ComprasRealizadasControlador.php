@@ -13,6 +13,10 @@ class ComprasRealizadasControlador extends Controller
 {
     public function procesarCompra()
     {
+        if (!Auth::check()) {
+            // Devuelve un error de autenticación en formato JSON
+            return response()->json(['success' => false, 'message' => 'No autenticado'], 401);
+        }
         $usuarioId = Auth::id();
         $productos = CarroDeComprasModel::where('id_cliente', $usuarioId)->get();
 

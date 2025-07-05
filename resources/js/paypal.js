@@ -42,27 +42,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         },
                         body: JSON.stringify({})
                     })
-                    .then(async res => {
-                        console.log('Finalizar compra - status:', res.status);
-                        const text = await res.text();
-                        console.log('Finalizar compra - respuesta cruda:', text);
-
-                        try {
-                            const data = JSON.parse(text);
-                            console.log('Finalizar compra - parseado:', data);
-
-                            if (data.success) {
-                                alert('Compra realizada con éxito.');
-                                window.location.href = data.redirect;
-                            } else {
-                                alert('Hubo un error al finalizar la compra.');
-                            }
-                        } catch (e) {
-                            console.error('Error al parsear JSON:', e);
-                            alert('Respuesta no válida del servidor.');
+                    .then(res => {
+                        console.log('Respuesta cruda:', res);
+                        if (!res.ok) {
+                            console.log('Error de respuesta: ', res.status, res.statusText);
+                            return res.text();  // Obtener el cuerpo de la respuesta como texto
                         }
+                        return res.json(); // Proceder con la respuesta en formato JSON
                     })
                     .then(data => {
+                        console.log('Data recibida:', data);
                         if (data.success) {
                             const contadorCarrito = document.getElementById('contador-carrito');
                             const carroContainer = document.querySelector('.carro-container');
