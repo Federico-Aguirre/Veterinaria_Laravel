@@ -27,9 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     credentials: 'same-origin'  // <-- para enviar cookies con la petición
                 })
-                .then(res => res.json())
+                .then(res => {
+                    console.log('Response status:', res.status);
+                    return res.json();
+                })
                 .then(data => {
-
+                    console.log('Data:', data);
                     // Ahora, finalizamos la compra
                     fetch('/finalizar-compra', {
                         method: 'POST',
