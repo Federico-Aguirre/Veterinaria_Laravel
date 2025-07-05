@@ -8,6 +8,7 @@ export default defineConfig({
     laravel({
       input: [
         'resources/js/app.js',  // Archivo JS principal
+        'resources/js/paypal.js',
         'resources/tailwind/main.scss',  // Tu archivo SCSS
       ],
       refresh: true,

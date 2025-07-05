@@ -1,12 +1,18 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app-DdPFT3qn.js",
+    "file": "assets/app-CuwdDtRB.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
       "assets/app-B6cxhc0C.css"
     ]
+  },
+  "resources/js/paypal.js": {
+    "file": "assets/paypal-R8cw-XIl.js",
+    "name": "paypal",
+    "src": "resources/js/paypal.js",
+    "isEntry": true
   },
   "resources/tailwind/main.scss": {
     "file": "assets/app-B6cxhc0C.css",
