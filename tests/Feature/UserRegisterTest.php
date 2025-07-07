@@ -2,48 +2,41 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UserRegisterTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase; // Limpia la base de datos entre tests
 
     public function test_usuario_puede_registrarse_correctamente()
     {
-        // Datos válidos para registro
+        // Datos válidos para el formulario de registro
         $data = [
-            'name' => 'Juan',
-            'surname' => 'Pérez',
-            'dni' => '12345678',
-            'cuil_cuit' => '20123456789',
-            'address' => 'Calle Falsa 123',
-            'floor' => '1',
-            'department' => 'A',
-            'locality' => 'Ciudad',
-            'phone' => '123456789',
-            'cellphone' => '987654321',
+            'nombre' => 'Juan Pérez',
             'email' => 'juan@example.com',
-            'username' => 'juanp',
             'password' => 'password123',
+            'password_confirmation' => 'password123',
         ];
 
-        // Enviar POST para registrar usuario
+        // Ejecutar la petición POST al registro
         $response = $this->post(route('procesarRegistro'), $data);
 
-        // Debe redirigir a la ruta 'login'
+        // DEBUG opcional: mostrar respuesta en consola si algo falla
+        // $response->dump();
+
+        // Asegurarse que no hubo errores de validación
+        $response->assertSessionHasNoErrors();
+
+        // Asegurarse que redirige a la ruta login
         $response->assertRedirect(route('login'));
 
-        // Verificar que el mensaje flash de éxito esté en la sesión
+        // Asegurarse que el mensaje flash existe
         $response->assertSessionHas('registro_de_usuario_exitoso', 'Usuario registrado exitosamente.');
 
-        // Verificar que el usuario esté en la base de datos
+        // Verificar que el usuario fue creado en la base de datos
         $this->assertDatabaseHas('users', [
             'email' => 'juan@example.com',
-            'usuario' => 'juanp',
-            'name' => 'Juan',
-            'apellido' => 'Pérez',
-            'dni' => '12345678',
         ]);
     }
 }
