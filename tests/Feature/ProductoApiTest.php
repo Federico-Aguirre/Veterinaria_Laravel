@@ -25,7 +25,6 @@ class ProductoApiTest extends TestCase
         $this->assertIsArray($data, 'El contenido del JSON no es un array válido.');
         $this->assertNotEmpty($data, 'El array de productos está vacío.');
 
-        // Opcional: validar estructura de cada producto (si querés más precisión)
         foreach ($data as $producto) {
             $this->assertArrayHasKey('id', $producto);
             $this->assertArrayHasKey('descripcion', $producto);
