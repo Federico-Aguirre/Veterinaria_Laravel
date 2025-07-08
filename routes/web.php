@@ -37,10 +37,6 @@ Route::get('/conexion.php', function () {
     return view('conexion');
 })->name('conexion');
 
-Route::get('/agregar_turno.php', function () {
-    return view('agregar_turno');
-})->name('agregar_turno');
-
 use App\Http\Controllers\ContactoControlador;
 
 // Ruta para mostrar el formulario de contacto
@@ -103,10 +99,13 @@ Route::delete('/borrar_mascota/{id}', [BorrarMascotaControlador::class, 'destroy
 
 use App\Http\Controllers\AgregarTurnoControlador;
 // Ruta para mostrar el formulario de agregar turno
-Route::get('/agregar_turno', [AgregarTurnoControlador::class, 'create'])->name('agregar_turno_formulario');
-// Ruta para procesar el formulario de agregar turno
-Route::post('/agregar_turno', [AgregarTurnoControlador::class, 'store'])->name('agregar_turno');
-Route::post('/verificar-turno', [AgregarTurnoControlador::class, 'verificarTurno'])->name('verificar_turno');
+// Proteger todas las rutas relacionadas con agregar turno
+Route::middleware('auth')->group(function () {
+    Route::get('/agregar_turno', [AgregarTurnoControlador::class, 'create'])->name('agregar_turno_formulario');
+    Route::post('/agregar_turno', [AgregarTurnoControlador::class, 'store'])->name('agregar_turno');
+    Route::post('/verificar-turno', [AgregarTurnoControlador::class, 'verificarTurno'])->name('verificar_turno');
+});
+
 
 use App\Http\Controllers\EditarTurnoControlador;
 // Ruta para mostrar el formulario de seleccionar turno y editarlo

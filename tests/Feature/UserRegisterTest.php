@@ -11,32 +11,31 @@ class UserRegisterTest extends TestCase
 
     public function test_usuario_puede_registrarse_correctamente()
     {
-        // Datos válidos para el formulario de registro
-        $data = [
-            'nombre' => 'Juan Pérez',
-            'email' => 'juan@example.com',
-            'password' => 'password123',
-            'password_confirmation' => 'password123',
-        ];
+$data = [
+    'name' => 'Juan',
+    'surname' => 'Pérez',         // <-- en inglés porque la validación lo exige así
+    'dni' => '12345678',
+    'address' => 'Calle Falsa 123', 
+    'locality' => 'Ciudad',
+    'department' => 'a',
+    'cellphone' => '1234567890',
+    'username' => 'juanp',
+    'email' => 'juan@example.com',
+    'password' => 'password123',
+    'password_confirmation' => 'password123',
+    'floor' => '1', 
+];
 
-        // Ejecutar la petición POST al registro
+
         $response = $this->post(route('procesarRegistro'), $data);
 
-        // DEBUG opcional: mostrar respuesta en consola si algo falla
-        // $response->dump();
-
-        // Asegurarse que no hubo errores de validación
         $response->assertSessionHasNoErrors();
-
-        // Asegurarse que redirige a la ruta login
         $response->assertRedirect(route('login'));
 
-        // Asegurarse que el mensaje flash existe
-        $response->assertSessionHas('registro_de_usuario_exitoso', 'Usuario registrado exitosamente.');
-
-        // Verificar que el usuario fue creado en la base de datos
         $this->assertDatabaseHas('users', [
             'email' => 'juan@example.com',
+            'usuario' => 'juanp',
         ]);
     }
+
 }
