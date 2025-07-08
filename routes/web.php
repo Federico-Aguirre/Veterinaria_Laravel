@@ -185,3 +185,7 @@ Route::post('/finalizar-compra', [ComprasRealizadasControlador::class, 'procesar
 
     
 Route::get('/obtenerCantidadProductosEnCarro', [CarroDeComprasControlador::class, 'obtenerCantidadProductosEnCarro']);
+
+use App\Http\Controllers\Auth\SocialController;
+Route::get('/login/{provider}', [SocialController::class, 'redirect']);
+Route::get('/login/{provider}/callback', [SocialController::class, 'callback']);
