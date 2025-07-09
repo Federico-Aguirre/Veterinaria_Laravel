@@ -16,16 +16,19 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
 
     // Los campos que son asignables en masa
     protected $fillable = [
-        'usuario',
         'name',
         'apellido',
+        'dni',
+        'cuil_cuit',
         'direccion',
         'piso',
         'departamento',
         'localidad',
         'telefono',
         'celular',
-        'email'
+        'email',
+        'usuario',
+        'password',
     ];
 
     // Laravel gestiona automáticamente los timestamps (created_at, updated_at)
