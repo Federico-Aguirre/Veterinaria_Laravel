@@ -17,39 +17,43 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
+        // Obtener el usuario desde Google
         $socialUser = Socialite::driver($provider)->user();
 
-        // Separar nombre y apellido si es posible
+        // Intentar extraer nombre y apellido
         $givenName = $socialUser->user['given_name'] ?? null;
-        $familyName = $socialUser->user['family_name'] ?? null;
+        $familyName = $socialUser->user['family_name'] ?? '';
 
-        // Buscar o crear el usuario
-        $user = User::firstOrCreate(
-            ['email' => $socialUser->getEmail()],
-            [
-                'name' => $givenName ?? $socialUser->getName(),
-                'apellido' => $familyName ?? '',
-                'email' => $socialUser->getEmail(),
-                'password' => bcrypt(Str::random(16)),
-                'usuario' => 'google_' . Str::random(8),
-                'piso' => 0,
+        // Verificar si ya existe un usuario con este email
+        $user = User::where('email', $socialUser->getEmail())->first();
+
+        if (!$user) {
+            // Crear el nuevo usuario con valores por defecto seguros
+            $user = User::create([
+                'name'         => $givenName ?? $socialUser->getName(),
+                'apellido'     => $familyName,
+                'email'        => $socialUser->getEmail(),
+                'password'     => bcrypt(Str::random(16)), // Contraseña ficticia
+                'usuario'      => 'google_' . Str::random(8),
+                'piso'         => 0,
                 'departamento' => '',
-                'direccion' => '',
-                'localidad' => '',
-                'telefono' => '',
-                'celular' => '',
-                'dni' => '',
-                'cuil_cuit' => '',
-            ]
-        );
-
-        Auth::login($user);
-
-        // Verificar si faltan datos críticos
-        if (empty($user->telefono) || empty($user->dni)) {
-            return redirect('/completar-perfil');
+                'direccion'    => '',
+                'localidad'    => '',
+                'telefono'     => '',
+                'celular'      => '',
+                'dni'          => '',
+                'cuil_cuit'    => '',
+            ]);
         }
 
-        return redirect('/home');
+        // Loguear al usuario
+        Auth::login($user);
+
+        // Redirigir si faltan datos importantes
+        if (empty($user->telefono) || empty($user->dni)) {
+            return redirect('/completar-perfil'); // Asegurate de tener esta ruta
+        }
+
+        return redirect('/home'); // Redirige al home si todo está bien
     }
 }
