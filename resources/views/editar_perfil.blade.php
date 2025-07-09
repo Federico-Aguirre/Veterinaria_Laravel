@@ -6,10 +6,10 @@
     </script>
 @endif
 
-@if (session('complete_datos_de_perfil'))
-    <div>
-        {{ session('complete_datos_de_perfil') }}
-    </div>
+@if(session('complete_datos_de_perfil'))
+    <script>
+        alert("{{ session('complete_datos_de_perfil') }}");
+    </script>
 @endif
 
 @section('content')

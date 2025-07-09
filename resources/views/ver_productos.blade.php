@@ -182,61 +182,64 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = "/editar_perfil";
             return;
         }
+        
+        else {
 
-        let productos = [];
-        document.querySelectorAll('.producto').forEach(producto => {
-            let inputCantidad = producto.querySelector('input[name="producto_cantidad"]');
-            let cantidad = inputCantidad.value;
+            let productos = [];
+            document.querySelectorAll('.producto').forEach(producto => {
+                let inputCantidad = producto.querySelector('input[name="producto_cantidad"]');
+                let cantidad = inputCantidad.value;
 
-            if (!cantidad || cantidad < 1) return;
+                if (!cantidad || cantidad < 1) return;
 
-            let caracteristicas = [];
-            try {
-                caracteristicas = JSON.parse(inputCantidad.getAttribute('data-caracteristicas')) || [];
-            } catch (error) {
-                console.error("Error al parsear características:", error);
-            }
+                let caracteristicas = [];
+                try {
+                    caracteristicas = JSON.parse(inputCantidad.getAttribute('data-caracteristicas')) || [];
+                } catch (error) {
+                    console.error("Error al parsear características:", error);
+                }
 
-            productos.push({
-                producto_id: inputCantidad.getAttribute('data-id'),
-                producto_cantidad: cantidad,
-                producto_imagen: inputCantidad.getAttribute('data-imagen'),
-                producto_descripcion: inputCantidad.getAttribute('data-descripcion'),
-                producto_precio: inputCantidad.getAttribute('data-precio'),
-                producto_stock: inputCantidad.getAttribute('data-stock'),
-                producto_caracteristicas: caracteristicas,
-                producto_categoria: inputCantidad.getAttribute('data-categoria')
+                productos.push({
+                    producto_id: inputCantidad.getAttribute('data-id'),
+                    producto_cantidad: cantidad,
+                    producto_imagen: inputCantidad.getAttribute('data-imagen'),
+                    producto_descripcion: inputCantidad.getAttribute('data-descripcion'),
+                    producto_precio: inputCantidad.getAttribute('data-precio'),
+                    producto_stock: inputCantidad.getAttribute('data-stock'),
+                    producto_caracteristicas: caracteristicas,
+                    producto_categoria: inputCantidad.getAttribute('data-categoria')
+                });
             });
-        });
 
-        if (productos.length === 0) {
-            alert("Escriba la cantidad deseada para al menos un producto.");
-            return;
-        }
-
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-        fetch("{{ route('agregar_al_carro') }}", {
-            method: "POST",
-            headers: {
-                "X-CSRF-TOKEN": csrfToken,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ productos })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Respuesta del servidor:", data);
-            if (data.success) {
-                alert("Productos agregados al carrito.");
-                location.reload();
-            } else {
-                alert("Error: " + data.error);
+            if (productos.length === 0) {
+                alert("Escriba la cantidad deseada para al menos un producto.");
+                return;
             }
-        })
-        .catch(error => {
-            console.error("Error en la petición:", error);
-        });
+
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            fetch("{{ route('agregar_al_carro') }}", {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": csrfToken,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ productos })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                if (data.success) {
+                    alert("Productos agregados al carrito.");
+                    location.reload();
+                } else {
+                    alert("Error: " + data.error);
+                }
+            })
+            .catch(error => {
+                console.error("Error en la petición:", error);
+            });
+        }
     });
 
     cargarProductos(qa, q);
