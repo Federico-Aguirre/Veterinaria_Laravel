@@ -173,12 +173,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('btn-agregar-global').addEventListener('click', function () {
         if (!isLoggedIn) {
             alert("Debes loguearte para agregar un producto al carro.");
+            window.location.href = "/login";
             return;
         }
 
         if (!perfilCompleto) {
             alert("Por favor completa tu perfil para poder continuar.");
-            window.location.href = "/editar-perfil";
+            window.location.href = "/editar_perfil";
             return;
         }
 

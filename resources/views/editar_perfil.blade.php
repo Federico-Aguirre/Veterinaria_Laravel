@@ -6,6 +6,12 @@
     </script>
 @endif
 
+@if (session('complete_datos_de_perfil'))
+    <div>
+        {{ session('complete_datos_de_perfil') }}
+    </div>
+@endif
+
 @section('content')
     <section class="editarPerfil formulario">
         <div class="contenedor-formularios">
