@@ -17,6 +17,12 @@ class SocialController extends Controller
 
     public function callback($provider)
     {
+        try {
+            $socialUser = Socialite::driver($provider)->user();
+        } catch (\Exception $e) {
+            dd('Error al obtener usuario socialite:', $e->getMessage());
+        }
+        
         // Obtener el usuario desde Google
         $socialUser = Socialite::driver($provider)->user();
 
