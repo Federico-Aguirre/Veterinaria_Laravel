@@ -11,7 +11,7 @@ class SocialController extends Controller
 {
     public function redirect($provider)
     {
-        dd(Socialite::driver('google')->redirect()->getTargetUrl());
+        return Socialite::driver($provider)->redirect();
     }
 
     public function callback($provider)
