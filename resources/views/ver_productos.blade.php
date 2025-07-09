@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+    $user = Auth::user();
+    $perfilCompleto = Auth::check() &&
+        $user->name &&
+        $user->apellido &&
+        $user->email &&
+        $user->direccion &&
+        $user->departamento &&
+        $user->localidad &&
+        $user->dni &&
+        $user->cuil_cuit &&
+        $user->piso !== null &&
+        $user->created_at &&
+        $user->updated_at;
+@endphp
+
 <section class="productos stock seccion">
     <div class="stock__filtro">
         <div class="stock__filtro__texto">
@@ -55,14 +72,19 @@
         @endif
     </div>
 
-    <button id="btn-agregar-global" class="
-        fixed bottom-[44px] left-1/2 transform -translate-x-1/2 bg-green hover:bg-skyBlue
+    <button id="btn-agregar-global" class="fixed bottom-[44px] left-1/2 transform -translate-x-1/2 bg-green hover:bg-skyBlue
         text-white font-bold py-2 px-4 rounded transition duration-300 w-[200px] z-50
-        custom:top-1/2 custom:right-[250px] custom:left-auto custom:bottom-auto custom:transform custom:-translate-y-1/2 custom:translate-x-0"
-    >Agregar al carro</button>
+        custom:top-1/2 custom:right-[250px] custom:left-auto custom:bottom-auto custom:transform custom:-translate-y-1/2 custom:translate-x-0">
+        Agregar al carro
+    </button>
 </section>
 
-<!-- Script para manejar el botón global -->
+<script>
+    const isLoggedIn = @json(Auth::check());
+    const perfilCompleto = @json($perfilCompleto);
+</script>
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     console.log("🚀 JS embebido cargado");
@@ -148,11 +170,15 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // BOTÓN "AGREGAR AL CARRO"
     document.getElementById('btn-agregar-global').addEventListener('click', function () {
-        const isLoggedIn = JSON.parse("{{ Auth::check() ? 'true' : 'false' }}");
         if (!isLoggedIn) {
-            alert("Debes logearte para agregar un producto al carro.");
+            alert("Debes loguearte para agregar un producto al carro.");
+            return;
+        }
+
+        if (!perfilCompleto) {
+            alert("Por favor completa tu perfil para poder continuar.");
+            window.location.href = "/editar-perfil";
             return;
         }
 
@@ -212,7 +238,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Cargar productos al iniciar
     cargarProductos(qa, q);
 });
 </script>
