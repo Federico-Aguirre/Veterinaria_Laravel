@@ -57,7 +57,7 @@ class SocialController extends Controller
 
         // Redirigir si faltan datos importantes
         if (empty($user->telefono) || empty($user->dni)) {
-            return redirect('/editar-perfil')->with('alerta', 'Por favor, complete los datos restantes.');
+            return redirect('/editar_perfil')->with('alerta', 'Por favor, complete los datos restantes.');
         }
 
         return redirect('/home'); // Redirige al home si todo está bien
