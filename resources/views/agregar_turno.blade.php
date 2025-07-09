@@ -79,8 +79,10 @@
                         </form>
                     @else
                         <script type="text/javascript">
-                            alert("Debes iniciar sesión para solicitar turnos");
-                            window.location = "{{ route('login') }}";
+                            document.addEventListener('DOMContentLoaded', function () {
+                                alert("Debes iniciar sesión para solicitar turnos");
+                                window.location = "{{ route('login') }}";
+                            });
                         </script>
                     @endif
                 </div>
