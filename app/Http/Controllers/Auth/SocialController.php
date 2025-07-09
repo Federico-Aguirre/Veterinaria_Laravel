@@ -22,7 +22,7 @@ class SocialController extends Controller
         } catch (\Exception $e) {
             dd('Error al obtener usuario socialite:', $e->getMessage());
         }
-        
+
         // Obtener el usuario desde Google
         $socialUser = Socialite::driver($provider)->user();
 
@@ -57,7 +57,7 @@ class SocialController extends Controller
 
         // Redirigir si faltan datos importantes
         if (empty($user->telefono) || empty($user->dni)) {
-            return redirect('/completar-perfil'); // Asegurate de tener esta ruta
+            return redirect('/editar-perfil')->with('alerta', 'Por favor, complete los datos restantes.');
         }
 
         return redirect('/home'); // Redirige al home si todo está bien
