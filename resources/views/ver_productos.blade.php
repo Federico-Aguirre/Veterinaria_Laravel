@@ -80,12 +80,7 @@
 </section>
 
 <script>
-    const isLoggedIn = @json(Auth::check());
-    const perfilCompleto = @json($perfilCompleto);
-</script>
 
-
-<script>
 document.addEventListener("DOMContentLoaded", function () {
     console.log("🚀 JS embebido cargado");
 
@@ -170,6 +165,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    const isLoggedIn = @json(Auth::check());
+    const perfilCompleto = @json($perfilCompleto);
+
     document.getElementById('btn-agregar-global').addEventListener('click', function () {
         if (!isLoggedIn) {
             alert("Debes loguearte para agregar un producto al carro.");
@@ -180,9 +178,10 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!perfilCompleto) {
             alert("Por favor completa tu perfil para poder continuar.");
             window.location.href = "/editar_perfil";
-            return;
+            event.stopImmediatePropagation();
+            return false;
         }
-        
+
         else {
 
             let productos = [];
