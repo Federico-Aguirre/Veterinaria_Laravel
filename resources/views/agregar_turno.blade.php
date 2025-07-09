@@ -1,31 +1,10 @@
 @extends('layouts.app')
 
-@php
-    $user = Auth::user();
-    $perfilCompleto = Auth::check() &&
-        $user->name &&
-        $user->apellido &&
-        $user->email &&
-        $user->direccion &&
-        $user->departamento &&
-        $user->localidad &&
-        $user->dni &&
-        $user->cuil_cuit &&
-        $user->piso !== null &&
-        $user->created_at &&
-        $user->updated_at;
-@endphp
-
 @if(session('turno_creado_exitosamente'))
     <script>
         alert("{{ session('turno_creado_exitosamente') }}");
     </script>
 @endif
-
-<script>
-    const isLoggedIn = @json(Auth::check());
-    const perfilCompleto = @json($perfilCompleto);
-</script>
 
 @section('content')
     <section class="agregarTurno formulario">
@@ -41,6 +20,20 @@
                 <div id="agregar-turno">
                     <br />
                     @if(Auth::check())
+
+                        @php
+                            $user = Auth::user();
+                            $perfilCompleto = $user->name &&
+                                $user->apellido &&
+                                $user->email &&
+                                $user->direccion &&
+                                $user->departamento &&
+                                $user->localidad &&
+                                $user->dni &&
+                                $user->cuil_cuit &&
+                                $user->piso !== null;
+                        @endphp
+
                         <form id="form-turno" action="{{ route('agregar_turno') }}" method="post" class="turnos__formulario">
                             @csrf
                             <div class="contenedor-input turnos__formulario__titulo">
@@ -74,36 +67,33 @@
                                 <label for="textarea">Mensaje</label>
                                 <textarea id="textarea" name="Mensaje"></textarea>
                             </div>
-
+                            
                             <input type="submit" value="Enviar">
                         </form>
+
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function () {
+                                const perfilCompleto = @json($perfilCompleto);
+                                const form = document.getElementById('form-turno');
+
+                                form.addEventListener('submit', function (event) {
+                                    if (!perfilCompleto) {
+                                        event.preventDefault();
+                                        alert("Por favor completa tu perfil para poder continuar.");
+                                        window.location.href = "/editar_perfil";
+                                    }
+                                });
+                            });
+                        </script>
+
                     @else
                         <script type="text/javascript">
-                            document.addEventListener('DOMContentLoaded', function () {
-                                alert("Debes iniciar sesión para solicitar turnos");
-                                window.location = "{{ route('login') }}";
-                            });
+                            alert("Debes iniciar sesión para solicitar turnos");
+                            window.location = "{{ route('login') }}";
                         </script>
                     @endif
                 </div>
             </div>
         </div>
     </section>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('form-turno');
-
-            if (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!perfilCompleto) {
-                        event.preventDefault(); // Detiene el envío
-                        alert("Por favor completa tu perfil para poder continuar.");
-                        window.location.href = "/editar_perfil";
-                        return false;
-                    }
-                });
-            }
-        });
-    </script>
 @endsection
