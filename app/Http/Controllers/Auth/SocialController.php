@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
+use App\Models\CrearUsuarioModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
@@ -25,11 +25,11 @@ class SocialController extends Controller
         $familyName = $socialUser->user['family_name'] ?? '';
 
         // Verificar si ya existe un usuario con este email
-        $user = User::where('email', $socialUser->getEmail())->first();
+        $user = CrearUsuarioModel::where('email', $socialUser->getEmail())->first();
 
         if (!$user) {
             // Crear el nuevo usuario con valores por defecto seguros
-            $user = User::create([
+            $user = CrearUsuarioModel::create([
                 'name'         => $givenName ?? $socialUser->getName(),
                 'apellido'     => $familyName,
                 'email'        => $socialUser->getEmail(),
