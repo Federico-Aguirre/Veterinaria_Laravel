@@ -72,9 +72,8 @@
         @endif
     </div>
 
-    <button id="btn-agregar-global" class="fixed top-[80vh] left-1/2 transform -translate-x-1/2 bg-green hover:bg-skyBlue
-        text-white font-bold py-2 px-4 rounded transition duration-300 w-[200px] z-50
-        custom:top-1/2 custom:right-[250px]">
+    <button id="btn-agregar-global" class="fixed top-[10vh] left-1/2 transform -translate-x-1/2 bg-green hover:bg-skyBlue
+        text-white font-bold py-2 px-4 rounded transition duration-300 w-[200px] z-50">
         Agregar al carro
     </button>
 </section>
