@@ -74,7 +74,7 @@
 
     <button id="btn-agregar-global" class="fixed top-[80vh] left-1/2 transform -translate-x-1/2 bg-green hover:bg-skyBlue
         text-white font-bold py-2 px-4 rounded transition duration-300 w-[200px] z-50
-        custom:top-1/2 custom:right-[250px] custom:left-auto custom:bottom-auto custom:transform custom:-translate-y-1/2 custom:translate-x-0">
+        custom:top-1/2 custom:right-[250px]">
         Agregar al carro
     </button>
 </section>
