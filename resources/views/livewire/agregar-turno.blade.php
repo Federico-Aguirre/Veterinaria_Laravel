@@ -5,7 +5,7 @@
         <label for="turnoAEditar">Seleccionar Turno</label>
         <select id="turnoAEditar" wire:model="turnoSeleccionado" class="turnos__formulario__select">
             <option value="">Elegí un turno</option>
-            @foreach($turnos as $turno)
+            @forelse($turnos ?? [] as $turno)
                 <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
             @endforeach
         </select>
