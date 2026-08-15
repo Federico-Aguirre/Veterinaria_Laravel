@@ -8,7 +8,7 @@
             <div class="productos__listado stock__tarjeta">
                 @foreach($compras as $compra)
                     <div class="producto stock__tarjeta__contenedor">
-                        <img src="{{ $compra->producto_imagen }}" class="stock__tarjeta__contenedor__imagen" alt="Producto">
+                        <x-picture :src="{{ $compra->producto_imagen }}" class="stock__tarjeta__contenedor__imagen" alt="Producto" />
                         <div class="stock__tarjeta__contenedor__contenido">
                             <div class="stock__tarjeta__contenedor__contenido__descripcion">{{ $compra->producto_descripcion }}</div>
                             <div class="stock__tarjeta__contenedor__contenido__cantidad">Cantidad: {{ $compra->producto_cantidad }}</div>

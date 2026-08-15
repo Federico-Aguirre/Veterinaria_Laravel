@@ -10,7 +10,7 @@
         <div class="productos__listado stock__tarjeta">
             @foreach($productos as $producto)
                 <div class="producto stock__tarjeta__contenedor" id="producto-{{ $producto->id }}">
-                    <img src="{{ $producto->producto_imagen }}" class="stock__tarjeta__contenedor__imagen" />
+                    <x-picture :src="{{ $producto->producto_imagen }}" class="stock__tarjeta__contenedor__imagen" />
                     <div class="stock__tarjeta__contenedor__contenido">
                         <div class="stock__tarjeta__contenedor__contenido__descripcion">{{ $producto->producto_descripcion }}</div>
                         <div class="stock__tarjeta__contenedor__contenido__precio">Precio unitario: ${{ number_format($producto->producto_precio, 2, ',', '.') }}</div>

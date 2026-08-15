@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
 
         <!-- Logo -->
         <div class="flex items-center">
-            <img src="{{ asset('imagenes/logo.png') }}" alt="logo" class="h-10">
+            <x-picture src="imagenes/logo.png" alt="logo" class="h-10" />
         </div>
 
         <!-- Links centrados -->
@@ -34,7 +34,7 @@
                     </form>
                 </li>
                 <li class="hidden md:flex items-center gap-2">
-                    <img src="{{ asset('imagenes/iconos/usuario.svg') }}" class="h-6"/>
+                    <x-picture src="imagenes/iconos/usuario.svg" class="h-6" />
                     <div>{{ Auth::user()->name }}</div>
                 </li>
 
@@ -102,9 +102,9 @@
 
 {{-- Botón de WhatsApp --}}
 <a href="https://api.whatsapp.com/send?phone=+5491155912380&text=Hola! Quisiera más información!" target="_blank">
-    <img src="{{ asset('imagenes/iconos/whatsapp2.png') }}" 
+    <x-picture src="imagenes/iconos/whatsapp2.png" 
         class="globalWhatsapp transition-all duration-[250ms] ease-in h-[80px] w-[80px] fixed right-[50px] bottom-[50px] hover:scale-[1.2]
-        sm:right-[60px] sm:bottom-[60px] lg:right-[70px] lg:bottom-[70px]"/>
+        sm:right-[60px] sm:bottom-[60px] lg:right-[70px] lg:bottom-[70px]" />
 </a>
 
 {{-- Contenido principal --}}

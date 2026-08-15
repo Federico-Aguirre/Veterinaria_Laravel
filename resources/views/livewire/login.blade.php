@@ -30,10 +30,10 @@
 
                     <div class="login__icon-container">
                         <a href="{{ url('/login/google') }}" class="btn btn-danger login__icon-container__icon-link">
-                            <img src="{{ asset('imagenes/iconos/google_icon.svg') }}" alt="google icon">
+                            <x-picture src="{{ asset('imagenes/iconos/google_icon.svg') }}" alt="google icon" />
                         </a>
                         <a href="{{ url('/login/facebook') }}" class="btn btn-primary login__icon-container__icon-link">
-                            <img src="{{ asset('imagenes/iconos/facebook_icon.svg') }}" alt="facebook icon">
+                            <x-picture src="{{ asset('imagenes/iconos/facebook_icon.svg') }}" alt="facebook icon" />
                         </a>
                     </div>
                 </div>

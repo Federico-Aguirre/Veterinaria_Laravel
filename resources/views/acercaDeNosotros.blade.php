@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <section class="acercaDeNosotros seccion flex flex-col items-center font-semibold -mb-[18px]">
-    <img src="../imagenes/acercaDeNosotros__ImagenPrincipal.jpg" alt="imagen principal" class="flex flex-col items-center font-semibold acercaDeNosotros__imagenPrincipal">
+    <x-picture src="imagenes/acercaDeNosotros__ImagenPrincipal.jpg" alt="imagen principal" class="flex flex-col items-center font-semibold acercaDeNosotros__imagenPrincipal" />
 
     <div class="acercaDeNosotros__textoPrincipal pt-[30px] -mb-[18px]">
         +Cota nació del amor incondicional hacia los animales y el deseo de proporcionarles el más alto nivel de atención veterinaria.

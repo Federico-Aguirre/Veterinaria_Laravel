@@ -27,7 +27,7 @@
         @if(count($productos) > 0)
             @foreach($productos as $producto)
                 <div class="producto stock__tarjeta__contenedor">
-                    <img src="{{ $producto['imagen'] }}" class="stock__tarjeta__contenedor__imagen"/>
+                    <x-picture src="{{ $producto['imagen'] }}" class="stock__tarjeta__contenedor__imagen"/>
                     <div class="stock__tarjeta__contenedor__contenido">
                         <div class="stock__tarjeta__contenedor__contenido__descripcion">{{ $producto['descripcion'] }}</div>
                         <div class="stock__tarjeta__contenedor__contenido__precio">Precio: ${{ number_format($producto['precio'], 2) }}</div>
