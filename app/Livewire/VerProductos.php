@@ -11,54 +11,56 @@ class VerProductos extends Component
     public $productos = [];
     public $categoria = null;
     public $busqueda = '';
-    public $perfilCompleto;
+    public $perfilCompleto = false;
 
+    public function mount()
+    {
+        $this->cargarProductos();
 
-public function mount()
-{
-    $this->cargarProductos();
-
-    $user = Auth::user();
-    $this->perfilCompleto = Auth::check() &&
-        $user->name &&
-        $user->apellido &&
-        $user->email &&
-        $user->direccion &&
-        $user->departamento &&
-        $user->localidad &&
-        $user->dni &&
-        $user->cuil_cuit &&
-        $user->piso !== null &&
-        $user->created_at &&
-        $user->updated_at;
-}
-
+        // Verificar si hay usuario y validar perfil sin riesgo de error de propiedad nula
+        if (Auth::check()) {
+            $user = Auth::user();
+            $this->perfilCompleto = (bool) (
+                $user->name &&
+                $user->apellido &&
+                $user->email &&
+                $user->direccion &&
+                $user->departamento &&
+                $user->localidad &&
+                $user->dni &&
+                $user->cuil_cuit &&
+                $user->piso !== null
+            );
+        } else {
+            $this->perfilCompleto = false;
+        }
+    }
 
     public function cargarProductos()
     {
-        $path = resource_path('json/productos.json'); // Usar slash normal /
+        // Verifica que en tu proyecto la carpeta sea resources/json/productos.json (todo en minúsculas)
+        $path = resource_path('json/productos.json');
 
         if (!File::exists($path)) {
             $this->productos = [];
             return;
         }
 
-        // Leer el archivo JSON directamente
-        $data = json_decode(File::get($path), true);
+        $data = json_decode(File::get($path), true) ?? [];
 
-        // Filtrar por categoría si existe
+        // Filtrar por categoría
         if ($this->categoria) {
-            $data = array_filter($data, fn($p) => $p['categoria'] === $this->categoria);
+            $data = array_filter($data, fn($p) => isset($p['categoria']) && $p['categoria'] === $this->categoria);
         }
 
-        // Filtrar por búsqueda si existe
+        // Filtrar por búsqueda
         if ($this->busqueda) {
             $data = array_filter($data, fn($p) =>
-                str_contains(strtolower($p['descripcion']), strtolower($this->busqueda))
+                isset($p['descripcion']) && str_contains(strtolower($p['descripcion']), strtolower($this->busqueda))
             );
         }
 
-        $this->productos = array_values($data); // Reindexar el array
+        $this->productos = array_values($data);
     }
 
     public function setCategoria($categoria = null)
