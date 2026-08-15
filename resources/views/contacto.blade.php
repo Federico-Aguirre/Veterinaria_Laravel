@@ -12,19 +12,25 @@
       <h1 class="text-white font-light mb-[40px] text-[24px] text-center">Envíe su contacto</h1>
 
       @if(session('success'))
-        <p style="color: green;">{{ session('success') }}</p>
+        <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            alert("{{ session('success') }}");
+          });
+        </script>
       @endif
 
-      <form class="flex flex-col w-full" action="https://formsubmit.co/fede.dev3@gmail.com" method="POST">
-        @csrf
+      <form class="flex flex-col w-full" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="ddbc571d-06d8-4b1e-a588-5cc004de6e72">
+
         <label for="Nombre">Nombre</label>
         <input type="text" name="Nombre" required style="color: black;">
 
         <label for="Email">Correo electrónico</label>
         <input type="email" name="Email" required style="color: black;">
 
-        <label for="Asunto">Asunto</label>
-        <input type="text" name="Asunto" style="color: black;">
+        <label for="_subject">Asunto</label>
+        {{-- 💡 Usar name="_subject" hace que FormSubmit use este texto como asunto del email recibido --}}
+        <input type="text" name="_subject" style="color: black;">
 
         <label for="Comentarios">Comentarios</label>
         <textarea name="Comentarios" cols="50" rows="5" required style="color: black;"></textarea>

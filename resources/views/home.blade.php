@@ -1,17 +1,15 @@
 @extends('layouts.app')
 
-@if(session('login_exitoso'))
-    <script>
-        alert("{{ session('login_exitoso') }}");
-    </script>
-@endif
-
 @section('content')
+    <div x-data="{ alertMsg: '{{ session('success') ?? session('login_exitoso') ?? session('alert') ?? '' }}' }"
+         x-init="if (alertMsg) { alert(alertMsg); }">
+    </div>
+
     <section class="main seccion flex flex-col items-center">
         <section class="main__heroe flex flex-col justify-center items-center font-semibold">
             <img src="{{ asset('imagenes/main__imagenPrincipal.jpg') }}" alt="imagen principal" class="main__heroe__imagenPrincipal h-[200px] w-[300px] mt-[20px]">
             <div class="main__heroe__texto my-5 w-[490px] text-green">Nuestro equipo de expertos veterinarios y personal dedicado está aquí para ofrecerte un viaje único en el mundo del cuidado animal. Desde los exóticos reptiles hasta los pequeños roedores, estamos preparados para abrazar la diversidad de todas las criaturas que llaman hogar a tu corazón.</div>
-            <a href="{{ route('agregar_turno') }}" class="main__heroe__solicitarTurno mb-[20px]">Solicitar Turno</a>
+            <a href="{{ route('agregar_turno_formulario') }}" class="main__heroe__solicitarTurno mb-[20px]">Solicitar Turno</a>
             <a href="{{ route('ver_productos') }}" class="main__heroe__verProductos">Ver Productos</a>
         </section>
 

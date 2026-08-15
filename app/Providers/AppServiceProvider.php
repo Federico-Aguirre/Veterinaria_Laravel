@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
+use Livewire\Livewire;
+use App\Livewire\Carrito;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -35,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
 
             URL::forceScheme('https');
         }
+
+        // Registro manual del componente Livewire
+        Livewire::component('carrito', Carrito::class);
+
+        // lógica para compartir la cantidad de productos
         View::composer('*', function ($view) {
             $cantidad = 0;
             if (Auth::check()) {

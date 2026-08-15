@@ -11,6 +11,6 @@ class RedirectIfAuthenticated extends Middleware
      */
     protected function redirectTo($request)
     {
-        return route('home');
+        return route('/');
     }
 }

@@ -60,6 +60,6 @@ class SocialController extends Controller
             return redirect('/editar_perfil')->with('complete_datos_de_perfil', 'Por favor, complete los datos restantes.');
         }
 
-        return redirect('/home'); // Redirige al home si todo está bien
+        return redirect('/'); // Redirige al home si todo está bien
     }
 }
