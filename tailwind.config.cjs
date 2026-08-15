@@ -38,6 +38,9 @@ module.exports = {
       transitionTimingFunction: {
         easein: 'ease-in',
       },
+      inset: {
+        '90vh': '90vh',
+      },
     },
   },
   plugins: [],
