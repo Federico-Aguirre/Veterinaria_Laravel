@@ -1,11 +1,18 @@
 <div>
+    {{-- Alerta para mensajes flheados en sesión --}}
     @if(session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                alert("{{ session('success') }}");
-            });
-        </script>
+        <div x-data x-init="alert('{{ session('success') }}')"></div>
     @endif
+
+    @if(session('alert'))
+        <div x-data x-init="alert('{{ session('alert') }}')"></div>
+    @endif
+
+    {{-- Listener para eventos dispatch enviadas desde Livewire --}}
+    <div x-data 
+         @alerta.window="alert($event.detail.mensaje)" 
+         @turno-creado.window="alert($event.detail.message)">
+    </div>
 
     <form wire:submit.prevent="guardarTurno" class="turnos__formulario">
         <div class="contenedor-input turnos__formulario__titulo">Solicitar Turno</div>

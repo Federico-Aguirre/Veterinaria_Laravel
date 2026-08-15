@@ -13,7 +13,6 @@ class AgregarTurno extends Component
     public $id_mascota;
     public $asunto;
     public $mensaje;
-    public $mascotas;
 
     protected $rules = [
         'fecha' => 'required|date',
@@ -30,15 +29,12 @@ class AgregarTurno extends Component
             return redirect()->to('/login');
         }
 
-        // 2. Traer las mascotas del usuario logueado
-        $this->mascotas = MascotaModel::where('id_user', Auth::id())->get();
+        // 2. Validar que tenga al menos una mascota registrada
+        $mascotas = MascotaModel::where('id_user', Auth::id())->get();
 
-        // 3. Validar que tenga al menos una mascota registrada
-        if ($this->mascotas->isEmpty()) {
+        if ($mascotas->isEmpty()) {
             session()->flash('alert', 'Debes registrar al menos una mascota para poder solicitar un turno.');
-            
-            // 💡 Guardamos el destino en la sesión antes de redirigir
-            session()->put('redirect_after_mascota', '/agregar_turno'); // 👈 Ajusta con la URL de tu vista de turnos
+            session()->put('redirect_after_mascota', '/agregar_turno');
 
             return redirect()->to('/agregar_mascota');
         }
@@ -61,11 +57,16 @@ class AgregarTurno extends Component
 
         $this->reset(['fecha', 'id_mascota', 'asunto', 'mensaje']);
 
+        // Emite el evento que Alpine.js captura para mostrar la alerta
         $this->dispatch('turno-creado', message: 'Turno creado exitosamente');
     }
 
     public function render()
     {
-        return view('livewire.agregar-turno');
+        return view('livewire.agregar-turno', [
+            'mascotas' => Auth::check() 
+                ? MascotaModel::where('id_user', Auth::id())->get() 
+                : collect()
+        ]);
     }
 }
