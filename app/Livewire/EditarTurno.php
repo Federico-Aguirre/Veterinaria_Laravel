@@ -68,7 +68,8 @@ class EditarTurno extends Component
             : collect();
 
         return view('livewire.editar-turno', [
-            'turnos' => $turnos
+            'turnos' => $turnos,
+            'confirmado' => $this->confirmado
         ]);
     }
 }
