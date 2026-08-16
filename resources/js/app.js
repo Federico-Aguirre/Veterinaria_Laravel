@@ -7,7 +7,7 @@ flatpickr.localize(Spanish); // Habilitar la traducción en español por defecto
 import '../tailwind/main.scss';
 import './variablesGlobales';
 import './agregar_al_carro';
-import './calendario';
+/*import './calendario'; */ /* archivo para usar si no se usa flatpickr para el crud de turnos */
 import './header';
 import './borrar_perfil';
 import './eliminar_del_carro';

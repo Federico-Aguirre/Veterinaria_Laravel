@@ -1,3 +1,5 @@
+/* archivo para usar si no se usa flatpickr para el crud de turnos */
+
 import { $q } from './variablesGlobales';
 
 document.addEventListener('DOMContentLoaded', function () {

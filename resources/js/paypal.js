@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const amountElement = document.getElementById('amount');
     const paypalContainer = document.getElementById('paypal-button-container');
 
+    // Si los elementos de PayPal no están en la vista actual, salir en silencio sin registrar errores en consola
     if (!amountElement || !paypalContainer || typeof paypal === 'undefined') {
-        console.error('PayPal no está disponible o faltan elementos');
         return;
     }
 
@@ -19,46 +19,42 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         onApprove: function (data, actions) {
             return actions.order.capture().then(function (details) {
+                // Obtener token CSRF de forma segura
+                const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+                const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
                 // Antes de redirigir, actualizamos el carrito
                 fetch('/obtenerCantidadProductosEnCarro', {
                     method: 'GET',
                     headers: {
                         'Accept': 'application/json',
                     },
-                    credentials: 'same-origin'  // <-- para enviar cookies con la petición
+                    credentials: 'same-origin'
                 })
-                .then(res => {
-                    console.log('Response status:', res.status);
-                    return res.json();
-                })
+                .then(res => res.json())
                 .then(data => {
-                    console.log('Data:', data);
-                    // Ahora, finalizamos la compra
+                    // Finalizar la compra
                     fetch('/finalizar-compra', {
                         method: 'POST',
                         headers: {
-                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                            'X-CSRF-TOKEN': csrfToken,
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({})
                     })
                     .then(res => {
-                        console.log('Respuesta cruda:', res);
                         if (!res.ok) {
-                            console.log('Error de respuesta: ', res.status, res.statusText);
-                            return res.text();  // Obtener el cuerpo de la respuesta como texto
+                            return res.text();
                         }
-                        return res.json(); // Proceder con la respuesta en formato JSON
+                        return res.json();
                     })
                     .then(data => {
-                        console.log('Data recibida:', data);
                         if (data.success) {
                             const contadorCarrito = document.getElementById('contador-carrito');
-                            const carroContainer = document.querySelector('.carro-container');
-                        
-                            // Forzamos repintado (opcional, pero útil en navegadores que lo necesiten)
-                            void contadorCarrito.offsetHeight;
-                        
+                            if (contadorCarrito) {
+                                void contadorCarrito.offsetHeight; // Forzar repintado si existe
+                            }
+
                             alert('Compra realizada con éxito.');
                             window.location.href = data.redirect;
                         } else {

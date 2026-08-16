@@ -55,8 +55,10 @@ Composer
 
 Node.js (v18 o superior) & NPM
 
-🌍 Despliegue (Production)
+🌍 Despliegue (Producción)
 Base de Datos: Alojada en Neon DB (PostgreSQL), aprovechando la conexión segura por SSL y escalado automático de PostgreSQL.
+
+Aplicación Web: Alojada en Render, configurada para ejecutar la compilación de assets en el deploy con npm run build y la caché de rutas/vistas mediante php artisan config:cache y php artisan route:cache.
 
 ⚙️ Instalación Local
 Clonar el repositorio:
@@ -114,5 +116,3 @@ GOOGLE_CLIENT_ID=tu-google-client-id
 GOOGLE_CLIENT_SECRET=tu-google-client-secret
 FACEBOOK_CLIENT_ID=tu-facebook-client-id
 FACEBOOK_CLIENT_SECRET=tu-facebook-client-secret
-
-Aplicación Web: Alojada en Render, configurada para ejecutar la compilación de assets en el deploy con npm run build y la caché de rutas/vistas mediante php artisan config:cache y php artisan route:cache.

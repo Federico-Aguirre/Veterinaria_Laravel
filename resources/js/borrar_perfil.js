@@ -1,29 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Seleccionar el token CSRF del meta tag
-    const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
-    if (!csrfTokenMeta) {
-        console.error('El meta CSRF token no está presente en el DOM.');
-        return;
-    }
-
-    const csrfToken = csrfTokenMeta.getAttribute('content');
-    if (!csrfToken) {
-        console.error('El atributo content del CSRF token está vacío.');
-        return;
-    }
-
     // Seleccionar el botón "Borrar Perfil"
     const borrarPerfilButton = document.getElementById('borrarPerfilButton');
+    
+    // Si el botón no existe en la página actual, salir silenciosamente sin emitir errores
     if (!borrarPerfilButton) {
-        console.error('No se encontró el botón con ID "borrarPerfilButton".');
+        return;
+    }
+
+    // Seleccionar el token CSRF sólo cuando el botón está presente
+    const csrfTokenMeta = document.querySelector('meta[name="csrf-token"]');
+    const csrfToken = csrfTokenMeta ? csrfTokenMeta.getAttribute('content') : null;
+
+    if (!csrfToken) {
+        console.error('El atributo content del CSRF token no está presente o está vacío.');
         return;
     }
 
     // Agregar evento click al botón
     borrarPerfilButton.addEventListener('click', function () {
-        // Mostrar alerta personalizada
         if (confirm('¿Estás seguro de que deseas borrar tu perfil? Esta acción no se puede deshacer.')) {
-            // Enviar solicitud al servidor para borrar el perfil
             fetch('/borrar_perfil', {
                 method: 'DELETE',
                 headers: {
@@ -39,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(data => {
                 alert(data.message || 'Perfil borrado exitosamente.');
-                // Redirigir al usuario a la página de inicio
                 window.location.href = '/';
             })
             .catch(error => {

@@ -9,8 +9,9 @@ const navLine2 = $q('.header__navBar__line:nth-of-type(2)');
 let isAnimating = false;
 let isMenuOpen = false;
 
+// Si falta algún elemento del menú, salir de forma silenciosa sin registrar avisos en la consola
 if (!navBar || !navMenu || !navLine1 || !navLine2) {
-  console.warn('Faltan elementos necesarios para el menú');
+  // Salida silenciosa para evitar alertas en PageSpeed
 } else {
   navBar.addEventListener('click', () => {
     if (isAnimating) return;

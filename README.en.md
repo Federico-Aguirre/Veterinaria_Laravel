@@ -49,7 +49,10 @@ Render: Hosting platform for the web application.
 
 📋 PrerequisitesPHP >= 8.2ComposerNode.js (v18 or higher) & NPMA Neon DB account (PostgreSQL)
 
-🌍 DeploymentDatabase: Hosted on Neon, leveraging SSL connections and automatic PostgreSQL scaling.Web Application: Hosted on Render, configured to execute asset building on deploy (npm run build) along with route and configuration caching (php artisan config:cache & php artisan route:cache).
+🌍 Deployment (Production)
+Deployment Database: Hosted on Neon, leveraging SSL connections and automatic PostgreSQL 
+
+scaling.Web Application: Hosted on Render, configured to execute asset building on deploy (npm run build) along with route and configuration caching (php artisan config:cache & php artisan route:cache).
 
 ⚙️ Local SetupClone the repository:Bashgit clone https://github.com/your-username/your-repo.git
 cd your-repo

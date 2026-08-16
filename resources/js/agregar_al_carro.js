@@ -3,6 +3,11 @@ import { $q, $qa } from './variablesGlobales';
 document.addEventListener("DOMContentLoaded", () => {
     const btnAgregar = $q("#btn-agregar-global");
 
+    // Si el botón no existe en la página actual, detener la ejecución silenciosamente
+    if (!btnAgregar) {
+        return;
+    }
+
     btnAgregar.addEventListener("click", async () => {
         const inputsCantidad = $qa(".input-cantidad");
         const productos = [];
@@ -38,11 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
+            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+            const csrfToken = csrfMeta ? csrfMeta.getAttribute("content") : "";
+
             const respuesta = await fetch("/carro/agregar", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+                    "X-CSRF-TOKEN": csrfToken
                 },
                 body: JSON.stringify({ productos })
             });

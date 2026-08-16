@@ -26,7 +26,7 @@
         <section class="main__servicios flex flex-col justify-center items-center text-green">
             <h2 class="main__servicios__titulo font-semibold mb-[20px]">Nuestros Servicios</h2>
             <div class="main__servicios__contenedor flex flex-row">
-                <x-picture src="imagenes/main__servicios__imagen1.jpg" alt="Mascota en consulta veterinaria" class="main__servicios__contenedor__imagenIzquierda" loading="lazy" decoding="async" />
+                <x-picture src="imagenes/main__servicios__imagen1.jpg" alt="Mascota en consulta veterinaria" class="main__servicios__contenedor__imagenIzquierda h-[200px] w-[150px] object-cover" loading="lazy" decoding="async" />
                 <div class="main__servicios__contenedor__listaDeServicios w-[400px] flex flex-wrap gap-[20px]">
                     <div class="main__servicios__contenedor__listaDeServicios__servicio1">
                         <x-picture src="imagenes/iconos/veterinario.png" alt="Icono revisiones generales" loading="lazy" decoding="async" />
@@ -53,7 +53,7 @@
                         <div>Radiografías y ecografías</div>
                     </div>
                 </div>
-                <x-picture src="imagenes/main__servicios__imagen2.jpg" alt="Mascota recibiendo atención médica" class="main__servicios__contenedor__imagenDerecha" loading="lazy" decoding="async" />
+                <x-picture src="imagenes/main__servicios__imagen2.jpg" alt="Mascota recibiendo atención médica" class="main__servicios__contenedor__imagenDerecha h-[200px] w-[150px] object-cover" loading="lazy" decoding="async" />
             </div>
         </section>
 

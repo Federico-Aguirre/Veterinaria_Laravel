@@ -34,9 +34,10 @@
                         justify-content: center;
                         align-items: center;
 
-                        img {
+                        img, picture img {
                             height: 50px;
                             width: 50px;
+                            object-fit: cover;
                         }
                     }
                 }

@@ -1,17 +1,24 @@
-
-
 // Importar los selectores globales
 import { $q, $qa } from './variablesGlobales';
 
 document.addEventListener("DOMContentLoaded", () => {
     const contenedorProductos = $q(".productos__listado");
+    const contenedorFiltros = $q(".stock__filtro__listaDeFiltros");
+
+    // Si los contenedores de productos y filtros no existen en la página actual, salir silenciosamente
+    if (!contenedorProductos && !contenedorFiltros) {
+        return;
+    }
+
     const filtrosRef = $q(".stock__filtro__texto");
 
     // Variables para la categoría (qa) y la búsqueda (q)
-    let qa = new URLSearchParams(window.location.search).get('categoria'); // Obtiene la categoría de la URL (si existe)
-    let q = new URLSearchParams(window.location.search).get('q'); // Obtiene la búsqueda de la URL (si existe)
+    let qa = new URLSearchParams(window.location.search).get('categoria'); 
+    let q = new URLSearchParams(window.location.search).get('q'); 
 
     const cargarProductos = async (categoria = null, busqueda = null) => {
+        if (!contenedorProductos) return;
+
         try {
             let url = "/api/productos";
             const params = new URLSearchParams();
@@ -27,7 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const finalUrl = params.toString() ? `${url}?${params.toString()}` : url;
             const respuesta = await fetch(finalUrl);
             const data = await respuesta.json();
-            console.log("URL pedida:", finalUrl);
 
             // Limpiar el contenedor
             contenedorProductos.innerHTML = "";
@@ -66,33 +72,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (error) {
             console.error("Error al cargar productos:", error);
-            contenedorProductos.innerHTML = "<p>Error al cargar los productos.</p>";
+            if (contenedorProductos) {
+                contenedorProductos.innerHTML = "<p>Error al cargar los productos.</p>";
+            }
         }
     };
 
-    // Configurar los botones de filtro
-    const contenedorFiltros = $q(".stock__filtro__listaDeFiltros");
+    // Configurar los botones de filtro sólo si el contenedor existe
+    if (contenedorFiltros) {
+        contenedorFiltros.addEventListener("click", (e) => {
+            const boton = e.target.closest(".filtro-btn");
+            if (!boton) return;
 
-    contenedorFiltros.addEventListener("click", (e) => {
-        const boton = e.target.closest(".filtro-btn");
-        if (!boton) return;
-
-        e.preventDefault();
-        const categoria = boton.getAttribute("data-categoria") || null;
-        qa = categoria;
-        filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
-        cargarProductos(qa, q);
-    });
-
+            e.preventDefault();
+            const categoria = boton.getAttribute("data-categoria") || null;
+            qa = categoria;
+            if (filtrosRef) {
+                filtrosRef.innerHTML = categoria ? `Filtrar por categoría: ${categoria}` : 'Todos los productos';
+            }
+            cargarProductos(qa, q);
+        });
+    }
 
     // Agregar evento para el filtro de búsqueda
     const buscarInput = $q("#busqueda");
     if (buscarInput) {
         buscarInput.addEventListener("input", (e) => {
-            q = e.target.value; // Capturar el texto de búsqueda
-            cargarProductos(qa, q); // Cargar productos filtrados por búsqueda
+            q = e.target.value;
+            cargarProductos(qa, q);
         });
     }
 
-    cargarProductos(qa, q); // Cargar productos al inicio con la categoría y búsqueda actual
+    cargarProductos(qa, q);
 });

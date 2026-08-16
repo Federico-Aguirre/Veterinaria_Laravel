@@ -6,21 +6,25 @@ document.addEventListener('DOMContentLoaded', function () {
             event.preventDefault();
             const productoId = this.dataset.id;
 
+            const csrfMeta = document.querySelector('meta[name="csrf-token"]');
+            const csrfToken = csrfMeta ? csrfMeta.getAttribute('content') : '';
+
             if (confirm('¿Estás seguro de que deseas eliminar este producto del carro?')) {
                 fetch(`/carro/remover/${productoId}`, {
                     method: 'DELETE',
                     headers: {
-                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'X-CSRF-TOKEN': csrfToken,
                         'Accept': 'application/json',
                     }
                 })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Eliminar producto del DOM
-                        document.getElementById(`producto-${productoId}`).remove();
+                        const elementoProducto = document.getElementById(`producto-${productoId}`);
+                        if (elementoProducto) {
+                            elementoProducto.remove();
+                        }
 
-                        // Actualizar contador
                         const contador = document.getElementById('contador-carrito');
                         if (contador && data.nuevaCantidad !== undefined) {
                             contador.textContent = data.nuevaCantidad;
