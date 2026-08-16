@@ -5,17 +5,19 @@
         perfilCompleto: @json($perfilCompleto),
     }"
     class="productos stock seccion"
+    role="region"
+    aria-label="Catálogo de productos"
 >
     <!-- Filtros -->
-    <div class="stock__filtro">
+    <div class="stock__filtro" role="group" aria-label="Filtros por categoría">
         <div class="stock__filtro__texto">
             Filtrar por categoría:
             <span x-text="categoria ? categoria.charAt(0).toUpperCase() + categoria.slice(1) : 'Sin filtro'"></span>
         </div>
         <div class="stock__filtro__listaDeFiltros">
-            <button class="filtro-btn" @click="categoria = null; $wire.setCategoria(null)">Sin filtro</button>
+            <button type="button" class="filtro-btn" @click="categoria = null; $wire.setCategoria(null)">Sin filtro</button>
             @foreach(['alimentos', 'camas', 'juguetes', 'transportadoras', 'otros'] as $cat)
-                <button class="filtro-btn" @click="categoria = '{{ $cat }}'; $wire.setCategoria('{{ $cat }}')">
+                <button type="button" class="filtro-btn" @click="categoria = '{{ $cat }}'; $wire.setCategoria('{{ $cat }}')">
                     {{ ucfirst($cat) }}
                 </button>
             @endforeach
@@ -27,9 +29,19 @@
         @if(count($productos) > 0)
             @foreach($productos as $producto)
                 <div class="producto stock__tarjeta__contenedor">
-                    <x-picture src="{{ $producto['imagen'] }}" class="stock__tarjeta__contenedor__imagen"/>
+                    {{-- Optimización de carga de imagen y accesibilidad --}}
+                    <x-picture 
+                        src="{{ $producto['imagen'] }}" 
+                        alt="{{ $producto['descripcion'] }}" 
+                        class="stock__tarjeta__contenedor__imagen"
+                        loading="lazy"
+                        decoding="async"
+                    />
+
                     <div class="stock__tarjeta__contenedor__contenido">
-                        <div class="stock__tarjeta__contenedor__contenido__descripcion">{{ $producto['descripcion'] }}</div>
+                        <div class="stock__tarjeta__contenedor__contenido__descripcion" role="heading" aria-level="3">
+                            {{ $producto['descripcion'] }}
+                        </div>
                         <div class="stock__tarjeta__contenedor__contenido__precio">Precio: ${{ number_format($producto['precio'], 2) }}</div>
                         <div class="stock__tarjeta__contenedor__contenido__stock">Stock: {{ $producto['stock'] }}</div>
                         <div class="stock__tarjeta__contenedor__contenido__caracteristicas">
@@ -40,11 +52,14 @@
                             </ul>
                         </div>
 
+                        {{-- Input accesible vinculando id y aria-label --}}
                         <input type="number"
+                            id="cantidad-{{ $producto['id'] }}"
                             name="producto_cantidad"
                             min="1"
                             max="{{ $producto['stock'] }}"
                             placeholder="Cantidad"
+                            aria-label="Cantidad para {{ $producto['descripcion'] }}"
                             data-id="{{ $producto['id'] }}"
                             data-imagen="{{ $producto['imagen'] }}"
                             data-descripcion="{{ $producto['descripcion'] }}"
@@ -64,9 +79,11 @@
     </div>
 
     <!-- Botón agregar al carro -->
-    <button class="fixed left-1/2 bg-green hover:bg-skyBlue
+    <button type="button"
+        class="fixed left-1/2 bg-green hover:bg-skyBlue
         text-white font-bold py-2 px-4 rounded transition duration-300 w-[200px] z-50"
         style="bottom: 45px; transform: translateX(-50%);"
+        aria-label="Agregar productos seleccionados al carrito"
         @click="
             if(!isLoggedIn) { alert('Debes loguearte para agregar un producto al carro.'); window.location.href='/login'; return; }
             if(!perfilCompleto) { alert('Por favor completa tu perfil para poder continuar.'); window.location.href='/editar_perfil'; return; }

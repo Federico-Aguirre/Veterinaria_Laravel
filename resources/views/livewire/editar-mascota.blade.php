@@ -4,73 +4,89 @@
     @if(!$mascotaId)
         <!-- Selector -->
         <div class="contenedor-input">
-            <label>Selecciona una mascota para editar:</label>
-            <select x-ref="select">
+            {{-- Se agregó for e id para vincular el label con el select --}}
+            <label for="mascota_select">Selecciona una mascota para editar:</label>
+            <select id="mascota_select" x-ref="select">
                 <option value="">Selecciona una mascota</option>
                 @foreach ($mascotas as $m)
                     <option value="{{ $m->id }}">{{ $m->nombre }}</option>
                 @endforeach
             </select>
         </div>
-        <button class="button button-block"
+        
+        {{-- Se agregó type="button" para evitar comportamientos inesperados en algunos navegadores --}}
+        <button type="button" 
+            class="button button-block"
             x-data
             @click="if($refs.select.value){ window.location.href='/editar_mascota/' + $refs.select.value } else { alert('Selecciona una mascota') }">
             Seleccionar Mascota
         </button>
     @else
         <!-- Formulario edición -->
-        <form wire:submit.prevent="actualizarMascota">
+        <form wire:submit.prevent="actualizarMascota" aria-label="Formulario para editar mascota" novalidate>
             @csrf
+            
             <div class="contenedor-input">
-                <label>Nombre <span class="req">*</span></label>
-                <input type="text" wire:model="nombre">
-                @error('nombre') <div class="error">{{ $message }}</div> @enderror
+                <label for="nombre">Nombre <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="nombre" wire:model="nombre" required aria-required="true"
+                       @error('nombre') aria-invalid="true" aria-describedby="error-nombre" @enderror>
+                @error('nombre') <div class="error" id="error-nombre" role="alert">{{ $message }}</div> @enderror
             </div>
 
             <div class="contenedor-input">
-                <label>Raza <span class="req">*</span></label>
-                <input type="text" wire:model="raza">
-                @error('raza') <div class="error">{{ $message }}</div> @enderror
+                <label for="raza">Raza <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="raza" wire:model="raza" required aria-required="true"
+                       @error('raza') aria-invalid="true" aria-describedby="error-raza" @enderror>
+                @error('raza') <div class="error" id="error-raza" role="alert">{{ $message }}</div> @enderror
             </div>
 
             <div class="contenedor-input">
-                <label>Sexo <span class="req">*</span></label>
-                <input type="text" wire:model="sexo">
-                @error('sexo') <div class="error">{{ $message }}</div> @enderror
+                <label for="sexo">Sexo <span class="req" aria-hidden="true">*</span></label>
+                <input type="text" id="sexo" wire:model="sexo" required aria-required="true"
+                       @error('sexo') aria-invalid="true" aria-describedby="error-sexo" @enderror>
+                @error('sexo') <div class="error" id="error-sexo" role="alert">{{ $message }}</div> @enderror
             </div>
 
             <div class="contenedor-input">
-                <label>Edad <span class="req">*</span></label>
-                <input type="number" wire:model="edad">
-                @error('edad') <div class="error">{{ $message }}</div> @enderror
+                <label for="edad">Edad <span class="req" aria-hidden="true">*</span></label>
+                <input type="number" id="edad" wire:model="edad" required aria-required="true"
+                       @error('edad') aria-invalid="true" aria-describedby="error-edad" @enderror>
+                @error('edad') <div class="error" id="error-edad" role="alert">{{ $message }}</div> @enderror
             </div>
 
             <div class="contenedor-input">
-                <label>Nro. microchip</label>
-                <input type="text" wire:model="nro_de_microchip">
+                <label for="nro_de_microchip">Nro. microchip</label>
+                <input type="text" id="nro_de_microchip" wire:model="nro_de_microchip">
             </div>
 
             <div class="contenedor-input">
-                <label>Vacuna antirrábica</label>
-                <input type="checkbox" wire:model="vacuna_antirrabica">
+                <label for="vacuna_antirrabica">Vacuna antirrábica</label>
+                <input type="checkbox" id="vacuna_antirrabica" wire:model="vacuna_antirrabica">
             </div>
 
             <div class="contenedor-input">
-                <label>Tratamiento antiparasitario</label>
-                <input type="checkbox" wire:model="tratamiento_antiparasitario">
+                <label for="tratamiento_antiparasitario">Tratamiento antiparasitario</label>
+                <input type="checkbox" id="tratamiento_antiparasitario" wire:model="tratamiento_antiparasitario">
             </div>
 
             <div class="contenedor-input">
-                <label>Otras vacunas</label>
-                <input type="text" wire:model="otras_vacunas">
+                <label for="otras_vacunas">Otras vacunas</label>
+                <input type="text" id="otras_vacunas" wire:model="otras_vacunas">
             </div>
 
             <div class="contenedor-input">
-                <label>Información adicional</label>
-                <input type="text" wire:model="informacion_adicional">
+                <label for="informacion_adicional">Información adicional</label>
+                <input type="text" id="informacion_adicional" wire:model="informacion_adicional">
             </div>
 
-            <input type="submit" class="button button-block" value="Actualizar mascota">
+            {{-- Se cambió <input type="submit"> por <button> para poder incorporar los estados de carga de Livewire --}}
+            <button type="submit" 
+                    class="button button-block"
+                    wire:loading.attr="disabled"
+                    wire:target="actualizarMascota">
+                <span wire:loading.remove wire:target="actualizarMascota">Actualizar mascota</span>
+                <span wire:loading wire:target="actualizarMascota">Actualizando...</span>
+            </button>
         </form>
     @endif
 </div>

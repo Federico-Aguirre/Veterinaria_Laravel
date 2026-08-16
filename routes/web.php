@@ -2,98 +2,110 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\RecuperarClaveControlador;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\SocialAuthController;
+use App\Http\Controllers\Auth\SocialController;
+use App\Http\Controllers\CarroDeComprasControlador;
+use App\Http\Controllers\ComprasRealizadasControlador;
 
-Route::get('/registrarse', function () {
-    return view('registrarse');
-})->name('registrarse');
+/*
+|--------------------------------------------------------------------------
+| Vistas Públicas Estáticas
+|--------------------------------------------------------------------------
+*/
+Route::view('/', 'home')->name('home');
+Route::view('/registrarse', 'registrarse')->name('registrarse');
+Route::view('/login', 'login')->name('login');
+Route::view('/contacto', 'contacto')->name('contacto');
+Route::view('/acercaDeNosotros.php', 'acercaDeNosotros')->name('acercaDeNosotros');
+Route::view('/agregar_cliente.php', 'agregar_cliente')->name('agregar_cliente');
+Route::view('/conexion.php', 'conexion')->name('conexion');
+Route::view('/editar_perfil', 'editar_perfil')->name('editar_perfil');
+Route::view('/ver_productos', 'ver_productos')->name('ver_productos');
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
-
-
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('/acercaDeNosotros.php', function () {
-    return view('acercaDeNosotros');
-})->name('acercaDeNosotros');
-
-Route::get('/agregar_cliente.php', function () {
-    return view('agregar_cliente');
-})->name('agregar_cliente');
-
-Route::get('/conexion.php', function () {
-    return view('conexion');
-})->name('conexion');
-
-Route::get('/contacto', function () {
-    return view('contacto');
-})->name('contacto');
-
-
-Route::get('/editar_perfil', function () {
-    return view('editar_perfil');
-})->name('editar_perfil');
-
-Route::get('/agregar_mascota', function () {
-    return view('agregar_mascota');
-})->name('agregar_mascota_formulario');
-
-Route::get('/editar_mascota/{id?}', function($id = null){
+/*
+|--------------------------------------------------------------------------
+| Gestión de Mascotas y Turnos
+|--------------------------------------------------------------------------
+*/
+Route::view('/agregar_mascota', 'agregar_mascota')->name('agregar_mascota_formulario');
+Route::get('/editar_mascota/{id?}', function ($id = null) {
     return view('editar_mascota', ['mascotaId' => $id]);
 })->name('editar_mascota_formulario');
+Route::view('/ver_mascota', 'ver_mascota')->name('ver_mascota');
+Route::view('/borrar_mascota', 'borrar_mascota')->name('borrar_mascota_formulario');
 
-Route::get('/ver_mascota', function () {
-    return view('ver_mascota');
-})->name('ver_mascota');
+Route::view('/agregar_turno', 'agregar_turno')->name('agregar_turno_formulario');
+Route::view('/editar-turno', 'editar_turno')->name('editar_turno');
+Route::view('/ver_turno', 'ver_turno')->name('ver_turno');
+Route::view('/borrar-turno', 'borrar_turno')->name('borrar_turno');
 
-Route::get('/borrar_mascota', function () {
-    return view('borrar_mascota');
-})->name('borrar_mascota_formulario');
-
-
-Route::get('/agregar_turno', function () {
-    return view('agregar_turno');
-})->name('agregar_turno_formulario');
-
-Route::get('/editar-turno', function () {
-    return view('editar_turno');
-})->name('editar_turno');
-
-Route::get('/ver_turno', function () {
-    return view('ver_turno');
-})->name('ver_turno');
-
-Route::get('/borrar-turno', function () {
-    return view('borrar_turno');
-})->name('borrar_turno');
-
+/*
+|--------------------------------------------------------------------------
+| Autenticación y Sesión
+|--------------------------------------------------------------------------
+*/
 Route::post('/logout', function () {
     Auth::logout();
     return redirect()->route('home');
 })->name('logOut');
 
-use App\Http\Controllers\RecuperarClaveControlador;
-Route::get('/recuperar_clave', [RecuperarClaveControlador::class, 'mostrarFormulario'])->name('recuperar_clave');
-Route::post('/recuperar_clave', [RecuperarClaveControlador::class, 'enviar'])->name('recuperar_clave.enviar');
+// Recuperación de clave personalizada
+Route::controller(RecuperarClaveControlador::class)->group(function () {
+    Route::get('/recuperar_clave', 'mostrarFormulario')->name('recuperar_clave');
+    Route::post('/recuperar_clave', 'enviar')->name('recuperar_clave.enviar');
+});
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+// Recuperación de clave nativa de Laravel
+Route::controller(ForgotPasswordController::class)->group(function () {
+    Route::get('password/reset', 'showLinkRequestForm')->name('password.request');
+    Route::post('password/email', 'sendResetLinkEmail')->name('password.email');
+});
 
-use App\Http\Controllers\SocialAuthController;
-Route::get('/auth/google', [SocialAuthController::class, 'redirectToGoogle'])->name('auth.google');
-Route::get('/auth/google/callback', [SocialAuthController::class, 'handleGoogleCallback']);
+Route::controller(ResetPasswordController::class)->group(function () {
+    Route::get('password/reset/{token}', 'showResetForm')->name('password.reset');
+    Route::post('password/reset', 'reset')->name('password.update');
+});
 
-Route::get('/auth/facebook', [SocialAuthController::class, 'redirectToFacebook'])->name('auth.facebook');
-Route::get('/auth/facebook/callback', [SocialAuthController::class, 'handleFacebookCallback']);
+// Autenticación Social
+Route::controller(SocialAuthController::class)->group(function () {
+    Route::get('/auth/google', 'redirectToGoogle')->name('auth.google');
+    Route::get('/auth/google/callback', 'handleGoogleCallback');
+    Route::get('/auth/facebook', 'redirectToFacebook')->name('auth.facebook');
+    Route::get('/auth/facebook/callback', 'handleFacebookCallback');
+});
 
+Route::controller(SocialController::class)->group(function () {
+    Route::get('/login/{provider}', 'redirect');
+    Route::get('/login/{provider}/callback', 'callback');
+});
 
+/*
+|--------------------------------------------------------------------------
+| Carrito de Compras y Pedidos
+|--------------------------------------------------------------------------
+*/
+Route::controller(CarroDeComprasControlador::class)->group(function () {
+    Route::get('/carro', 'mostrarCarro')->name('carro_de_compras');
+    Route::delete('/carro/remover/{id}', 'removerDelCarro')->name('carro.remover');
+    Route::post('/carro/confirmar-compra', 'confirmarCompra');
+    Route::get('/obtenerCantidadProductosEnCarro', 'obtenerCantidadProductosEnCarro');
+});
+
+// Rutas protegidas que requieren iniciar sesión
+Route::middleware(['auth'])->group(function () {
+    Route::post('/carro/agregar', [CarroDeComprasControlador::class, 'agregar'])->name('agregar_al_carro');
+    Route::get('/compras_realizadas', [ComprasRealizadasControlador::class, 'mostrarCompras'])->name('compras.realizadas');
+    Route::post('/finalizar-compra', [ComprasRealizadasControlador::class, 'procesarCompra'])->name('finalizar_compra');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Endpoints / API Internas
+|--------------------------------------------------------------------------
+*/
 Route::get('/api/productos', function () {
     $path = resource_path('json/productos.json');
     if (!file_exists($path)) {
@@ -101,37 +113,3 @@ Route::get('/api/productos', function () {
     }
     return response()->file($path);
 });
-
-Route::get('/ver_productos', function () {
-    return view('ver_productos'); // Esta vista contiene <livewire:ver-productos />
-})->name('ver_productos');
-
-
-use App\Http\Controllers\CarroDeComprasControlador;
-Route::get('/carro', [CarroDeComprasControlador::class, 'mostrarCarro'])->name('carro_de_compras');
-
-Route::post('/carro/agregar', [CarroDeComprasControlador::class, 'agregar'])
-    ->middleware('auth')
-    ->name('agregar_al_carro');
-
-Route::delete('/carro/remover/{id}', [CarroDeComprasControlador::class, 'removerDelCarro'])->name('carro.remover');
-
-Route::post('/carro/confirmar-compra', [CarroDeComprasControlador::class, 'confirmarCompra']);
-
-
-use App\Http\Controllers\ComprasRealizadasControlador;
-
-Route::middleware(['auth'])->group(function () {
-    Route::get('/compras_realizadas', [ComprasRealizadasControlador::class, 'mostrarCompras'])->name('compras.realizadas');
-});
-
-Route::post('/finalizar-compra', [ComprasRealizadasControlador::class, 'procesarCompra'])
-    ->middleware('auth')
-    ->name('finalizar_compra');
-
-    
-Route::get('/obtenerCantidadProductosEnCarro', [CarroDeComprasControlador::class, 'obtenerCantidadProductosEnCarro']);
-
-use App\Http\Controllers\Auth\SocialController;
-Route::get('/login/{provider}', [SocialController::class, 'redirect']);
-Route::get('/login/{provider}/callback', [SocialController::class, 'callback']);

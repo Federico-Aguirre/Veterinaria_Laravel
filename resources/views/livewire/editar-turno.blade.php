@@ -3,22 +3,31 @@
 
     <div class="contenedor-input">
         <label for="turnoAEditar">Seleccionar Turno</label>
-        <select id="turnoAEditar" wire:model="turnoSeleccionado" class="turnos__formulario__select">
+        <select 
+            id="turnoAEditar" 
+            wire:model="turnoSeleccionado" 
+            class="turnos__formulario__select"
+            @error('turnoSeleccionado') aria-invalid="true" aria-describedby="error-turno" @enderror
+        >
             <option value="">Elegí un turno</option>
             @foreach($turnos as $turno)
                 <option value="{{ $turno->id }}">{{ $turno->fecha }} - {{ $turno->asunto }}</option>
             @endforeach
         </select>
-        @error('turnoSeleccionado') <span class="error">{{ $message }}</span> @enderror
+        @error('turnoSeleccionado') <span class="error" id="error-turno" role="alert">{{ $message }}</span> @enderror
     </div>
 
-    <button type="button" class="button button-block" wire:click="seleccionarTurno">
-        Seleccionar Turno
+    {{-- Se agregó el estado de carga para evitar doble clic --}}
+    <button type="button" class="button button-block" wire:click="seleccionarTurno" wire:loading.attr="disabled" wire:target="seleccionarTurno">
+        <span wire:loading.remove wire:target="seleccionarTurno">Seleccionar Turno</span>
+        <span wire:loading wire:target="seleccionarTurno">Seleccionando...</span>
     </button>
 
     @if($confirmado)
-        <form wire:submit.prevent="actualizar" class="turnos__formulario">
-            <div class="contenedor-input turnos__formulario__titulo">
+        <form wire:submit.prevent="actualizar" class="turnos__formulario" aria-label="Formulario para editar turno" novalidate>
+            
+            {{-- Se agregó role="heading" para mejorar la estructura del documento en PageSpeed sin cambiar tu <div> --}}
+            <div class="contenedor-input turnos__formulario__titulo" role="heading" aria-level="2">
                 Editar Turno
             </div>
 
@@ -52,23 +61,40 @@
                     placeholder="Seleccione fecha y hora"
                     readonly 
                     required
+                    aria-required="true"
+                    @error('fecha') aria-invalid="true" aria-describedby="error-fecha" @enderror
                 >
-                @error('fecha') <span class="error">{{ $message }}</span> @enderror
+                @error('fecha') <span class="error" id="error-fecha" role="alert">{{ $message }}</span> @enderror
             </div>
 
             <div class="contenedor-input">
                 <label for="asunto">Asunto</label>
-                <input type="text" id="asunto" wire:model="asunto" required>
-                @error('asunto') <span class="error">{{ $message }}</span> @enderror
+                <input 
+                    type="text" 
+                    id="asunto" 
+                    wire:model="asunto" 
+                    required 
+                    aria-required="true"
+                    @error('asunto') aria-invalid="true" aria-describedby="error-asunto" @enderror
+                >
+                @error('asunto') <span class="error" id="error-asunto" role="alert">{{ $message }}</span> @enderror
             </div>
 
             <div class="contenedor-input">
                 <label for="mensaje">Mensaje</label>
-                <textarea id="mensaje" wire:model="mensaje"></textarea>
-                @error('mensaje') <span class="error">{{ $message }}</span> @enderror
+                <textarea 
+                    id="mensaje" 
+                    wire:model="mensaje"
+                    @error('mensaje') aria-invalid="true" aria-describedby="error-mensaje" @enderror
+                ></textarea>
+                @error('mensaje') <span class="error" id="error-mensaje" role="alert">{{ $message }}</span> @enderror
             </div>
 
-            <input type="submit" value="Actualizar Turno">
+            {{-- Se cambió el <input> por un <button> para poder mostrar el indicador de carga --}}
+            <button type="submit" class="button button-block" wire:loading.attr="disabled" wire:target="actualizar">
+                <span wire:loading.remove wire:target="actualizar">Actualizar Turno</span>
+                <span wire:loading wire:target="actualizar">Actualizando...</span>
+            </button>
         </form>
     @endif
 </div>

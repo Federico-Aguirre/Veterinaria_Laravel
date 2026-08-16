@@ -1,5 +1,5 @@
 <div>
-    {{-- Alerta para mensajes flheados en sesión --}}
+    {{-- Alerta para mensajes flasheados en sesión --}}
     @if(session('success'))
         <div x-data x-init="alert('{{ session('success') }}')"></div>
     @endif
@@ -14,9 +14,12 @@
          @turno-creado.window="alert($event.detail.message)">
     </div>
 
-    <form wire:submit.prevent="guardarTurno" class="turnos__formulario">
-        <div class="contenedor-input turnos__formulario__titulo">Solicitar Turno</div>
+    <form wire:submit.prevent="guardarTurno" class="turnos__formulario" novalidate aria-label="Formulario para solicitar turno">
+        
+        {{-- Título convertido a etiqueta semántica h2 --}}
+        <h2 class="contenedor-input turnos__formulario__titulo">Solicitar Turno</h2>
 
+        {{-- Campo de Fecha con Flatpickr --}}
         <div class="contenedor-input" x-data="{
             init() {
                 flatpickr(this.$refs.fechaInput, {
@@ -30,7 +33,7 @@
                 });
             }
         }">
-            <label for="fecha">Fecha</label>
+            <label for="fecha">Fecha y hora <span class="req" aria-hidden="true">*</span></label>
             <input 
                 id="fecha" 
                 x-ref="fechaInput"
@@ -39,13 +42,24 @@
                 placeholder="Seleccione fecha y hora"
                 readonly
                 required
+                aria-required="true"
+                @error('fecha') aria-invalid="true" aria-describedby="error-fecha" @enderror
             >
-            @error('fecha') <div class="error">{{ $message }}</div> @enderror
+            @error('fecha') 
+                <div class="error" id="error-fecha" role="alert">{{ $message }}</div> 
+            @enderror
         </div>
 
+        {{-- Selección de Mascota --}}
         <div class="contenedor-input">
-            <label for="id_mascota">Mascota a atender</label>
-            <select id="id_mascota" wire:model="id_mascota" required>
+            <label for="id_mascota">Mascota a atender <span class="req" aria-hidden="true">*</span></label>
+            <select 
+                id="id_mascota" 
+                wire:model="id_mascota" 
+                required 
+                aria-required="true"
+                @error('id_mascota') aria-invalid="true" aria-describedby="error-mascota" @enderror
+            >
                 <option value="">Selecciona una mascota</option>
                 @if(!empty($mascotas))
                     @foreach($mascotas as $mascota)
@@ -53,21 +67,49 @@
                     @endforeach
                 @endif
             </select>
-            @error('id_mascota') <div class="error">{{ $message }}</div> @enderror
+            @error('id_mascota') 
+                <div class="error" id="error-mascota" role="alert">{{ $message }}</div> 
+            @enderror
         </div>
 
+        {{-- Asunto --}}
         <div class="contenedor-input">
-            <label for="asunto">Asunto</label>
-            <input id="asunto" type="text" wire:model="asunto" required>
-            @error('asunto') <div class="error">{{ $message }}</div> @enderror
+            <label for="asunto">Asunto <span class="req" aria-hidden="true">*</span></label>
+            <input 
+                id="asunto" 
+                type="text" 
+                wire:model="asunto" 
+                required 
+                aria-required="true"
+                @error('asunto') aria-invalid="true" aria-describedby="error-asunto" @enderror
+            >
+            @error('asunto') 
+                <div class="error" id="error-asunto" role="alert">{{ $message }}</div> 
+            @enderror
         </div>
 
+        {{-- Mensaje --}}
         <div class="contenedor-input">
-            <label for="mensaje">Mensaje</label>
-            <textarea id="mensaje" wire:model="mensaje"></textarea>
-            @error('mensaje') <div class="error">{{ $message }}</div> @enderror
+            <label for="mensaje">Mensaje u observaciones</label>
+            <textarea 
+                id="mensaje" 
+                wire:model="mensaje"
+                @error('mensaje') aria-invalid="true" aria-describedby="error-mensaje" @enderror
+            ></textarea>
+            @error('mensaje') 
+                <div class="error" id="error-mensaje" role="alert">{{ $message }}</div> 
+            @enderror
         </div>
 
-        <input type="submit" value="Enviar">
+        {{-- Botón de envío optimizado con indicador de carga --}}
+        <button 
+            type="submit" 
+            class="button button-block"
+            wire:loading.attr="disabled"
+            wire:target="guardarTurno"
+        >
+            <span wire:loading.remove wire:target="guardarTurno">Enviar</span>
+            <span wire:loading wire:target="guardarTurno">Solicitando turno...</span>
+        </button>
     </form>
 </div>

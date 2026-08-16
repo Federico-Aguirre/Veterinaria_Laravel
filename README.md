@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+🐾 Sistema de Gestión Veterinaria
+Aplicación web para la gestión integral de clínicas veterinarias. Permite el control de turnos médicos, administración de perfiles de clientes y mascotas, un catálogo de productos con carrito de compras y un formulario de contacto funcional.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+🚀 Características Principales
+👤 Gestión de Usuarios (CRUD): Registro e inicio de sesión tradicional y autenticación social (Google y Facebook), actualización de perfil de usuario.
 
-## About Laravel
+🐶 Gestión de Mascotas (CRUD): Alta, edición, consulta y baja de las mascotas asociadas a cada cliente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+📅 Agendamiento de Turnos (CRUD): Solicitud, reprogramación, visualización y cancelación de turnos para atención veterinaria.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+🛒 Catálogo de Productos y Carrito: Explorador de stock filtrable por categorías (alimentos, camas, juguetes, transportadoras, etc.), carrito de compras interactivo e historial de compras realizadas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+📩 Formulario de Contacto Directo: Integración funcional mediante Web3Forms con recepción de correos en Gmail.
 
-## Learning Laravel
+⚡ Alto Rendimiento y Accesibilidad: Código optimizado según los estándares de Google PageSpeed (métricas Web Vitals, HTML5 semántico y estándares ARIA).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+🛠️ Tecnologías Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Backend
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+PHP / Laravel: Framework principal para la lógica de negocio y enrutamiento.
 
-## Laravel Sponsors
+Livewire: Componentes reactivos en el servidor para interfaces dinámicas.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- Frontend
 
-### Premium Partners
+Alpine.js (^3.14.9): Reactividad liviana para interacciones del cliente.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Tailwind CSS (^3.1.0): Framework de CSS orientado a utilidades.
 
-## Contributing
+Flatpickr (^4.6.13): Selector dinámico de fechas para la reserva de turnos.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Sass (^1.87.0): Preprocesador CSS para estilos personalizados.
 
-## Code of Conduct
+Axios (^1.6.4): Cliente HTTP para solicitudes asíncronas.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Herramientas de Build
 
-## Security Vulnerabilities
+Vite (^5.4.19): Empaquetador de módulos ultrarrápido con plugin oficial para Livewire.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Base de Datos
 
-## License
+PostgreSQL: Hospedada en la nube con Neon Serverless Postgres.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Despliegue
+
+Render: Plataforma de alojamiento para la aplicación web.
+
+📋 Requisitos Previos
+PHP >= 8.2
+
+Composer
+
+Node.js (v18 o superior) & NPM
+
+🌍 Despliegue (Production)
+Base de Datos: Alojada en Neon DB (PostgreSQL), aprovechando la conexión segura por SSL y escalado automático de PostgreSQL.
+
+⚙️ Instalación Local
+Clonar el repositorio:
+
+Bash
+git clone https://github.com/tu-usuario/tu-repositorio.git
+cd tu-repositorio
+Instalar dependencias de PHP y JavaScript:
+
+Bash
+composer install
+npm install
+Configurar las variables de entorno:
+Copia el archivo de ejemplo y ajusta tus credenciales de base de datos y servicios:
+
+Bash
+cp .env.example .env
+Generar la clave de la aplicación:
+
+Bash
+php artisan key:generate
+Ejecutar migraciones de la base de datos:
+
+Bash
+php artisan migrate
+Compilar assets e iniciar el servidor de desarrollo:
+
+Bash
+# En una terminal:
+npm run dev
+
+# En otra terminal:
+php artisan serve
+🔑 Variables de Entorno (.env)
+Asegúrate de incluir las siguientes variables clave en tu archivo .env:
+
+Fragmento de código
+APP_NAME="Veterinaria"
+APP_ENV=local
+APP_URL=http://localhost:8000
+
+# Conexión a la base de datos PostgreSQL en Neon
+DB_CONNECTION=pgsql
+DB_HOST=tu-host-neon.neon.tech
+DB_PORT=5432
+DB_DATABASE=nombre_bd
+DB_USERNAME=usuario_neon
+DB_PASSWORD=password_neon
+
+# Clave de Web3Forms para formulario de contacto
+WEB3FORMS_ACCESS_KEY=tu-access-key
+
+# Credenciales OAuth (Opcional)
+GOOGLE_CLIENT_ID=tu-google-client-id
+GOOGLE_CLIENT_SECRET=tu-google-client-secret
+FACEBOOK_CLIENT_ID=tu-facebook-client-id
+FACEBOOK_CLIENT_SECRET=tu-facebook-client-secret
+
+Aplicación Web: Alojada en Render, configurada para ejecutar la compilación de assets en el deploy con npm run build y la caché de rutas/vistas mediante php artisan config:cache y php artisan route:cache.

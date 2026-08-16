@@ -1,16 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="carro seccion flex flex-col items-center mt-[15vh]">
+    <section class="carro seccion flex flex-col items-center mt-[15vh]" aria-label="Historial de compras">
+        {{-- Encabezado H1 accesible para la jerarquía semántica del sitio --}}
+        <h1 class="sr-only">Mis Compras Realizadas</h1>
+
         @if($compras->isEmpty())
             <p>No hay compras realizadas.</p>
         @else
             <div class="productos__listado stock__tarjeta">
                 @foreach($compras as $compra)
                     <div class="producto stock__tarjeta__contenedor">
-                        <x-picture :src="{{ $compra->producto_imagen }}" class="stock__tarjeta__contenedor__imagen" alt="Producto" />
+                        {{-- Corrección de sintaxis de Blade y optimización de carga diferida --}}
+                        <x-picture 
+                            src="{{ $compra->producto_imagen }}" 
+                            alt="{{ $compra->producto_descripcion }}" 
+                            class="stock__tarjeta__contenedor__imagen"
+                            loading="lazy"
+                            decoding="async"
+                        />
                         <div class="stock__tarjeta__contenedor__contenido">
-                            <div class="stock__tarjeta__contenedor__contenido__descripcion">{{ $compra->producto_descripcion }}</div>
+                            <div class="stock__tarjeta__contenedor__contenido__descripcion" role="heading" aria-level="2">
+                                {{ $compra->producto_descripcion }}
+                            </div>
                             <div class="stock__tarjeta__contenedor__contenido__cantidad">Cantidad: {{ $compra->producto_cantidad }}</div>
                             <div class="stock__tarjeta__contenedor__contenido__precio">Precio Unitario: ${{ number_format($compra->producto_precio, 2, ',', '.') }}</div>
                             <div class="stock__tarjeta__contenedor__contenido__precio">Total: ${{ number_format($compra->producto_precio_total, 2, ',', '.') }}</div>
@@ -34,5 +46,4 @@
             </div>
         @endif
     </section>
-
 @endsection
