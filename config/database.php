@@ -99,7 +99,7 @@ return [
                 PDO::ATTR_PERSISTENT => true,
                 PDO::ATTR_TIMEOUT => 5,
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                // NO PONGAS strings aquí, solo constantes PDO => valores válidos
+                // aquí solo agregar constantes PDO => valores válidos
             ] : [],
         ],
 

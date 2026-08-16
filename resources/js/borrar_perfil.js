@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Seleccionar el botón "Borrar Perfil"
     const borrarPerfilButton = document.getElementById('borrarPerfilButton');
     
     // Si el botón no existe en la página actual, salir silenciosamente sin emitir errores
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    // Agregar evento click al botón
+    // evento click
     borrarPerfilButton.addEventListener('click', function () {
         if (confirm('¿Estás seguro de que deseas borrar tu perfil? Esta acción no se puede deshacer.')) {
             fetch('/borrar_perfil', {

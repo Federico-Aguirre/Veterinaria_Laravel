@@ -10,7 +10,7 @@ export default defineConfig({
       input: [
         'resources/js/app.js',  // Archivo JS principal
         'resources/js/paypal.js',
-        'resources/tailwind/main.scss',  // Tu archivo SCSS
+        'resources/tailwind/main.scss',  // SCSS principal
       ],
       refresh: true,
     }),

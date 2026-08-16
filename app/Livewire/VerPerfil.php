@@ -23,7 +23,6 @@ Celular: {$user->celular}
 Email: {$user->email}
         ";
 
-        // Enviamos el mensaje como un simple string
         $this->dispatch('mostrar-alerta', message: $perfil);
     }
 

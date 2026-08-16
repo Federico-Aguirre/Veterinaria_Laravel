@@ -9,7 +9,7 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
 {
     use HasFactory, Notifiable;
 
-    // Definir la tabla que estás utilizando
+    // Definir la tabla que se utilizan
     protected $table = 'users';
 
     protected $primaryKey = 'id';
@@ -31,7 +31,6 @@ class User extends Authenticatable  // Cambiar de Model a Authenticatable
         'password',
     ];
 
-    // Laravel gestiona automáticamente los timestamps (created_at, updated_at)
     public $timestamps = true;
 
     // Para asegurarnos de que las contraseñas se cifren correctamente

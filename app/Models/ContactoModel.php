@@ -12,7 +12,7 @@ class ContactoModel extends Model
 
     protected $primaryKey = 'id';
 
-    public $timestamps = true; // Asegura que los timestamps estén habilitados
+    public $timestamps = true;
 
     protected $fillable = [
         'id_cliente',

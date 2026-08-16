@@ -23,13 +23,13 @@ class AgregarTurno extends Component
 
     public function mount()
     {
-        // 1. Validar que el usuario esté autenticado
+        // Validar que el usuario esté autenticado
         if (!Auth::check()) {
             session()->flash('alert', 'Debes iniciar sesión para solicitar un turno.');
             return redirect()->to('/login');
         }
 
-        // 2. Validar que tenga al menos una mascota registrada
+        // Validar que tenga al menos una mascota registrada
         $mascotas = MascotaModel::where('id_user', Auth::id())->get();
 
         if ($mascotas->isEmpty()) {

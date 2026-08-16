@@ -38,7 +38,6 @@ class VerProductos extends Component
 
     public function cargarProductos()
     {
-        // Verifica que en tu proyecto la carpeta sea resources/json/productos.json (todo en minúsculas)
         $path = resource_path('json/productos.json');
 
         if (!File::exists($path)) {

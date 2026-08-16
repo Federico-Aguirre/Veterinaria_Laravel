@@ -51,7 +51,6 @@ class EditarPerfil extends Component
 
         $user->update($validated);
 
-        // Mostramos alerta con Alpine
         $this->alertMessage = "Perfil actualizado correctamente.";
     }
 

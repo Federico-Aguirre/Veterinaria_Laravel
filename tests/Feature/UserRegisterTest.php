@@ -13,7 +13,7 @@ class UserRegisterTest extends TestCase
     {
 $data = [
     'name' => 'Juan',
-    'surname' => 'Pérez',         // <-- en inglés porque la validación lo exige así
+    'surname' => 'Pérez',
     'dni' => '12345678',
     'address' => 'Calle Falsa 123', 
     'locality' => 'Ciudad',

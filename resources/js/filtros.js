@@ -1,4 +1,3 @@
-// Importar los selectores globales
 import { $q, $qa } from './variablesGlobales';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const filtrosRef = $q(".stock__filtro__texto");
 
-    // Variables para la categoría (qa) y la búsqueda (q)
     let qa = new URLSearchParams(window.location.search).get('categoria'); 
     let q = new URLSearchParams(window.location.search).get('q'); 
 

@@ -55,6 +55,26 @@ Composer
 
 Node.js (v18 o superior) & NPM
 
+## ⚡ PageSpeed Benchmarks & Auditoría Web Vitals
+
+Este proyecto fue optimizado para cumplir con los estándares de calidad web exigidos por **Google PageSpeed Insights**
+
+| Métrica | Resultado | Estado |
+| :--- | :---: | :---: |
+| **Rendimiento (Desktop)** | **100%** | 🟢 Perfecto |
+| **Accesibilidad (a11y)** | **100%** | 🟢 Perfecto |
+| **Buenas Prácticas** | **100%** | 🟢 Perfecto |
+| **SEO** | **100%** | 🟢 Perfecto |
+| **Navegación Agéntica (Compatibilidad IA)** | **2 / 2** | 🟢 WCAG Completo |
+
+> 🔗 **[Ver Auditoría Oficial e Informe en Vivo en Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)**
+
+### 📷 Captura de Auditoría (PageSpeed)
+
+[![PageSpeed Audit Score](./public/readMeImages/pagespeed-reporte-valores.png)](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)
+
+[![PageSpeed Audit Score](./public/readMeImages/pagespeed-reporte-metricas.png)](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)
+
 🌍 Despliegue (Producción)
 Base de Datos: Alojada en Neon DB (PostgreSQL), aprovechando la conexión segura por SSL y escalado automático de PostgreSQL.
 

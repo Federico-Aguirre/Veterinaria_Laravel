@@ -11,7 +11,6 @@ let isMenuOpen = false;
 
 // Si falta algún elemento del menú, salir de forma silenciosa sin registrar avisos en la consola
 if (!navBar || !navMenu || !navLine1 || !navLine2) {
-  // Salida silenciosa para evitar alertas en PageSpeed
 } else {
   navBar.addEventListener('click', () => {
     if (isAnimating) return;
@@ -38,6 +37,6 @@ if (!navBar || !navMenu || !navLine1 || !navLine2) {
     setTimeout(() => {
       isAnimating = false;
       isMenuOpen = !isMenuOpen;
-    }, 600); // Coincide con duración en animations.js
+    }, 600);
   });
 }

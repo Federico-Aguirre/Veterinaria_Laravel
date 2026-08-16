@@ -3,7 +3,6 @@ import { $q, $qa } from './variablesGlobales';
 document.addEventListener("DOMContentLoaded", () => {
     const btnAgregar = $q("#btn-agregar-global");
 
-    // Si el botón no existe en la página actual, detener la ejecución silenciosamente
     if (!btnAgregar) {
         return;
     }

@@ -64,7 +64,7 @@ class ConvertirImagenes extends Command
                 continue;
             }
 
-            // 1. Guardar versión WebP
+            // Guardar versión WebP
             $pathWebp = $rutaBase . '.webp';
             if (!File::exists($pathWebp) && $soportaWebp) {
                 if (@imagewebp($img, $pathWebp, 80)) {
@@ -73,7 +73,7 @@ class ConvertirImagenes extends Command
                 }
             }
 
-            // 2. Guardar versión AVIF
+            //Guardar versión AVIF
             $pathAvif = $rutaBase . '.avif';
             if (!File::exists($pathAvif) && $soportaAvif) {
                 if (@imageavif($img, $pathAvif, 70)) {

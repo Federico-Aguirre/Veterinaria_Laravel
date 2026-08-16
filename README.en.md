@@ -49,6 +49,26 @@ Render: Hosting platform for the web application.
 
 📋 PrerequisitesPHP >= 8.2ComposerNode.js (v18 or higher) & NPMA Neon DB account (PostgreSQL)
 
+## ⚡ PageSpeed Benchmarks & Web Vitals Audit
+
+This project was optimized to meet the web quality standards required by **Google PageSpeed Insights**.
+
+| Metric | Result | Status |
+| :--- | :---: | :---: |
+| **Performance (Desktop)** | **100%** | 🟢 Perfect |
+| **Accessibility (a11y)** | **100%** | 🟢 Perfect |
+| **Best Practices** | **100%** | 🟢 Perfect |
+| **SEO** | **100%** | 🟢 Perfect |
+| **Agentic Navigation (AI Compatibility)** | **2 / 2** | 🟢 Full WCAG |
+
+> 🔗 **[View Official Audit & Live Report on Google PageSpeed Insights](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)**
+
+### 📷 Captura de Auditoría (PageSpeed)
+
+[![PageSpeed Audit Score](./public/readMeImagenes/pagespeed-report-values.png)](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)
+
+[![PageSpeed Audit Score](./public/readMeImagenes/pagespeed-report-metrics.png)](https://pagespeed.web.dev/analysis/https-veterinaria-laravel-onrender-com/9300m6lhxc?form_factor=desktop)
+
 🌍 Deployment (Production)
 Deployment Database: Hosted on Neon, leveraging SSL connections and automatic PostgreSQL 
 

@@ -28,7 +28,7 @@ class VerMascota extends Component
             'sexo' => $mascota->sexo,
             'edad' => $mascota->edad,
             'microchip' => $mascota->nro_de_microchip,
-            'vacuna' => $mascota->vacuna_antirrabica ? 'Sí' : 'No', // 👈 Corregido sin tilde
+            'vacuna' => $mascota->vacuna_antirrabica ? 'Sí' : 'No',
             'antiparasitario' => $mascota->tratamiento_antiparasitario ? 'Sí' : 'No',
             'otras_vacunas' => $mascota->otras_vacunas,
             'informacion_adicional' => $mascota->informacion_adicional,

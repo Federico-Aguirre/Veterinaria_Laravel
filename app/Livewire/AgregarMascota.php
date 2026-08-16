@@ -42,7 +42,7 @@ class AgregarMascota extends Component
         'informacion_adicional' => $this->informacion_adicional,
     ]);
 
-    // 💡 Verificamos si venía de intentar sacar un turno
+    // Verificamos si venía de intentar sacar un turno
     if (session()->has('redirect_after_mascota')) {
         $destino = session('redirect_after_mascota');
         session()->forget('redirect_after_mascota');

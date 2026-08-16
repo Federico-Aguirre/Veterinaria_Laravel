@@ -190,7 +190,6 @@ public function finalizarCompra(Request $request)
 {
     // Verificar si el pago fue completado
     if ($request->input('payment_status') === 'completed') {
-        // Usar Auth::id() directamente
         $cliente_id = Auth::id();
 
         // Vaciamos el carrito de compras

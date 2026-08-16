@@ -26,13 +26,11 @@ class Login extends Component
             $cantidad = CarroDeComprasModel::where('id_cliente', $userId)->sum('producto_cantidad');
             session(['cantidadDeProductosEnCarro' => $cantidad]);
 
-            // Emitimos alerta de éxito
             $this->dispatch('mostrar-alerta', message: 'Login exitoso');
 
             return redirect()->intended(route('home'));
         }
 
-        // En caso de error de login
         $this->dispatch('mostrar-alerta', message: 'Credenciales incorrectas.');
     }
 
