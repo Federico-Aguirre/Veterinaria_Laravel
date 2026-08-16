@@ -21,8 +21,9 @@
             &__contenedor {
 
                 &__imagenIzquierda, &__imagenDerecha {
-                    height: 200px;
+                    height: auto;
                     width: 150px;
+                    object-fit: cover;
                 }
 
                 &__listaDeServicios {
