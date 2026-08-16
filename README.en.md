@@ -1,3 +1,5 @@
+🌐 **Language:** **English** | [Versión en Español](README.md) 
+
 🐾 Veterinary Management SystemA web application for comprehensive veterinary clinic management. It allows users to manage medical appointments, customer and pet profiles, a product catalog with an interactive shopping cart, and a fully functional contact form.
 
 🚀 Key Features

@@ -1,3 +1,5 @@
+🌐 **Idioma:** **Español** | [English Version](README.en.md)
+
 🐾 Sistema de Gestión Veterinaria
 Aplicación web para la gestión integral de clínicas veterinarias. Permite el control de turnos médicos, administración de perfiles de clientes y mascotas, un catálogo de productos con carrito de compras y un formulario de contacto funcional.
 
