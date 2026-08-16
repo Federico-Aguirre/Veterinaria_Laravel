@@ -1,21 +1,21 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app-DM8EzwWS.js",
+    "file": "assets/app-CORH5LjG.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "css": [
-      "assets/app-DrNZ7Kg-.css"
+      "assets/app-CYawoh8R.css"
     ]
   },
   "resources/js/paypal.js": {
-    "file": "assets/paypal-C5LyyE9K.js",
+    "file": "assets/paypal-e0Uk_DzC.js",
     "name": "paypal",
     "src": "resources/js/paypal.js",
     "isEntry": true
   },
   "resources/tailwind/main.scss": {
-    "file": "assets/main-InOKVbkA.css",
+    "file": "assets/main-cdU1zI_x.css",
     "src": "resources/tailwind/main.scss",
     "isEntry": true
   }
