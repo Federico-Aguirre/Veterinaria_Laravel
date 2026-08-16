@@ -37,7 +37,7 @@
             clear: both;
         }
 
-        .contenedor-tabs li a {
+        .contenedor-tabs li a, .contenedor-tabs li button {
             display: block;
             text-decoration: none;
             padding: 15px;
@@ -51,7 +51,7 @@
             transition: 0.5s ease;
         }
 
-        .contenedor-tabs li a:hover {
+        .contenedor-tabs li a:hover, .contenedor-tabs li button:hover {
             background: #179b77;
             color: #fff;
         }

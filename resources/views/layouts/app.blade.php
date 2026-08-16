@@ -42,7 +42,7 @@
                     </form>
                 </li>
                 <li class="hidden md:flex items-center gap-2">
-                    <x-picture src="imagenes/iconos/usuario.svg" alt="Icono de perfil" class="h-6 w-6 object-contain" />
+                    <img src="imagenes/iconos/usuario.svg" alt="Icono de perfil" class="h-6 w-6 object-contain" />
                     <div>{{ Auth::user()->name }}</div>
                 </li>
 
