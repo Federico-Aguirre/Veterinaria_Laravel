@@ -16,30 +16,28 @@
             }
         }
 
-        &__servicios {
+        &__servicios__contenedor{
 
-            &__contenedor {
+            &__imagenIzquierda, &__imagenDerecha {
+                height: auto;
+                width: 150px;
+                aspect-ratio: 138 / 179;
+                object-fit: cover;
+            }
 
-                &__imagenIzquierda, &__imagenDerecha {
-                    height: auto;
-                    width: 150px;
-                    object-fit: cover;
-                }
+            &__listaDeServicios {
 
-                &__listaDeServicios {
+                div {
+                    width: 190px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
 
-                    div {
-                        width: 190px;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-
-                        img, picture img {
-                            height: 50px;
-                            width: 50px;
-                            object-fit: cover;
-                        }
+                    img, picture img {
+                        height: 50px;
+                        width: 50px;
+                        object-fit: cover;
                     }
                 }
             }
