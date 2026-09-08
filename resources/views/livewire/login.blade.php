@@ -67,12 +67,11 @@
                     </form>
 
                     <div class="login__icon-container">
-                        {{-- Se traslada la descripción auditiva al enlace (acción) en lugar de la imagen --}}
                         <a href="{{ url('/login/google') }}" class="btn btn-danger login__icon-container__icon-link" aria-label="Iniciar sesión con Google">
-                            <x-picture src="{{ asset('imagenes/iconos/google_icon.svg') }}" alt="" aria-hidden="true" />
+                            <img src="{{ asset('imagenes/iconos/google_icon.svg') }}" alt="Iniciar sesión con Google" aria-hidden="true" width="24" height="24" />
                         </a>
                         <a href="{{ url('/login/facebook') }}" class="btn btn-primary login__icon-container__icon-link" aria-label="Iniciar sesión con Facebook">
-                            <x-picture src="{{ asset('imagenes/iconos/facebook_icon.svg') }}" alt="" aria-hidden="true" />
+                            <img src="{{ asset('imagenes/iconos/facebook_icon.svg') }}" alt="Iniciar sesión con Facebook" aria-hidden="true" width="24" height="24" />
                         </a>
                     </div>
                 </div>

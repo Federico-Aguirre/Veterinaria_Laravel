@@ -7,7 +7,7 @@
         {{-- Imagen optimizada para evitar saltos de layout (CLS) --}}
         <img src="{{ asset('imagenes/iconos/shopping-cart.svg') }}" 
              class="header__carroDeCompra__button" 
-             alt="" 
+             alt="Carro de Compra" 
              aria-hidden="true" 
              width="24" 
              height="24" 
